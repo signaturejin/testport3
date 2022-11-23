@@ -1,0 +1,121 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+ul, ol, li {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+img, video {
+  vertical-align: middle;
+}
+
+table {
+  border-collapse: collapse;
+}
+
+input, select, textarea {
+  outline: 0;
+}
+
+textarea {
+  resize: none;
+}
+
+body {
+  line-height: 1;
+  overflow-x: hidden;
+  font-family: "Noto Sans", sans-serif;
+  font-family: "Noto Sans KR", sans-serif;
+}
+
+#header {
+  position: relative;
+  z-index: 99;
+}
+#header .h_top {
+  display: flex;
+  justify-content: center;
+  background-color: skyblue;
+}
+#header .h_top .center {
+  background-color: palegoldenrod;
+  width: 70%;
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  padding: 15px 0;
+}
+#header .h_top .center .t_right {
+  display: flex;
+}
+#header .h_top .center .t_right .login, #header .h_top .center .t_right .join {
+  margin-left: 17px;
+  text-align: center;
+}
+#header .h_top .center .t_right .login a, #header .h_top .center .t_right .join a {
+  color: #000;
+}
+#header .h_top .center .t_right .login a i, #header .h_top .center .t_right .join a i {
+  display: block;
+  margin-bottom: 5px;
+}
+#header .h_top .center .t_right .login a span, #header .h_top .center .t_right .join a span {
+  font-weight: 500;
+}
+#header .h_top .center .mobile_btn {
+  display: none;
+}
+#header .h_bot {
+  display: flex;
+  justify-content: center;
+  background-color: palevioletred;
+}
+#header .h_bot .center {
+  background-color: aquamarine;
+  width: 70%;
+}
+#header .h_bot .center .gnb {
+  display: flex;
+  justify-content: space-between;
+}
+#header .h_bot .center .gnb li {
+  line-height: 50px;
+}
+#header .h_bot .center .gnb li a {
+  color: #000;
+  font-weight: 500;
+}
+
+#container .intro {
+  position: relative;
+  width: 100%;
+  background-color: #000;
+}
+#container .intro .center video {
+  width: 100%;
+  height: 100vh;
+}
+#container .intro .center .grad_bar .bar {
+  position: absolute;
+  top: 0;
+  width: 130px;
+  height: 100vh;
+}
+#container .intro .center .grad_bar .b1 {
+  left: 0;
+  background: linear-gradient(270deg, rgba(0, 0, 0, 0) 5%, rgb(0, 0, 0) 20%);
+}
+#container .intro .center .grad_bar .b2 {
+  right: 0;
+  background: linear-gradient(90deg, rgba(0, 0, 0, 0) 5%, rgb(0, 0, 0) 20%);
+}
+#container .cont2 {
+  width: 100%;
+  height: 2500px;
+}

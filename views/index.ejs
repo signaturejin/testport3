@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>메인페이지</title>
+    <!-- css -->
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- 웹폰트 및 아이콘 -->
+    <%- include("common/icon_font.ejs") %>
+</head>
+<body>
+    <!-- 상단 영역 -->
+    <!-- 다 쓰고 header.ejs로 이동 -->
+    <div id="header">
+        <div class="h_top">
+            <div class="center">
+                <h1 class="logo"><a href="/">로고이미지</a></h1>
+                <div class="t_right">
+                    <div class="login"><a href="#"><i class="fa-solid fa-unlock-keyhole"></i><span>로그인</span></a></div>
+                    <div class="join"><a href="#"><i class="fa-solid fa-user-plus"></i><span>회원가입</span></a></div>
+                </div>
+                <!-- 모바일버튼 -->
+                <div class="mobile_btn">
+                    <div class="bar"></div>
+                    <div class="bar"></div>
+                    <div class="bar"></div>
+                </div>
+            </div>
+        </div>
+        <div class="h_bot">
+            <div class="center">
+                <ul class="gnb">
+                    <li><a href="#">상품안내게시판</a></li>
+                    <li><a href="#">지점매장안내게시판</a></li>
+                    <li><a href="#">이벤트안내게시판</a></li>
+                    <li><a href="#">공지글게시판</a></li>
+                    <li><a href="#">문의게시판</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- 중간 영역 -->
+    <div id="container">
+        <div class="intro">
+            <div class="center">
+                <video src="/video/intro_video.mp4" muted></video>
+                <div class="grad_bar">
+                    <div class="bar b1"></div>
+                    <div class="bar b2"></div>
+                </div>
+            </div>
+        </div>
+        <div class="cont2"></div>
+    </div>
+</body>
+</html>
