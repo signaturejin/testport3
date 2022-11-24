@@ -12,35 +12,7 @@
 </head>
 <body>
     <!-- 상단 영역 -->
-    <!-- 다 쓰고 header.ejs로 이동 -->
-    <div id="header">
-        <div class="h_top">
-            <div class="center">
-                <h1 class="logo"><a href="/">로고이미지</a></h1>
-                <div class="t_right">
-                    <div class="login"><a href="#"><i class="fa-solid fa-unlock-keyhole"></i><span>로그인</span></a></div>
-                    <div class="join"><a href="#"><i class="fa-solid fa-user-plus"></i><span>회원가입</span></a></div>
-                </div>
-                <!-- 모바일버튼 -->
-                <div class="mobile_btn">
-                    <div class="bar"></div>
-                    <div class="bar"></div>
-                    <div class="bar"></div>
-                </div>
-            </div>
-        </div>
-        <div class="h_bot">
-            <div class="center">
-                <ul class="gnb">
-                    <li><a href="#">상품안내게시판</a></li>
-                    <li><a href="#">지점매장안내게시판</a></li>
-                    <li><a href="#">이벤트안내게시판</a></li>
-                    <li><a href="#">공지글게시판</a></li>
-                    <li><a href="#">문의게시판</a></li>
-                </ul>
-            </div>
-        </div>
-    </div>
+    <%- include("common/header.ejs") %>
     <!-- 중간 영역 -->
     <div id="container">
         <div class="intro">

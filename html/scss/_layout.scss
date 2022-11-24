@@ -9,9 +9,16 @@
             width: 70%; align-items: center;
             display: flex; justify-content: space-between;
             padding: 15px 0;
+            .gnb {
+                display: flex; justify-content: space-between;
+                li {
+                    line-height: 50px; margin: 0 20px;
+                    a {color: #000; font-weight: 500;}
+                }
+            }
             .t_right {
                 display: flex;
-                .login,.join {
+                .login,.join,.user_data,.logout {
                     margin-left: 17px; text-align: center;
                     a {
                         color: #000;
@@ -23,23 +30,23 @@
             .mobile_btn {display: none;}
         }
     }
-    .h_bot {
-        display: flex; justify-content: center;
-        background-color: palevioletred;
-        .center {
-            background-color: aquamarine;
-            width: 70%;
-            .gnb {
-                display: flex; justify-content: space-between;
-                li {
-                    line-height: 50px;
-                    a {
-                        color: #000; font-weight: 500;
-                    }
-                }
-            }
-        }
-    }
+    // .h_bot {
+    //     display: flex; justify-content: center;
+    //     background-color: palevioletred;
+    //     .center {
+    //         background-color: aquamarine;
+    //         width: 70%;
+    //         .gnb {
+    //             display: flex; justify-content: space-between;
+    //             li {
+    //                 line-height: 50px;
+    //                 a {
+    //                     color: #000; font-weight: 500;
+    //                 }
+    //             }
+    //         }
+    //     }
+    // }
 }
 //중간 영역
 #container {

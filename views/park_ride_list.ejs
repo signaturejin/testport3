@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>놀이기구 리스트 페이지</title>
+    <!-- css -->
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- 웹폰트 및 아이콘 -->
+    <%- include("common/icon_font.ejs") %>
+</head>
+<body>
+    <div class="ride_list_wrap">
+        <% for(let i=0; i<rideData.length; i++){ %>
+            <div class="ride_list">
+                <a class="detali_link" href="/ride/detail/<%- rideData[i].ride_no %>">
+                    <img src="/upload/<%- rideData[i].ride_file %>" alt="">
+                    <p class="ride_name"><%- rideData[i].ride_name %></p>
+                    <p class="ride_floor"><%- rideData[i].ride_floor %></p>
+                </a>
+            </div>
+        <% } %>
+    </div>
+</body>
+</html>

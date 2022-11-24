@@ -34,6 +34,12 @@ body {
   font-family: "Noto Sans KR", sans-serif;
 }
 
+img {
+  display: block;
+  width: 100px;
+  height: 100px;
+}
+
 #header {
   position: relative;
   z-index: 99;
@@ -51,45 +57,37 @@ body {
   justify-content: space-between;
   padding: 15px 0;
 }
+#header .h_top .center .gnb {
+  display: flex;
+  justify-content: space-between;
+}
+#header .h_top .center .gnb li {
+  line-height: 50px;
+  margin: 0 20px;
+}
+#header .h_top .center .gnb li a {
+  color: #000;
+  font-weight: 500;
+}
 #header .h_top .center .t_right {
   display: flex;
 }
-#header .h_top .center .t_right .login, #header .h_top .center .t_right .join {
+#header .h_top .center .t_right .login, #header .h_top .center .t_right .join, #header .h_top .center .t_right .user_data, #header .h_top .center .t_right .logout {
   margin-left: 17px;
   text-align: center;
 }
-#header .h_top .center .t_right .login a, #header .h_top .center .t_right .join a {
+#header .h_top .center .t_right .login a, #header .h_top .center .t_right .join a, #header .h_top .center .t_right .user_data a, #header .h_top .center .t_right .logout a {
   color: #000;
 }
-#header .h_top .center .t_right .login a i, #header .h_top .center .t_right .join a i {
+#header .h_top .center .t_right .login a i, #header .h_top .center .t_right .join a i, #header .h_top .center .t_right .user_data a i, #header .h_top .center .t_right .logout a i {
   display: block;
   margin-bottom: 5px;
 }
-#header .h_top .center .t_right .login a span, #header .h_top .center .t_right .join a span {
+#header .h_top .center .t_right .login a span, #header .h_top .center .t_right .join a span, #header .h_top .center .t_right .user_data a span, #header .h_top .center .t_right .logout a span {
   font-weight: 500;
 }
 #header .h_top .center .mobile_btn {
   display: none;
-}
-#header .h_bot {
-  display: flex;
-  justify-content: center;
-  background-color: palevioletred;
-}
-#header .h_bot .center {
-  background-color: aquamarine;
-  width: 70%;
-}
-#header .h_bot .center .gnb {
-  display: flex;
-  justify-content: space-between;
-}
-#header .h_bot .center .gnb li {
-  line-height: 50px;
-}
-#header .h_bot .center .gnb li a {
-  color: #000;
-  font-weight: 500;
 }
 
 #container .intro {
