@@ -4,20 +4,21 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>놀이기구 상세페이지</title>
+    <title>상품 상세페이지</title>
     <!-- css -->
     <link rel="stylesheet" href="/css/style.css">
     <!-- 웹폰트 및 아이콘 -->
     <%- include("common/icon_font.ejs") %>
 </head>
 <body>
-    <div class="ride_detail_wrap">
-        <% if(rideData.ride_file){ %>
-            <img src="/upload/<%- rideData.ride_file %>" alt="">
+    <div class="card_detail_wrap">
+        <% if(prdData.card_file){ %>
+            <img class="card_file" src="/upload/<%- prdData.card_file %>" alt="">
         <% } %>
-        <p class="ride_name"><%- rideData.ride_name %></p>
-        <p class="ride_floor"><%- rideData.ride_floor %></p>
-        <p class="ride_people"><%- rideData.ride_people %></p>
+        <p class="card_name"><%- prdData.card_name %></p>
+        <p class="card_benefit1"><%- prdData.card_benefit1 %></p>
+        <p class="card_benefit2"><%- prdData.card_benefit2 %></p>
+        <p class="card_benefit3"><%- prdData.card_benefit3 %></p>
     </div>
     <!-- 관리자만 이용 가능한 삭제 / 수정 버튼 -->
     <div class="admin_btn_set">
