@@ -1,0 +1,43 @@
+<!-- 관리자가 아니면 들어올 수 없음 -->
+<%# if(!userData || userData == null || !userData == "admin"){ %>
+    <!-- <script>
+        alert("관리자만 이용할 수 있는 페이지입니다.");
+        location.href = "/";
+    </script> -->
+<%# } %>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>관리자용 상품 등록 페이지</title>
+    <!-- css -->
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- 웹폰트 및 아이콘 -->
+    <%- include("common/icon_font.ejs") %>
+</head>
+<body>
+    <form id="prd_form" action="/add/prd" method="post" enctype="multipart/form-data">
+        <!-- admin 외 다른 사람이 글 삭제 / 수정 못하게 하기 위한 태그 -->
+        <input type="hidden" name="write_id" class="write_id" value="<%- userData.join_id %>">
+        <!-- 카드 파일 -->
+        <label for="card_file">카드 파일</label>
+        <input type="file" name="card_file" class="card_file">
+        <!-- 카드 이름 -->
+        <label for="card_name">카드 이름</label>
+        <input type="text" name="card_name" class="card_name">
+        <!-- 카드 혜택1 -->
+        <label for="card_benefit1">카드 혜택1</label>
+        <input type="text" name="card_benefit1" class="card_benefit1">
+        <!-- 카드 혜택2 -->
+        <label for="card_benefit2">카드 혜택2</label>
+        <input type="text" name="card_benefit2" class="card_benefit2">
+        <!-- 카드 혜택3 -->
+        <label for="card_benefit3">카드 혜택3</label>
+        <input type="text" name="card_benefit3" class="card_benefit3">
+
+        <button class="card_prd_btn">등록</button>
+    </form>
+</body>
+</html>

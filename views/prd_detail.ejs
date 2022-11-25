@@ -17,11 +17,12 @@
         <% } %>
         <p class="ride_name"><%- rideData.ride_name %></p>
         <p class="ride_floor"><%- rideData.ride_floor %></p>
+        <p class="ride_people"><%- rideData.ride_people %></p>
     </div>
     <!-- 관리자만 이용 가능한 삭제 / 수정 버튼 -->
     <div class="admin_btn_set">
-        <a class="del_btn" href="/delete/ride/<%- rideData.ride_no %>">삭제</a>
-        <a class="upt_btn" href="/update/ride/<%- rideData.ride_no %>">수정</a>
+        <a class="del_btn" href="/card/delete/<%- prdData.card_no %>">삭제</a>
+        <a class="upt_btn" href="/card/update/<%- prdData.card_no %>">수정</a>
     </div>
 </body>
 </html>

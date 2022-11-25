@@ -32,12 +32,12 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 
-MongoClient.connect("mongodb+srv://admin:qwer1234@parkdb.ehgsnbo.mongodb.net/?retryWrites=true&w=majority",function(err,result){
+MongoClient.connect("mongodb+srv://admin:qwer1234@portfolio3.zcxjh0m.mongodb.net/?retryWrites=true&w=majority",function(err,result){
     //에러가 발생했을경우 메세지 출력(선택사항)
     if(err) { return console.log(err); }
 
     //위에서 만든 db변수에 최종연결 ()안에는 mongodb atlas 사이트에서 생성한 데이터베이스 이름
-    db = result.db("park_db");
+    db = result.db("port3_db");
 
     //db연결이 제대로 됬다면 서버실행
     app.listen(port,function(){
@@ -76,7 +76,7 @@ passport.use(new LocalStrategy({
   }, function (user_id, user_pass, done) { //id password 작명한거임(입력한 input값 담는 변수)
     // 로그인 제대로 되는지 확인
     console.log(user_id, user_pass);
-    db.collection('park_join').findOne({ join_id: user_id }, function (err, result) {
+    db.collection('join').findOne({ join_id: user_id }, function (err, result) {
       if (err) return done(err)
       //잘못 입력했을 때
 
@@ -99,7 +99,7 @@ passport.serializeUser(function (user, done) {
 passport.deserializeUser(function (user_id, done) {
     //데이터베이스에 있는 로그인했을때 아이디만 불러와서
     //다른페이지에서도 세션을 사용할 수 있도록 처리
-    db.collection("park_join").findOne({join_id: user_id},function(err,result){
+    db.collection("join").findOne({join_id: user_id},function(err,result){
         done(null,result); //데이터베이스에서 가지고 온 아이디 -> 세션에 넣어서 다른페이지들에 전달
     });
 });
@@ -125,7 +125,7 @@ app.get("/join",(req,res)=>{
 //회원가입 데이터값 데이터베이스에 보내기
 app.post("/add/join",(req,res)=>{
     db.collection("count").findOne({name:"가입자수"},(err,result)=>{
-        db.collection("park_join").insertOne({
+        db.collection("join").insertOne({
             join_no: result.joinCount + 1,
             join_id: req.body.id,
             join_nickname: req.body.nickname,
@@ -145,76 +145,89 @@ app.get("/login",(req,res)=>{
     res.render("login");
 });
 
-//놀이기구 페이지 경로 요청
-app.get("/ride",(req,res)=>{
-    db.collection("park_ride").find().toArray((err,result)=>{
-        res.render("park_ride_list",{rideData: result});
+//상품 페이지 경로 요청
+app.get("/prd",(req,res)=>{
+    db.collection("product").find().toArray((err,result)=>{
+        res.render("prd_list",{prdData: result});
     });
 });
 
-//관리자용 놀이기구 등록 페이지 경로 요청
-app.get("/admin/ride",(req,res)=>{
-    res.render("admin_ride", {userData: req.user});
+//관리자용 상품 등록 페이지 경로 요청
+app.get("/admin/prd",(req,res)=>{
+    res.render("admin_prd", {userData: req.user});
 });
 
-//놀이기구 데이터값 데이터베이스로 보내기
-app.post("/add/ride",upload.single('ride_img'),(req,res)=>{
+//상품 데이터값 데이터베이스로 보내기
+app.post("/add/prd",upload.single('card_file'),(req,res)=>{
 
     if(req.file){
-        ride_file = req.file.originalname;
+        card_file = req.file.originalname;
     }
     else{
-        ride_file = null;
+        card_file = null;
     }
 
-    db.collection("count").findOne({name:"기구수"},(err,result)=>{
-        db.collection("park_ride").insertOne({
-            // 놀이기구 번호
-            ride_no: result.rideCount + 1,
-            // 놀이기구 위치
-            ride_floor: req.body.ride_floor,
-            // 놀이기구 이미지
-            ride_file: ride_file,
-            // 놀이기구 이름
-            ride_name: req.body.ride_name,
-            // 놀이기구 탑승인원
-            ride_people: req.body.ride_people,
-            // 누가 작성하였는가
+    db.collection("count").findOne({name:"상품수"},(err,result)=>{
+        db.collection("product").insertOne({
+            // 카드 번호
+            card_no: result.prdCount + 1,
+            // 상품 파일
+            card_file: card_file,
+            // 상품 이름
+            card_name: req.body.card_name,
+            // 상품 혜택1
+            card_benefit1: req.body.card_benefit1,
+            // 상품 혜택2
+            card_benefit2: req.body.card_benefit2,
+            // 상품 혜택3
+            card_benefit3: req.body.card_benefit3,
+            // 작성자
             write_id: req.body.write_id
         },(err,result)=>{
-            db.collection("count").updateOne({name:"기구수"},{$inc:{rideCount:1}},(err,result)=>{
-                res.redirect("/admin/ride");
+            db.collection("count").updateOne({name:"상품수"},{$inc:{prdCount:1}},(err,result)=>{
+                res.redirect("/admin/prd");
             });
         });
     });
 });
 
-//놀이기구 상세페이지 경로요청
-app.get("/ride/detail/:no",(req,res)=>{
-    db.collection("park_ride").findOne({ride_no: Number(req.params.no)},(err,result)=>{
-        res.render("park_ride_detail", {rideData: result});
+//카드 상세페이지 경로요청
+app.get("/card/detail/:no",(req,res)=>{
+    db.collection("product").findOne({card_no: Number(req.params.no)},(err,result)=>{
+        res.render("prd_detail", {prdData: result});
     });
 });
 
-//놀이기구 데이터값 삭제하기
-// render로 하면 에러가 뜨는 이유
-app.get("/delete/ride/:no",(req,res)=>{
-    db.collection("park_ride").deleteOne({ride_no: Number(req.params.no)},(err,result)=>{
-        res.redirect("/ride");
-        // res.render("park_ride_list");
+//카드 데이터값 삭제하기
+app.get("/card/delete/:no",(req,res)=>{
+    db.collection("product").deleteOne({ride_no: Number(req.params.no)},(err,result)=>{
+        res.redirect("/prd");
     });
 });
 
-//놀이기구 수정페이지 경로요청
-app.get("/update/ride/:no",(req,res)=>{
-    db.collection("park_ride").findOne({ride_no: Number(req.params.no)},(err,result)=>{
-        res.render("park_ride_update",{rideData:result, userData: req.user});
+//카드 수정페이지 경로요청
+app.get("/card/update/:no",(req,res)=>{
+    db.collection("product").findOne({ride_no: Number(req.params.no)},(err,result)=>{
+        res.render("prd_update",{prdData:result, userData: req.user});
     });
 });
 
-// 2022-11-24
-//수정페이지 작업중
-//수정페이지에서 쓰던 값 뜨게 value값 설정해야함
+//카드 수정데이터값 데이터베이스에 보내기
+app.post("/cardUpdate",upload.single('card_file'),(req,res)=>{
+    //카드 파일값
+    if(req.file){ //새로 파일을 골랐으면 그 파일의 이름으로 저장
+        card_file = req.file.originalname;
+    }
+    else{ //파일을 안골랐다면 기존 파일이름 저장
+        card_file = req.body.sel_file;
+    }
+
+    db.collection("product").updateOne({card_no: Number(req.params.card_no)},{$set:{
+
+    }},(err,result)=>{
+        res.redirect("/card/detail/" + req.body.card_no);
+    });
+});
 
 
 
