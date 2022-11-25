@@ -114,6 +114,7 @@ app.get("/logout",function(req,res){
 
 //메인 페이지 경로 요청
 app.get("/",(req,res)=>{
+    console.log(req.user);
     res.render("index", {userData: req.user});
 });
 
@@ -196,26 +197,27 @@ app.post("/add/prd",upload.single('card_file'),(req,res)=>{
 //카드 상세페이지 경로요청
 app.get("/card/detail/:no",(req,res)=>{
     db.collection("product").findOne({card_no: Number(req.params.no)},(err,result)=>{
-        res.render("prd_detail", {prdData: result});
+        res.render("prd_detail", {prdData: result, userData: req.user});
     });
 });
 
 //카드 데이터값 삭제하기
 app.get("/card/delete/:no",(req,res)=>{
-    db.collection("product").deleteOne({ride_no: Number(req.params.no)},(err,result)=>{
+    db.collection("product").deleteOne({card_no: Number(req.params.no)},(err,result)=>{
         res.redirect("/prd");
     });
 });
 
 //카드 수정페이지 경로요청
 app.get("/card/update/:no",(req,res)=>{
-    db.collection("product").findOne({ride_no: Number(req.params.no)},(err,result)=>{
+    db.collection("product").findOne({card_no: Number(req.params.no)},(err,result)=>{
         res.render("prd_update",{prdData:result, userData: req.user});
     });
 });
 
 //카드 수정데이터값 데이터베이스에 보내기
-app.post("/cardUpdate",upload.single('card_file'),(req,res)=>{
+// 상세페이지로 이동되나 데이터수정은 안되는중
+app.post("/update/prd",upload.single('card_file'),(req,res)=>{
     //카드 파일값
     if(req.file){ //새로 파일을 골랐으면 그 파일의 이름으로 저장
         card_file = req.file.originalname;
@@ -224,8 +226,17 @@ app.post("/cardUpdate",upload.single('card_file'),(req,res)=>{
         card_file = req.body.sel_file;
     }
 
-    db.collection("product").updateOne({card_no: Number(req.params.card_no)},{$set:{
-
+    db.collection("product").updateOne({card_no: Number(req.body.card_no)},{$set:{
+        // 상품 파일
+        card_file: card_file,
+        // 상품 이름
+        card_name: req.body.card_name,
+        // 상품 혜택1
+        card_benefit1: req.body.card_benefit1,
+        // 상품 혜택2
+        card_benefit2: req.body.card_benefit2,
+        // 상품 혜택3
+        card_benefit3: req.body.card_benefit3,
     }},(err,result)=>{
         res.redirect("/card/detail/" + req.body.card_no);
     });

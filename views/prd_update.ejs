@@ -1,50 +1,61 @@
 <!-- 관리자가 아니면 들어올 수 없음 -->
-<%# if(!userData || userData == null || !userData == "admin"){ %>
-    <!-- <script>
+<% if(!userData || userData.join_id != "admin"){ %>
+    <script>
         alert("관리자만 이용할 수 있는 페이지입니다.");
-        location.href = "/";
-    </script> -->
-<%# } %>
+        location.href = "/login";
+    </script>
+<% } %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>관리자용 놀이기구 수정 페이지</title>
+    <title>관리자용 상품 수정 페이지</title>
     <!-- css -->
     <link rel="stylesheet" href="/css/style.css">
     <!-- 웹폰트 및 아이콘 -->
     <%- include("common/icon_font.ejs") %>
 </head>
 <body>
-    <form id="ride_update_form" action="/cardUpdate" method="post" enctype="multipart/form-data">
+    <form id="prd_update_form" action="/update/prd" method="post" enctype="multipart/form-data">
         <!-- admin 외 다른 사람이 글 삭제 / 수정 못하게 하기 위한 태그 -->
-        <input type="hidden" name="write_id" value="<%- userData.join_id %>">
+        <input type="hidden" name="write_id" class="write_id" value="<%- userData.join_id %>">
         <!-- 게시글 번호로 업데이트할 게시글을 알아내기 위한 히든태그 -->
-        <input type="hidden" name="ride_no" value="<%- rideData.ride_no %>">
-        <!-- 분류 -->
-        <select name="ride_floor" id="ride_floor">
-            <option value="어드벤처 1층">1층</option>
-            <option value="어드벤처 2층">2층</option>
-            <option value="어드벤처 3층">3층</option>
-            <option value="어드벤처 4층">4층</option>
-        </select>
-        <!-- 원래 선택했던 셀렉트값 -->
-        <input type="hidden" name="sel_floor" class="sel_floor" value="<%- rideData.ride_floor %>">
-        <!-- 놀이기구 이미지 -->
-        <label for="ride_img">놀이기구 이미지</label>
-        <input type="file" name="ride_img" class="ride_img">
-        <!-- 원래 선택했던 이미지이름 -->
-        <input type="hidden" name="sel_img" value="<%- rideData.ride_file %>">
-        <!-- 놀이기구 이름 -->
-        <label for="ride_name">놀이기구 이름</label>
-        <input type="ride_name" name="ride_name" class="ride_name" value="<%- rideData.ride_name %>">
-        <!-- 놀이기구 탑승인원 -->
-        <label for="ride_people">놀이기구 탑승인원</label>
-        <input type="text" name="ride_people" class="ride_people" value="<%- rideData.ride_people %>">
+        <input type="hidden" name="card_no" value="<%- prdData.card_no %>">
+        <!-- 카드 분류 -->
+        <!-- <select name="card_category" class="card_category">
+            <option value="신용카드">신용카드</option>
+            <option value="체크카드">체크카드</option>
+        </select> -->
+        <!-- 카드 파일 -->
+        <label for="card_file">카드 파일</label>
+        <input type="file" name="card_file" class="card_file">
+        <!-- 파일교체 안했을 시를 위한 히든태그 -->
+        <input type="hidden" name="sel_file" class="sel_file" value="<%- prdData.card_file %>">
+        <!-- 카드 이름 -->
+        <label for="card_name">카드 이름</label>
+        <input type="text" name="card_name" class="card_name" value="<%- prdData.card_name %>">
+        <!-- 카드 혜택1 -->
+        <label for="card_benefit1">카드 혜택1</label>
+        <input type="text" name="card_benefit1" class="card_benefit1" value="<%- prdData.card_benefit1 %>">
+        <!-- 카드 혜택2 -->
+        <label for="card_benefit2">카드 혜택2</label>
+        <input type="text" name="card_benefit2" class="card_benefit2" value="<%- prdData.card_benefit2 %>">
+        <!-- 카드 혜택3 -->
+        <label for="card_benefit3">카드 혜택3</label>
+        <input type="text" name="card_benefit3" class="card_benefit3" value="<%- prdData.card_benefit3 %>">
 
-        <button class="ride_btn">등록</button>
+        <button class="card_prd_btn">등록</button>
     </form>
+    <div class="admin_prd_list_wrap">
+        <% for(let i=0; i<prdData.length; i++){ %>
+            <img class="prd_file" src="/upload/<%- prdData[i].card_file %>" alt="">
+            <h2 class="prd_name"><%- prdData[i].card_name %></h2>
+            <p class="prd_bnf bnf1"><%- prdData[i].card_benefit1 %></p>
+            <p class="prd_bnf bnf2"><%- prdData[i].card_benefit2 %></p>
+            <p class="prd_bnf bnf3"><%- prdData[i].card_benefit3 %></p>
+        <% } %>
+    </div>
 </body>
 </html>
