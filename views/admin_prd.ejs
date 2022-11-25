@@ -39,5 +39,14 @@
 
         <button class="card_prd_btn">등록</button>
     </form>
+    <div class="admin_prd_list_wrap">
+        <% for(let i=0; i<prdData.length; i++){ %>
+            <img class="prd_file" src="/upload/<%- prdData[i].card_file %>" alt="">
+            <h2 class="prd_name"><%- prdData[i].card_name %></h2>
+            <p class="prd_bnf bnf1"><%- prdData[i].card_benefit1 %></p>
+            <p class="prd_bnf bnf2"><%- prdData[i].card_benefit2 %></p>
+            <p class="prd_bnf bnf3"><%- prdData[i].card_benefit3 %></p>
+        <% } %>
+    </div>
 </body>
 </html>

@@ -154,7 +154,9 @@ app.get("/prd",(req,res)=>{
 
 //관리자용 상품 등록 페이지 경로 요청
 app.get("/admin/prd",(req,res)=>{
-    res.render("admin_prd", {userData: req.user});
+    db.collection("product").find().toArray((err,result)=>{
+        res.render("admin_prd", {userData: req.user, prdData:result});
+    });
 });
 
 //상품 데이터값 데이터베이스로 보내기

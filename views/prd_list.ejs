@@ -4,24 +4,26 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>놀이기구 리스트 페이지</title>
+    <title>상품 목록 페이지</title>
     <!-- css -->
     <link rel="stylesheet" href="/css/style.css">
     <!-- 웹폰트 및 아이콘 -->
     <%- include("common/icon_font.ejs") %>
 </head>
 <body>
-    <div class="ride_list_wrap">
-        <% for(let i=0; i<rideData.length; i++){ %>
-            <div class="ride_list">
-                <a class="detali_link" href="/ride/detail/<%- rideData[i].ride_no %>">
-                    <img src="/upload/<%- rideData[i].ride_file %>" alt="">
-                    <p class="ride_name"><%- rideData[i].ride_name %></p>
-                    <p class="ride_floor"><%- rideData[i].ride_floor %></p>
+    <div class="prd_list_wrap">
+        <% for(let i=0; i<prdData.length; i++){ %>
+            <div class="prd_list">
+                <a class="detali_link" href="/card/detail/<%- prdData[i].card_no %>">
+                    <img src="/upload/<%- prdData[i].card_file %>" alt="">
+                    <p class="card_name"><%- prdData[i].card_name %></p>
+                    <p class="card_benefit1"><%- prdData[i].card_benefit1 %></p>
+                    <p class="card_benefit2"><%- prdData[i].card_benefit2 %></p>
+                    <p class="card_benefit3"><%- prdData[i].card_benefit3 %></p>
                 </a>
             </div>
         <% } %>
     </div>
-    <a href="/admin/ride">글쓰기</a>
+    <a href="/admin/prd">상품등록하러가기</a>
 </body>
 </html>
