@@ -22,10 +22,12 @@
         <!-- admin 외 다른 사람이 글 삭제 / 수정 못하게 하기 위한 태그 -->
         <input type="hidden" name="write_id" class="write_id" value="<%- userData.join_id %>">
         <!-- 카드 분류 -->
-        <!-- <select name="card_category" class="card_category">
+        <select name="card_category" class="card_category">
+            <option value="추천카드">추천카드</option>
             <option value="신용카드">신용카드</option>
             <option value="체크카드">체크카드</option>
-        </select> -->
+            <option value="제휴카드">제휴카드</option>
+        </select>
         <!-- 카드 파일 -->
         <label for="card_file">카드 파일</label>
         <input type="file" name="card_file" class="card_file">

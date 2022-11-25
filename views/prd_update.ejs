@@ -24,10 +24,12 @@
         <!-- 게시글 번호로 업데이트할 게시글을 알아내기 위한 히든태그 -->
         <input type="hidden" name="card_no" value="<%- prdData.card_no %>">
         <!-- 카드 분류 -->
-        <!-- <select name="card_category" class="card_category">
+        <select name="card_category" class="card_category">
+            <option value="추천카드">추천카드</option>
             <option value="신용카드">신용카드</option>
             <option value="체크카드">체크카드</option>
-        </select> -->
+            <option value="제휴카드">제휴카드</option>
+        </select>
         <!-- 카드 파일 -->
         <label for="card_file">카드 파일</label>
         <input type="file" name="card_file" class="card_file">

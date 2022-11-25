@@ -174,6 +174,8 @@ app.post("/add/prd",upload.single('card_file'),(req,res)=>{
         db.collection("product").insertOne({
             // 카드 번호
             card_no: result.prdCount + 1,
+            // 상품 분류
+            card_category: req.body.card_category,
             // 상품 파일
             card_file: card_file,
             // 상품 이름
@@ -227,6 +229,8 @@ app.post("/update/prd",upload.single('card_file'),(req,res)=>{
     }
 
     db.collection("product").updateOne({card_no: Number(req.body.card_no)},{$set:{
+        // 상품 분류
+        card_category: req.body.card_category,
         // 상품 파일
         card_file: card_file,
         // 상품 이름
@@ -261,8 +265,7 @@ app.post("/update/prd",upload.single('card_file'),(req,res)=>{
 
 
 
-//11/24 해야 할 것(기능구현부터 / 꾸미는 건 나중에)
+//11/28 해야 할 것(기능구현부터 / 꾸미는 건 나중에)
 //1. 정규표현식
 //2. 중복확인
-//3. 로그인에 따른 헤더변화
-//4. 게시판
+//3. 상품페이지 완성
