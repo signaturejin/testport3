@@ -105,6 +105,29 @@
                                     .icon {
                                         font-size: 40px;
                                         margin-bottom: 20px;
+                                        position: relative;
+                                        img {
+                                            &:nth-child(1) {width: 80px; height: 80px;}
+                                            &:nth-child(2) {
+                                                position: absolute; left: -13px; top: -19px;
+                                                width: 25px; height: 25px;
+                                                // animation: name duration timing-function delay iteration-count direction fill-mode;
+                                                animation: coin_ani1 0.8s linear 0s infinite alternate;
+                                            }
+                                            @keyframes coin_ani1 {
+                                                0% {top: 0;}
+                                                100% {top: -19px;}
+                                            }
+                                            &:nth-child(3) {
+                                                position: absolute; right: 77px; top: 10px;
+                                                width: 25px; height: 25px;
+                                                animation: coin_ani2 0.8s linear 0.7s infinite alternate;
+                                            }
+                                            @keyframes coin_ani2 {
+                                                0% {top: 0;}
+                                                100% {top: -15px;}
+                                            }
+                                        }
                                     }
                                     .tag {
                                         position: absolute;
