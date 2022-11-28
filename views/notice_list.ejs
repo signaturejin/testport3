@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>공지사항 목록페이지</title>
+    <!-- css -->
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- 웹폰트 및 아이콘 -->
+    <%- include("common/icon_font.ejs") %>
+</head>
+<body>
+    <!-- 상단영역 -->
+    <%- include("common/header.ejs") %>
+    <!-- 중간영역 -->
+    <div id="container">
+        <div class="center">
+            <div class="notice_list_wrap">
+                <% for(let i=0; i<ntiData.length; i++){ %>
+                    <p class="notice_no"><%- ntiData[index].notice_no %></p>
+                <% } %>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -261,6 +261,38 @@ app.post("/update/prd",upload.single('card_file'),(req,res)=>{
     });
 });
 
+//관리자용 공지사항 등록 페이지 경로 요청
+app.get("/admin/notice",(req,res)=>{
+    db.collection("notice").find().toArray((err,result)=>{
+        res.render("admin_notice_insert",{ntiData:result});
+    });
+});
+
+//공지사항 데이터값 데이터베이스에 보내기
+app.post("/add/notice",(req,res)=>{
+    db.collection("count").findOne({name:"공지사항수"},(err,result)=>{
+        db.collection("notice").insertOne({
+            notice_no: result.noticeCount + 1,
+            notice_title: req.body.notice_title,
+            notice_author_id: req.user.join_id,
+            notice_author: req.user.join_nickname,
+            notice_context: req.body.notice_context,
+            notice_date: moment().tz("Asia/Seoul").format("YYYY-MM-DD HH:mm")
+        },(err,result)=>{
+            db.collection("count").updateOne({name:"공지사항수"},{$set:{noticeCount:1}},(err,result)=>{
+                res.redirect("/admin/notice");
+            });
+        });
+    });
+});
+
+//공지사항 목록페이지 경로 요청
+app.get("/notice",(req,res)=>{
+    db.collection("notice").find().toArray((err,result)=>{
+        res.render("notice_list",{ntiData: result});
+    });
+});
+
 
 
 

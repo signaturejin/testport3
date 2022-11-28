@@ -259,7 +259,7 @@
             }
         }
     }
-    //상품관리페이지 영역(card_area)
+    //상품페이지 영역(card_area)
     .card_area {
         display: flex; justify-content: center;
         .center {
@@ -311,12 +311,13 @@
                         .prd_list {
                             width: 31.333%; margin: 0 2%;
                             position: relative;
+                            img {width: 300px; height: 200px;}
                             .card_name {
                                 padding-top: 15px; font-size: 17px;
                                 font-weight: 500;
                             }
                             .hover_box {
-                                position: absolute; left: 0; bottom: -5px;
+                                position: absolute; left: -2px; bottom: -5px;
                                 background-color: #b4acfa; width: 100%;
                                 border-radius: 10px; padding: 20px;
                                 // overflow: hidden; text-overflow: ellipsis;
