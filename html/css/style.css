@@ -37,10 +37,9 @@ body {
 #header .h_top {
   display: flex;
   justify-content: center;
-  background-color: skyblue;
+  background-color: #e2bdff;
 }
 #header .h_top .center {
-  background-color: palegoldenrod;
   width: 73%;
   align-items: center;
   display: flex;
@@ -72,7 +71,7 @@ body {
   transform: translateX(-50%);
   width: 100%;
   height: 15px;
-  background-color: rgba(255, 0, 0, 0.5);
+  background-color: #d181e9;
   opacity: 0;
   transition: all 0.5s;
 }
@@ -379,19 +378,20 @@ body {
 }
 #container .intro .center .intro2_wrap .tab_wrap .tab_menu {
   display: flex;
-  background-color: antiquewhite;
+  background-color: #f1dfff;
   border-radius: 10px 10px 0 0;
 }
 #container .intro .center .intro2_wrap .tab_wrap .tab_menu li {
   width: 50%;
   text-align: center;
   padding: 20px 0;
-  border-bottom: 2px solid red;
+  border-bottom: 2px solid #d094ff;
 }
 #container .intro .center .intro2_wrap .tab_wrap .tab_menu li.on {
-  border: 2px solid red;
+  border: 2px solid #d094ff;
   border-bottom: none;
   border-radius: 10px 10px 0 0;
+  background-color: #fff;
 }
 #container .intro .center .intro2_wrap .tab_wrap .tab_list_wrap {
   display: flex;
@@ -405,7 +405,7 @@ body {
   flex-wrap: wrap;
   text-align: center;
   width: 100%;
-  border: 2px solid red;
+  border: 2px solid #d094ff;
   border-top: none;
   border-radius: 0 0 10px 10px;
   box-sizing: border-box;
@@ -427,14 +427,12 @@ body {
 #container .intro .center .intro2_wrap .tab_wrap .tab_list_wrap .list.on {
   z-index: 3;
   opacity: 1;
-  background-color: rgb(226, 226, 226);
 }
 #container .intro .center .intro2_wrap .info_wrap {
   margin-top: 357px;
   padding: 0 20px 20px;
-  border: 2px solid red;
+  border: 2px solid #d094ff;
   border-radius: 10px;
-  background-color: orange;
 }
 #container .intro .center .intro2_wrap .info_wrap .info_title {
   padding: 32px 0 15px;

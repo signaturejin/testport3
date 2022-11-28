@@ -2,9 +2,8 @@
 #header {
     .h_top {
         display: flex; justify-content: center;
-        background-color: skyblue;
+        background-color: #e2bdff;
         .center {
-            background-color: palegoldenrod;
             width: 73%; align-items: center;
             display: flex; justify-content: space-between;
             padding: 15px 0;
@@ -24,7 +23,7 @@
                         position: absolute; left: 50%; bottom: 13px;
                         transform: translateX(-50%);
                         width: 100%; height: 15px;
-                        background-color: rgba(255,0,0,0.5);
+                        background-color: #d181e9;
                         opacity: 0;
                         transition: all 0.5s;
                     }
@@ -202,17 +201,18 @@
                 .tab_wrap {
                     margin-bottom: 45px;
                     .tab_menu {
-                        display: flex; background-color: antiquewhite;
+                        display: flex; background-color: #f1dfff;
                         border-radius: 10px 10px 0 0;
                         li {
                             width: 50%; text-align: center;
                             padding: 20px 0;
-                            border-bottom: 2px solid red;
+                            border-bottom: 2px solid #d094ff;
                         }
                         li.on {
-                            border: 2px solid red;
+                            border: 2px solid #d094ff;
                             border-bottom: none;
                             border-radius: 10px 10px 0 0;
+                            background-color: #fff;
                         }
                     }
                     .tab_list_wrap {
@@ -221,7 +221,7 @@
                             position: absolute; left: 0; top: 0;
                             display: flex; flex-wrap: wrap;
                             text-align: center; width: 100%;
-                            border: 2px solid red;
+                            border: 2px solid #d094ff;
                             border-top: none;
                             border-radius: 0 0 10px 10px;
                             box-sizing: border-box;
@@ -238,7 +238,6 @@
                         }
                         .list.on {
                             z-index: 3; opacity: 1;
-                            background-color: rgb(226, 226, 226);
                         }
                     }
                 }
@@ -246,9 +245,8 @@
                 .info_wrap {
                     margin-top: 357px;
                     padding: 0 20px 20px;
-                    border: 2px solid red;
+                    border: 2px solid #d094ff;
                     border-radius: 10px;
-                    background-color: orange;
                     .info_title {
                         padding: 32px 0 15px;
                     }
