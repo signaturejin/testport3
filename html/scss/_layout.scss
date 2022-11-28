@@ -90,9 +90,7 @@
                                 width: 31.333333%; margin: 0 1%;
                                 border-radius: 10px;
                                 position: relative;
-                                &:nth-child(1){background-color: rgb(211, 164, 255);}
-                                &:nth-child(2){background-color: rgb(255, 178, 169);}
-                                &:nth-child(3){background-color: rgb(124, 255, 130);}
+                                background-color: #fff;
                                 > a {
                                     color: #000; display: block;
                                     padding-left: 30px;
@@ -106,26 +104,75 @@
                                         font-size: 40px;
                                         margin-bottom: 20px;
                                         position: relative;
-                                        img {
-                                            &:nth-child(1) {width: 80px; height: 80px;}
-                                            &:nth-child(2) {
-                                                position: absolute; left: -13px; top: -19px;
-                                                width: 25px; height: 25px;
-                                                // animation: name duration timing-function delay iteration-count direction fill-mode;
-                                                animation: coin_ani1 0.8s linear 0s infinite alternate;
+                                        .cm_ani {
+                                            width: 70px; height: 70px;
+                                            animation: common_ani 0.8s linear 0s infinite alternate;
+                                            @keyframes common_ani {
+                                                0% {transform: scale(1.0);}
+                                                100% {transform: scale(1.1);}
                                             }
+                                        }
+                                        //첫번째 슬라이드 아이콘
+                                        .laptop {animation-duration: 1s;}
+                                        .whatsapp {
+                                            width: 30px; height: 30px;
+                                            position: absolute; left: 82px; top: -13px;
+                                            animation: b_ani 0.8s linear 0s infinite alternate;
+                                            @keyframes b_ani {
+                                                0% {transform: rotate(0deg);}
+                                                100% {transform: rotate(25deg);}
+                                            }
+                                        }
+                                        .coin1 {
+                                            position: absolute; left: -13px; top: -19px;
+                                            width: 25px; height: 25px;
+                                            // animation: name duration timing-function delay iteration-count direction fill-mode;
+                                            animation: coin_ani1 0.8s linear 0s infinite;
                                             @keyframes coin_ani1 {
                                                 0% {top: 0;}
-                                                100% {top: -19px;}
+                                                50% {top: -5px;}
+                                                70% {top: -19px;}
+                                                100% {top: -5px;}
                                             }
-                                            &:nth-child(3) {
-                                                position: absolute; right: 77px; top: 10px;
-                                                width: 25px; height: 25px;
-                                                animation: coin_ani2 0.8s linear 0.7s infinite alternate;
-                                            }
+                                        }
+                                        .coin2 {
+                                            position: absolute; right: 82px; top: 10px;
+                                            width: 25px; height: 25px;
+                                            animation: coin_ani2 0.8s linear 1s infinite;
                                             @keyframes coin_ani2 {
-                                                0% {top: 0;}
-                                                100% {top: -15px;}
+                                                0% {top: 10px;}
+                                                40% {top: 0px;}
+                                                70% {top: -15px;}
+                                                100% {top: 10px;}
+                                            }
+                                        }
+                                        .mp {animation-duration: 0.7s;}
+                                        .allow {
+                                            width: 30px; height: 30px;
+                                            position: absolute; left: 68px; top: 50%;
+                                            transform: translateY(-50%);
+                                            animation: allow_ani 0.8s linear 0s infinite alternate;
+                                            @keyframes allow_ani {
+                                                0% {left: 68px;}
+                                                100% {left: 82px;}
+                                            }
+                                        }
+                                        //두번째 슬라이드 아이콘
+                                        .research {
+                                            width: 45px; height: 45px;
+                                            transform: rotate(-3deg);
+                                            transform-origin: 100% 0;
+                                            position: absolute; left: 33px; top: -18px;
+                                            animation: search_ani 1s linear 0s infinite alternate;
+                                            @keyframes search_ani {
+                                                0% {
+                                                    transform: rotate(-3deg);
+                                                    opacity: 1;
+                                                }
+                                                100% {
+                                                    transform: rotate(20deg);
+                                                    opacity: 0;
+                                                }
                                             }
                                         }
                                     }
