@@ -148,8 +148,23 @@ app.get("/login",(req,res)=>{
 
 //상품 페이지 경로 요청
 app.get("/prd",(req,res)=>{
-    db.collection("product").find().toArray((err,result)=>{
-        res.render("prd_list",{prdData: result});
+    db.collection("product").find({card_category:"추천카드"}).toArray((err,rmd_result)=>{
+        db.collection("product").find({card_category:"멀티카드"}).toArray((err,multi_result)=>{
+            db.collection("product").find({card_category:"신용카드"}).toArray((err,credit_result)=>{
+                db.collection("product").find({card_category:"제휴카드"}).toArray((err,alli_result)=>{
+                    db.collection("product").find({card_category:"체크카드"}).toArray((err,check_result)=>{
+                        res.render("prd_list",{
+                            userData: req.user,
+                            rmdData: rmd_result,
+                            mulData:multi_result,
+                            creData:credit_result,
+                            alliData:alli_result,
+                            chkData:check_result
+                        });
+                    });
+                });
+            });
+        });
     });
 });
 

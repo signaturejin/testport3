@@ -41,7 +41,7 @@
 }
 //중간 영역
 #container {
-    //intro 영역
+    //메인페이지 intro 영역
     .intro {
         display: flex; justify-content: center;
         margin: 50px 0 100px;
@@ -59,9 +59,15 @@
                     .slide_box {
                         width: 100%; border-radius: 10px;
                         padding-bottom: 65px;
-                        &:nth-child(1){background-color: burlywood;}
-                        &:nth-child(2){background-color: salmon;}
-                        &:nth-child(3){background-color: violet;}
+                        position: relative;
+                        &:nth-child(1){background-image: linear-gradient(to top, #fad0c4 0%, #ffd1ff 100%);}
+                        &:nth-child(2){background-image: linear-gradient(135deg, #feb7b9 0%, #d399ff 100%);}
+                        &:nth-child(3){background-image: linear-gradient(135deg, #fd9fdc 0%, #b4acfa 100%);}
+                        //슬라이드 뒷배경 일러스트
+                        .bg_img {
+                            position: absolute; right: 0; top: 87px;
+                            img {width: 450px; height: 300px;}
+                        }
                         //슬라이드 상단 텍스트박스
                         .text_box {
                             padding-left: 40px;
@@ -253,7 +259,302 @@
             }
         }
     }
+    //상품관리페이지 영역(card_area)
+    .card_area {
+        display: flex; justify-content: center;
+        .center {
+            background-color: #ffeef9;
+            width: 100%;
+            .title_box {
+                text-align: center;
+                padding: 40px 0;
+                .card_title {font-size: 15px; padding-bottom: 15px; color: #7369d1;}
+                .card_sub_title {font-size: 25px;}
+            }
+            .card_banner {
+                width: 100%; height: 300px;
+                position: relative;
+                background-image: url(/img/card_banner.jpg);
+                display: flex; justify-content: center;
+                align-items: center;
+                .banner_center {
+                    width: 63%;
+                    .text_box {
+                        .small_text {
+                            font-size: 15px; padding-bottom: 26px;
+                            font-weight: 500;
+                        }
+                        .big_text {
+                            font-size: 35px; padding-bottom: 45px;
+                            font-weight: 600;
+                        }
+                        .more {
+                            display: inline-block;
+                            padding: 12px 30px;
+                            border: 1px solid #fff;
+                            color: #fff;
+                        }
+                    }
+                }
+            }
+            .prd_list_wrap {
+                width: 63%; margin: 0 auto;
+                .cw {
+                    width: 100%; position: relative;
+                    overflow: hidden; margin-bottom: 50px;
+                    .title {text-align: center; padding: 40px 0; font-size: 22px;}
+                    .view {
+                        width: 200%; display: flex;
+                        transition: all 0.5s;
+                        padding-bottom: 60px;
+                        border-bottom: 2px solid #ddd;
+                        .prd_list {
+                            width: 31.333%; margin: 0 2%;
+                            position: relative;
+                            .card_name {
+                                padding-top: 15px; font-size: 17px;
+                                font-weight: 500;
+                            }
+                            .hover_box {
+                                position: absolute; left: 0; bottom: -5px;
+                                background-color: #b4acfa; width: 100%;
+                                border-radius: 10px; padding: 20px;
+                                // overflow: hidden; text-overflow: ellipsis;
+                                // white-space: nowrap;
+                                box-sizing: border-box;
+                                transform: translateY(-20px);
+                                opacity: 0; transition: all 0.5s;
+                                .box_top {
+                                    border-bottom: 2px solid red;
+                                    > p {
+                                        padding-bottom: 10px;
+                                        &:last-child {padding-bottom: 20px;}
+                                    } 
+                                }
+                                .link_box {
+                                    display: flex; justify-content: center;
+                                    margin-top: 20px;
+                                    > a {
+                                        display: block; padding: 10px 15px;
+                                        margin: 0 8px; background-color: skyblue;
+                                    }
+                                }
+                            }
+                            &:hover {
+                                .hover_box {opacity: 1; transform: translateY(0px);}
+                            }
+                        }
+                    }
+                    .card_btn_set {
+                        > div {
+                            position: absolute; top: 51%;
+                            transform: translateY(-50%);
+                            font-size: 30px;
+                            a {color: #bbb;}
+                        }
+                        .prev_btn {left: 0;}
+                        .next_btn {right: 0;}
+                    }
+                }
+            }
+        }
+    }
+    //카드 상세페이지 영역(card_detail)
+    .card_detail {
+        display: flex; justify-content: center;
+        .center {
+            width: 63%;
+            display: flex;
+            background-color: skyblue;
+            .card_detail_wrap {
+                width: 80%;
+                .title_box {
+                    text-align: center;
+                    .card_name {
+                        padding: 54px 0 18px;
+                        font-size: 32px;
+                    }
+                    .card_category {
+                        font-size: 15px; padding-bottom: 30px;
+                        color: #ddd;
+                    }
+                }
+                .card_box {
+                    width: 90%; margin: 0 auto;
+                    background-color: #dbdbdb;
+                    border-radius: 10px;
+                    .wrap {
+                        display: flex; align-items: center;
+                        justify-content: center;
+                        padding: 150px 0 80px;
+                        border-bottom: 1px solid red;
+                        .left {
+                            position: relative;
+                            .circle {
+                                position: absolute; left: 0; top: 50%;
+                                transform: translateY(-50%);
+                                width: 330px; height: 330px;
+                                border-radius: 50%;
+                                background-color: #c4c4c4;
+                                margin-left: -15px;
+                            }
+                            img {
+                                transform: rotate(90deg);
+                            }
+                        }
+                        .right {
+                            padding-left: 10%;
+                            > p {
+                                font-size: 16px;
+                                padding-bottom: 26px;
+                            }
+                        }
+                    }
+                    .admin_btn_set {
+                        margin-left: 45px;
+                        display: flex;
+                        > a {
+                            margin-right: 15px;
+                            display: block;
+                            padding: 10px 20px;
+                            background-color: #7369d1;
+                            border-radius: 5px;
+                            color: #fff;
+                        }
+                    }
+                    .box_bot {
+                        display: flex; align-items: center;
+                        line-height: 75px; padding-left: 48px;
+                        .brand {
+                            display: flex; align-items: center;
+                            > p {
+                                &:nth-child(1) {margin-right: 19px; font-size: 13px;}
+                                &:nth-child(2) {margin-right: 25px; font-size: 15px; font-weight: 500;}
+                            }
+                            img {
+                                width: 100px; height: 45px;
+                            }
+                        }
+                        .price {
+                            display: flex;
+                            > p {
+                                &:nth-child(1) {margin: 0 25px 0 115px; font-size: 13px;}
+                                &:nth-child(2) {margin-right: 25px; font-size: 15px; font-weight: 500;}
+                            }
+                        }
+                    }
+                }
+                .card_notice {
+                    width: 90%; margin: 60px auto 0;
+                    border-radius: 20px;
+                    .title {
+                        font-size: 23px; padding-bottom: 21px;
+                    }
+                    .card_notice_box {
+                        border: 2px solid red;
+                        border-radius: 20px;
+                        padding: 50px 45px;
+                        .sub_title {
+                            font-size: 16px; font-weight: 500;
+                            padding-bottom: 26px;
+                        }
+                        .text {
+                            font-size: 15px; line-height: 25px; padding-bottom: 30px;
+                            text-indent: 11px;
+                        }
+                    }
+                } 
+            }
+            .right_box {
+                position: sticky; top: 0;
+                width: 16%; margin: 148px 1% 0;
+                background-color: orange;
+                border: 1px solid red;
+                height: 310px;
+                border-radius: 10px;
+                //첫번째 박스
+                .box1 {
+                    display: flex; align-items: center;
+                    padding: 0 20px; justify-content: space-between;
+                    border-bottom: 1px solid red;
+                    p {
+                        padding: 30px 0; font-size: 15px;
+                    }
+                    .icon {
+                        width: 20px; height: 20px;
+                        border-radius: 50%;
+                        background-color: #7369d1;
+                        text-align: center;
+                        i {font-size: 12px;}
+                    }
+                }
+                //두번째 박스
+                .box2 {
+                    padding: 0 20px;
+                    border-bottom: 1px solid red;
+                    > p {padding: 20px 0 15px; font-size: 15px;}
+                    .wrap {
+                        display: flex; justify-content: space-between;
+                        p {
+                            padding-bottom: 22px; font-size: 13px;
+                        }
+                        .icon {
+                            width: 20px; height: 20px;
+                            border-radius: 50%;
+                            background-color: #7369d1;
+                            text-align: center;
+                            position: relative; bottom: 4px;
+                            i {font-size: 12px;}
+                        }
+                    }
+                }
+                //세번째 박스
+                .box3 {
+                    .top {
+                        display: flex; justify-content: center;
+                        text-align: center;
+                        padding: 17px 0 25px;
+                        .icon_box {
+                            margin: 0 5px;
+                            i {
+                                margin-bottom: 5px;
+                                font-size: 20px;
+                            }
+                            p {
+                                font-size: 15px;
+                                span {
+                                    color: red;
+                                }
+                            }
+                        }
+                    }
+                    .go_card {
+                        display: flex; justify-content: center;
+                        > a {
+                            display: inline-block; text-align: center;
+                            padding: 12px 20px; background-color: red;
+                            border-radius: 5px;
+                        }
+                    }
+                }
+            }
+        }
+    }
 }
+//회원가입 페이지 영역
+#join {
+    #join_form {
+        .input_wrap {
+            position: relative;
+            padding-bottom: 50px;
+            background-color: skyblue;
+            .msg_box {
+                position: absolute; left: 0; top: 25px;
+            }
+        }
+    }
+} 
+
 //도움창
 .help {
     position: absolute; right: 3%; top: 50%;

@@ -11,24 +11,171 @@
     <%- include("common/icon_font.ejs") %>
 </head>
 <body>
-    <h2 class="card_title">카드</h2>
-    <ul class="card_list">
-        <li><a href="#">신용카드</a></li>
-        <li><a href="#">체크카드</a></li>
-    </ul>
-    <div class="prd_list_wrap">
-        <% for(let i=0; i<prdData.length; i++){ %>
-            <div class="prd_list">
-                <a class="detali_link" href="/card/detail/<%- prdData[i].card_no %>">
-                    <img src="/upload/<%- prdData[i].card_file %>" alt="">
-                    <p class="card_name"><%- prdData[i].card_name %></p>
-                    <p class="card_benefit1"><%- prdData[i].card_benefit1 %></p>
-                    <p class="card_benefit2"><%- prdData[i].card_benefit2 %></p>
-                    <p class="card_benefit3"><%- prdData[i].card_benefit3 %></p>
-                </a>
+    <!-- 상단영역 -->
+    <%- include("common/header.ejs") %>
+    <!-- 중간영역 -->
+    <div id="container">
+        <div class="card_area">
+            <div class="center">
+                <div class="title_box">
+                    <h2 class="card_title">카드</h2>
+                    <h3 class="card_sub_title">카드 한눈에 보기</h2>
+                </div>
+                <!-- 카드 배너 -->
+                <div class="card_banner">
+                    <div class="banner_center">
+                        <div class="text_box">
+                            <p class="small_text">출근에서 퇴근까지 나의 하루를 함께하는 카드</p>
+                            <p class="big_text"># MY WAY (샵마이웨이)카드</p>
+                            <a class="more" href="#">자세히 보기</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="prd_list_wrap">
+                    <!-- 추천카드 목록 -->
+                    <div class="rmd_card_wrap cw">
+                        <h4 class="title">추천카드</h4>
+                        <div class="view">
+                            <% for(let i=0; i<rmdData.length; i++){ %>
+                                <div class="prd_list">
+                                    <img src="/upload/<%- rmdData[i].card_file %>" alt="">
+                                    <p class="card_name"><%- rmdData[i].card_name %></p>
+                                    <div class="hover_box">
+                                        <div class="box_top">
+                                            <p class="card_benefit1">·<%- rmdData[i].card_benefit1 %></p>
+                                            <p class="card_benefit2">·<%- rmdData[i].card_benefit2 %></p>
+                                            <p class="card_benefit3">·<%- rmdData[i].card_benefit3 %></p>
+                                        </div>
+                                        <div class="link_box">
+                                            <a href="/card/detail/<%- rmdData[i].card_no %>">상세보기</a>
+                                            <a href="#">카드신청</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            <% } %>
+                        </div>
+                        <div class="card_btn_set">
+                            <div class="prev_btn"><a href="#"><i class="fa-solid fa-chevron-left"></i></i></a></div>
+                            <div class="next_btn"><a href="#"><i class="fa-solid fa-chevron-right"></i></i></a></div>
+                        </div>
+                    </div>
+                    <!-- 멀티카드 목록 -->
+                    <div class="multi_card_wrap cw">
+                        <h4 class="title">멀티카드</h4>
+                        <div class="view">
+                            <% for(let i=0; i<mulData.length; i++){ %>
+                                <div class="prd_list">
+                                    <img src="/upload/<%- mulData[i].card_file %>" alt="">
+                                    <p class="card_name"><%- mulData[i].card_name %></p>
+                                    <div class="hover_box">
+                                        <div class="box_top">
+                                            <p class="card_benefit1">·<%- mulData[i].card_benefit1 %></p>
+                                            <p class="card_benefit2">·<%- mulData[i].card_benefit2 %></p>
+                                            <p class="card_benefit3">·<%- mulData[i].card_benefit3 %></p>
+                                        </div>
+                                        <div class="link_box">
+                                            <a href="/card/detail/<%- mulData[i].card_no %>">상세보기</a>
+                                            <a href="#">카드신청</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            <% } %>
+                        </div>
+                        <div class="card_btn_set">
+                            <div class="prev_btn"><a href="#"><i class="fa-solid fa-chevron-left"></i></i></a></div>
+                            <div class="next_btn"><a href="#"><i class="fa-solid fa-chevron-right"></i></i></a></div>
+                        </div>
+                    </div>
+                    <!-- 신용카드 목록 -->
+                    <div class="credit_card_wrap cw">
+                        <h4 class="title">신용카드</h4>
+                        <div class="view">
+                            <% for(let i=0; i<creData.length; i++){ %>
+                                <div class="prd_list">
+                                    <img src="/upload/<%- creData[i].card_file %>" alt="">
+                                    <p class="card_name"><%- creData[i].card_name %></p>
+                                    <div class="hover_box">
+                                        <div class="box_top">
+                                            <p class="card_benefit1">·<%- creData[i].card_benefit1 %></p>
+                                            <p class="card_benefit2">·<%- creData[i].card_benefit2 %></p>
+                                            <p class="card_benefit3">·<%- creData[i].card_benefit3 %></p>
+                                        </div>
+                                        <div class="link_box">
+                                            <a href="/card/detail/<%- creData[i].card_no %>">상세보기</a>
+                                            <a href="#">카드신청</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            <% } %>
+                        </div>
+                        <div class="card_btn_set">
+                            <div class="prev_btn"><a href="#"><i class="fa-solid fa-chevron-left"></i></i></a></div>
+                            <div class="next_btn"><a href="#"><i class="fa-solid fa-chevron-right"></i></i></a></div>
+                        </div>
+                    </div>
+                    <!-- 제휴카드 목록 -->
+                    <div class="alli_card_wrap cw">
+                        <h4 class="title">제휴카드</h4>
+                        <div class="view">
+                            <% for(let i=0; i<alliData.length; i++){ %>
+                                <div class="prd_list">
+                                    <img src="/upload/<%- alliData[i].card_file %>" alt="">
+                                    <p class="card_name"><%- alliData[i].card_name %></p>
+                                    <div class="hover_box">
+                                        <div class="box_top">
+                                            <p class="card_benefit1">·<%- alliData[i].card_benefit1 %></p>
+                                            <p class="card_benefit2">·<%- alliData[i].card_benefit2 %></p>
+                                            <p class="card_benefit3">·<%- alliData[i].card_benefit3 %></p>
+                                        </div>
+                                        <div class="link_box">
+                                            <a href="/card/detail/<%- alliData[i].card_no %>">상세보기</a>
+                                            <a href="#">카드신청</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            <% } %>
+                        </div>
+                        <div class="card_btn_set">
+                            <div class="prev_btn"><a href="#"><i class="fa-solid fa-chevron-left"></i></i></a></div>
+                            <div class="next_btn"><a href="#"><i class="fa-solid fa-chevron-right"></i></i></a></div>
+                        </div>
+                    </div>
+                    <!-- 체크카드 목록 -->
+                    <div class="check_card_wrap cw">
+                        <h4 class="title">체크카드</h4>
+                        <div class="view">
+                            <% for(let i=0; i<chkData.length; i++){ %>
+                                <div class="prd_list">
+                                    <img src="/upload/<%- chkData[i].card_file %>" alt="">
+                                    <p class="card_name"><%- chkData[i].card_name %></p>
+                                    <div class="hover_box">
+                                        <div class="box_top">
+                                            <p class="card_benefit1">·<%- chkData[i].card_benefit1 %></p>
+                                            <p class="card_benefit2">·<%- chkData[i].card_benefit2 %></p>
+                                            <p class="card_benefit3">·<%- chkData[i].card_benefit3 %></p>
+                                        </div>
+                                        <div class="link_box">
+                                            <a href="/card/detail/<%- chkData[i].card_no %>">상세보기</a>
+                                            <a href="#">카드신청</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            <% } %>
+                        </div>
+                        <div class="card_btn_set">
+                            <div class="prev_btn"><a href="#"><i class="fa-solid fa-chevron-left"></i></i></a></div>
+                            <div class="next_btn"><a href="#"><i class="fa-solid fa-chevron-right"></i></i></a></div>
+                        </div>
+                    </div>
+                    <!-- 관리자용 상품등록 버튼 -->
+                    <%# if(usrData.join_id == "admin"){ %>
+                        <a href="/admin/prd">상품등록하러가기</a>
+                    <%# } %>
+                </div>
             </div>
-        <% } %>
+        </div>
     </div>
-    <a href="/admin/prd">상품등록하러가기</a>
+    <!-- js -->
+    <script src="/js/card_slide.js"></script>
 </body>
 </html>

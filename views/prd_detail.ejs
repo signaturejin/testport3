@@ -11,21 +11,105 @@
     <%- include("common/icon_font.ejs") %>
 </head>
 <body>
-    <div class="card_detail_wrap">
-        <% if(prdData.card_file){ %>
-            <img class="card_file" src="/upload/<%- prdData.card_file %>" alt="">
-        <% } %>
-        <p class="card_name"><%- prdData.card_name %></p>
-        <p class="card_benefit1"><%- prdData.card_benefit1 %></p>
-        <p class="card_benefit2"><%- prdData.card_benefit2 %></p>
-        <p class="card_benefit3"><%- prdData.card_benefit3 %></p>
-    </div>
-    <!-- 관리자만 이용 가능한 삭제 / 수정 버튼 -->
-    <% if(userData.join_id == "admin"){ %>
-        <div class="admin_btn_set">
-            <a class="del_btn" href="/card/delete/<%- prdData.card_no %>">삭제</a>
-            <a class="upt_btn" href="/card/update/<%- prdData.card_no %>">수정</a>
+    <!-- 상단영역 -->
+    <%- include("common/header.ejs") %>
+    <!-- 중간영역 -->
+    <div id="container">
+        <div class="card_detail">
+            <div class="center">
+                <div class="card_detail_wrap">
+                    <!-- 카드 이름 및 분류항목 -->
+                    <div class="title_box">
+                        <h2 class="card_name"><%- prdData.card_name %></h2>
+                        <p class="card_category"><%- prdData.card_category %></p>
+                    </div>
+                    <!-- 카드 이미지 및 혜택 -->
+                    <div class="card_box">
+                        <div class="wrap">
+                            <div class="left">
+                                <div class="circle"></div>
+                                <% if(prdData.card_file){ %>
+                                    <img class="card_file" src="/upload/<%- prdData.card_file %>" alt="">
+                                <% } %>
+                            </div>
+                            <div class="right">
+                                <p class="card_benefit1">· <%- prdData.card_benefit1 %></p>
+                                <p class="card_benefit2">· <%- prdData.card_benefit2 %></p>
+                                <p class="card_benefit3">· <%- prdData.card_benefit3 %></p>
+                            </div>
+                        </div>
+                        <div class="box_bot">
+                            <div class="brand">
+                                <p>브랜드</p>
+                                <p>국내전용</p>
+                                <img src="/img/card_detail_box.png" alt="">
+                            </div>
+                            <div class="price">
+                                <p>연회비</p>
+                                <p>연회비 없음</p>
+                            </div>
+                        </div>
+                        <!-- 관리자만 이용 가능한 삭제 / 수정 버튼 -->
+                        <% if(userData.join_id == "admin"){ %>
+                            <div class="admin_btn_set">
+                                <a class="del_btn" href="/card/delete/<%- prdData.card_no %>">삭제</a>
+                                <a class="upt_btn" href="/card/update/<%- prdData.card_no %>">수정</a>
+                            </div>
+                        <% } %>
+                    </div>
+                    <!-- 이용 전 확인사항 -->
+                    <div class="card_notice">
+                        <h2 class="title">이용 전 확인사항</h2>
+                        <div class="card_notice_box">
+                            <h3 class="sub_title">‘모든 가맹점 적립’ 서비스 제외 대상</h3>
+                            <p class="text">
+                                무이자할부 이용금액, 취소금액, 단기카드대출(현금서비스), 장기카드대출(카드론), 상품권 및 선불카드(선불전자지급수단 포함) 구입/충전금액, 아파트관리비, 초/중/고 학교납입금 전체, 정부지원금(보육료/유치원보조비/바우처 이용금액 등), 대학(원)등록금, 각종 세금, 공과금(전기/수도), 4대 사회보험료(건강/연금/고용/산재), 각종 수수료 및 이자, 연체료, 연회비, 신차구매청구(환급) 할인 전표 전체
+                            </p>
+                            <h3 class="sub_title">‘Bank Pay 적립’ 서비스 제외 대상</h3>
+                            <p class="text">
+                                무이자할부 이용금액, 취소금액, 단기카드대출(현금서비스), 장기카드대출(카드론), 상품권 및 선불카드(선불전자지급수단 포함) 구입/충전금액, 아파트관리비, 초/중/고 학교납입금 전체, 정부지원금(보육료/유치원보조비/바우처 이용금액 등), 대학(원)등록금, 각종 세금, 공과금(전기/수도), 4대 사회보험료(건강/연금/고용/산재), 각종 수수료 및 이자, 연체료, 연회비, 신차구매청구(환급) 할인 전표 전체, 해외이용 전표 전체
+                            </p>
+                            <h3 class="sub_title">‘연간 리워드’ 결제납부실적 제외 대상</h3>
+                            <p class="text">
+                                Bank Pay 결제 외 모든 결제(일반결제, 타 간편결제 등), 해외이용 전표 전체, 취소금액, 단기카드대출(현금서비스), 장기카드대출(카드론), 상품권 및 선불카드(선불전자지급수단 포함) 구입/충전금액, 아파트관리비, 초/중/고 학교납입금 전체, 정부지원금(보육료/유치원보조비/바우처 이용금액 등), 대학(원)등록금, 각종 세금, 공과금(전기/수도), 4대 사회보험료(건강/ 연금/고용/산재), 각종 수수료 및 이자, 연체료, 연회비, 신차구매청구(환급) 할인 전표 전체
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="right_box">
+                    <div class="box1">
+                        <p>교통카드</p>
+                        <div class="icon">
+                            <i class="fa-solid fa-check"></i>
+                        </div>
+                    </div>
+                    <div class="box2">
+                        <p>발급유형</p>
+                        <div class="wrap">
+                            <p>플라스틱 카드</p>
+                            <div class="icon">
+                                <i class="fa-solid fa-check"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="box3">
+                        <div class="top">
+                            <div class="icon_box">
+                                <i class="fa-solid fa-cart-arrow-down"></i>
+                                <p>비교담기</p>
+                            </div>
+                            <div class="icon_box">
+                                <i class="fa-solid fa-cart-arrow-down"></i>
+                                <p>카드비교함<span>(0)</span></p>
+                            </div>
+                        </div>
+                        <div class="go_card">
+                            <a href="#">카드 신청하기</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-    <% } %>
+    </div>
 </body>
 </html>
