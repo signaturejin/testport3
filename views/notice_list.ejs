@@ -1,3 +1,10 @@
+<!-- 로그인해야 들어올 수 있음 -->
+<% if(!userData){ %>
+    <script>
+        alert("회원만 이용할 수 있는 페이지입니다.");
+        location.href = "/login";
+    </script>
+<% } %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -16,32 +23,8 @@
     <!-- 중간영역 -->
     <div id="container">
         <div class="notice_wrap">
-            <div class="left">
-                <div class="otp_box">
-                    <p>고객님<br>소중한 정보를 위해<br>OTP설정하러 가요</p>
-                    <a href="#">OTP 설정하러 가기</a>
-                    <img src="/img/otp.png" alt="">
-                </div>
-                <div class="notice_tab">
-                    <ul class="tab_menu">
-                        <li class="on"><a href="#">이용안내</a></li>
-                        <li><a href="#">맞춤메뉴</a></li>
-                    </ul>
-                    <ul class="tab_list_wrap">
-                        <li class="list on"><a href="/notice">공지사항</a></li>
-                        <li class="list"><a href="/notice">서비스종합안내</a></li>
-                        <li class="list"><a href="/notice">이용약관</a></li>
-                        <li class="list"><a href="/notice">이용시간</a></li>
-                        <li class="list"><a href="/notice">이용한도</a></li>
-                        <li class="list"><a href="/notice">OTP서비스 안내</a></li>
-                        <li class="list"><a href="/notice">보안프로그램설치</a></li>
-                    </ul>
-                </div>
-                <div class="security">
-                    <i class="fa-solid fa-shield"></i>
-                    <a href="#">인증보안센터 바로 가기</a>
-                </div>
-            </div>
+            <!-- 공지사항 왼쪽 메뉴 -->
+            <%- include("common/notice_left.ejs") %>
             <div class="right">
                 <div class="center">
                     <h2 class="title">공지사항</h2>
@@ -73,7 +56,11 @@
                             </div>
                         <% } %>
                     </div>
-                    <a class="go_notice" href="/admin/notice">공지사항 등록하러 가기</a>
+                    <% if(userData){ %>
+                        <% if(userData.join_id == "admin"){ %>
+                            <a class="go_notice" href="/admin/notice">공지사항 등록하러 가기</a>
+                        <% } %>
+                    <% } %>
                     <div class="notice_info">
                         <h3 class="title">이용안내</h3>
                         <div class="box">

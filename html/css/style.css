@@ -23,10 +23,6 @@ input, select, textarea {
   outline: 0;
 }
 
-textarea {
-  resize: none;
-}
-
 body {
   line-height: 1;
   overflow-x: hidden;
@@ -404,6 +400,7 @@ body {
   background-color: #f7f7f7;
   padding: 15px 10px;
   border-radius: 5px;
+  text-align: center;
 }
 #container .intro .center .intro2_wrap .info_wrap .info_box_wrap .line .info_box a {
   display: block;
@@ -447,31 +444,34 @@ body {
 #container .intro .center .intro3_wrap .user_wrap .login a span, #container .intro .center .intro3_wrap .user_wrap .join a span, #container .intro .center .intro3_wrap .user_wrap .user_data a span, #container .intro .center .intro3_wrap .user_wrap .logout a span {
   font-weight: 500;
 }
-#container .intro .center .intro3_wrap .notice_wrap {
+#container .intro .center .intro3_wrap .main_notice_wrap {
   margin-top: 40px;
   padding-left: 20px;
 }
-#container .intro .center .intro3_wrap .notice_wrap .notice_title {
+#container .intro .center .intro3_wrap .main_notice_wrap .notice_title {
   padding: 30px 0;
 }
-#container .intro .center .intro3_wrap .notice_wrap .notice_title a {
+#container .intro .center .intro3_wrap .main_notice_wrap .notice_title a {
   color: #000;
   margin-left: 8px;
 }
-#container .intro .center .intro3_wrap .notice_wrap .notice_list_wrap .notice_list {
+#container .intro .center .intro3_wrap .main_notice_wrap .notice_list_wrap .notice_list {
   margin-bottom: 30px;
 }
-#container .intro .center .intro3_wrap .notice_wrap .notice_list_wrap .notice_list .title {
+#container .intro .center .intro3_wrap .main_notice_wrap .notice_list_wrap .notice_list .title {
   margin-bottom: 15px;
   position: relative;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: pre;
 }
-#container .intro .center .intro3_wrap .notice_wrap .notice_list_wrap .notice_list .title a {
+#container .intro .center .intro3_wrap .main_notice_wrap .notice_list_wrap .notice_list .title a {
   color: #000;
 }
-#container .intro .center .intro3_wrap .notice_wrap .notice_list_wrap .notice_list .title i {
+#container .intro .center .intro3_wrap .main_notice_wrap .notice_list_wrap .notice_list .title i {
   margin-left: 5px;
 }
-#container .intro .center .intro3_wrap .notice_wrap .notice_list_wrap .notice_list .date {
+#container .intro .center .intro3_wrap .main_notice_wrap .notice_list_wrap .notice_list .date {
   color: #757575;
 }
 #container .intro .center .intro3_wrap .service_wrap {
@@ -978,6 +978,8 @@ body {
 #container .notice_wrap .left {
   width: 18%;
   margin: 2%;
+  position: sticky;
+  top: 0;
 }
 #container .notice_wrap .left .otp_box {
   background-color: #f2f2f2;
@@ -1165,6 +1167,73 @@ body {
 }
 #container .notice_wrap .right .center .notice_info .box p:nth-child(1) {
   margin-bottom: 14px;
+}
+#container .detail_page > .title {
+  text-align: center;
+  padding: 95px 0 42px;
+}
+#container .detail_page .notice_detail {
+  width: 80%;
+}
+#container .detail_page .notice_detail .center .nt_dt_top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #000;
+}
+#container .detail_page .notice_detail .center .nt_dt_top > .title {
+  font-size: 18px;
+}
+#container .detail_page .notice_detail .center .nt_dt_top .info {
+  display: flex;
+  font-size: 13px;
+  color: #858a90;
+}
+#container .detail_page .notice_detail .center .nt_dt_top .info .date {
+  margin-right: 20px;
+}
+#container .detail_page .notice_detail .center .notice_big_box > .title {
+  text-align: center;
+  font-size: 19px;
+  padding: 80px 0 45px;
+  color: #5c5a5b;
+  font-weight: 600;
+}
+#container .detail_page .notice_detail .center .notice_big_box .context {
+  font-size: 15px;
+  line-height: 24px;
+  color: #505050;
+  padding: 0 35px 70px;
+  border-bottom: 1px solid #d9d9d9;
+  white-space: pre;
+}
+#container .detail_page .notice_detail .center .list_btn {
+  margin: 0 auto;
+  display: block;
+  margin-top: 40px;
+  font-weight: 500;
+  line-height: 55px;
+  width: 200px;
+  color: #fff;
+  text-align: center;
+  background-color: #f4bbff;
+  border-radius: 5px;
+}
+#container .detail_page .notice_detail .center .admin_btn_set {
+  margin: 0 auto;
+  display: flex;
+}
+#container .detail_page .notice_detail .center .admin_btn_set > a {
+  display: block;
+  text-align: center;
+  width: 50%;
+}
+#container .detail_page .notice_detail .center .admin_btn_set > a:nth-child(1) {
+  background-color: #aaa;
+}
+#container .detail_page .notice_detail .center .admin_btn_set > a:nth-child(2) {
+  background-color: #bbb;
 }
 
 #footer .f_top {

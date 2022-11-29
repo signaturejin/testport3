@@ -294,6 +294,25 @@ app.post("/add/notice",(req,res)=>{
     });
 });
 
+//공지사항 상세페이지 경로 요청
+app.get("/notice/detail/:no",(req,res)=>{
+    //조회수를 올리기 위함
+    db.collection("notice").updateOne({notice_no: Number(req.params.no)},{$inc:{notice_review:1}},(err,result)=>{
+        db.collection("notice").findOne({notice_no: Number(req.params.no)},(err,result)=>{
+            res.render("notice_detail",{ntiData:result, userData:req.user});
+        });
+    });
+});
+
+//공지사항 수정페이지 경로 요청
+
+//공지사항 삭제
+app.get("/notice/delete/:no",(req,res)=>{
+    db.collection("notice").deleteOne({notice_no: Number(req.params.no)},(err,result)=>{
+        res.redirect("/notice");
+    });
+});
+
 //매장 목록 페이지 경로 요청
 app.get("/store",(req,res)=>{
     db.collection("store").find().toArray((err,result)=>{
@@ -334,16 +353,6 @@ app.post("/add/store",upload.single('file'),(req,res)=>{
             db.collection("count").updateOne({name:"매장수"},{$inc:{storeCount:1}},(err,result)=>{
                 res.redirect("/admin/store");
             });
-        });
-    });
-});
-
-//매장 상세페이지 경로 요청
-app.get("/notice/detail/:no",(req,res)=>{
-    //조회수를 올리기 위함
-    db.collection("notice").updateOne({notice_no: Number(req.params.no)},{$inc:{notice_review:1}},(err,result)=>{
-        db.collection("notice").findOne({notice_no: Number(req.params.no)},(err,result)=>{
-            res.render("notice_detail",{ntiData:result, userData:req.user});
         });
     });
 });

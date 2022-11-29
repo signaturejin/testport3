@@ -15,9 +15,50 @@
     <%- include("common/header.ejs") %>
     <!-- 중간영역 -->
     <div id="container">
-        <div class="center"></div>
+        <div class="detail_page notice_wrap">
+            <!-- 공지사항 왼쪽 메뉴 -->
+            <%- include("common/notice_left.ejs") %>
+            <!-- 공지사항 오른쪽 상세페이지 -->
+            <div class="right notice_detail">
+                <div class="center">
+                    <h2 class="title">공지사항</h2>
+                    <div class="nt_dt_top">
+                        <h3 class="nt_title"><%-ntiData.notice_title %></h3>
+                        <div class="info">
+                            <p class="date">등록일 : <%- ntiData.notice_date.substring(0,10) %></p>
+                            <p class="review">조회수 : <%- ntiData.notice_review %></p>
+                        </div>
+                    </div>
+                    <!-- 본문 -->
+                    <div class="notice_big_box">
+                        <p class="title"><%- ntiData.notice_title %></p>
+                        <div class="context"><%- ntiData.notice_context %></div>
+                    </div>
+                    <a class="list_btn" href="/notice">목록</a>
+                    <!-- 관리자만 볼 수 있는 수정 / 삭제 버튼 -->
+                    <div class="admin_btn_set">
+                        <a class="upt_btn" href="/notice/update/<%- ntiData.notice_no %>">수정</a>
+                        <a class="del_btn" href="/notice/delete/<%- ntiData.notice_no %>">삭제</a>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
     <!-- 하단영역 -->
     <%- include("common/footer.ejs") %>
+    <!-- js -->
+    <script>
+        //필요한 태그 생성
+        const del_btn = document.querySelector(".del_btn");
+
+        del_btn.addEventListener("click",(e)=>{
+
+            let check = confirm("정말로 삭제하겠습니까?");
+
+            if(!check){
+                e.preventDefault();
+            }
+        });
+    </script>
 </body>
 </html>

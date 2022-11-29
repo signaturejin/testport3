@@ -285,6 +285,7 @@
                                 background-color: #f7f7f7;
                                 padding: 15px 10px;
                                 border-radius: 5px;
+                                text-align: center;
                                 a {
                                     display: block; width: 100%; height: 100%;
                                     color: #000;
@@ -320,7 +321,7 @@
                     }
                 }
                 //intro영역의 공지사항 영역
-                .notice_wrap {
+                .main_notice_wrap {
                     margin-top: 40px;
                     // border: 2px solid red;
                     // border-radius: 10px;
@@ -335,6 +336,8 @@
                             .title {
                                 margin-bottom: 15px;
                                 position: relative;
+                                overflow: hidden; text-overflow: ellipsis;
+                                white-space: pre;
                                 a {color: #000;}
                                 i {margin-left: 5px;}
                             }
@@ -747,8 +750,8 @@
         display: flex; justify-content: center;
         width: 73%; margin: 0 auto;
         .left {
-            width: 18%;
-            margin: 2%;
+            width: 18%; margin: 2%;
+            position: sticky; top: 0;
             .otp_box {
                 background-color: #f2f2f2;
                 border-radius: 15px;
@@ -897,6 +900,56 @@
                         p {
                             &:nth-child(1) { margin-bottom: 14px;}
                         }
+                    }
+                }
+            }
+        }
+    }
+    //공지사항 상세페이지(detail_page)
+    .detail_page {
+        > .title {text-align: center; padding: 95px 0 42px;}
+        .notice_detail {
+            width: 80%;
+            .center {
+                .nt_dt_top {
+                    display: flex; justify-content: space-between;
+                    align-items: center;
+                    padding-bottom: 20px; border-bottom: 1px solid #000;
+                    > .title {font-size: 18px;} 
+                    .info {
+                        display: flex; font-size: 13px;
+                        color: #858a90;
+                        .date {margin-right: 20px;}
+                    }
+                }
+                //본문
+                .notice_big_box {
+                    > .title {
+                        text-align: center; font-size: 19px;
+                        padding: 80px 0 45px; color: #5c5a5b;
+                        font-weight: 600;
+                    }
+                    .context {
+                        font-size: 15px; line-height: 24px;
+                        color: #505050; padding: 0 35px 70px;
+                        border-bottom: 1px solid #d9d9d9;
+                        white-space: pre;
+                    }
+                }
+                .list_btn {
+                    margin: 0 auto;
+                    display: block; margin-top: 40px; font-weight: 500;
+                    line-height: 55px; width: 200px; color: #fff;
+                    text-align: center; background-color: #f4bbff;
+                    border-radius: 5px;
+                }
+                .admin_btn_set {
+                    margin: 0 auto; display: flex;
+                    > a {
+                        display: block; text-align: center;
+                        width: 50%;
+                        &:nth-child(1) {background-color: #aaa;}
+                        &:nth-child(2) {background-color: #bbb;}
                     }
                 }
             }
