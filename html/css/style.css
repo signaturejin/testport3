@@ -170,16 +170,7 @@ body {
 #container .intro .center .slide_wrap .view .slide_box .prd_box_wrap .prd_box > a .icon .cm_ani {
   width: 70px;
   height: 70px;
-  -webkit-animation: common_ani 0.8s linear 0s infinite alternate;
-          animation: common_ani 0.8s linear 0s infinite alternate;
-}
-@-webkit-keyframes common_ani {
-  0% {
-    transform: scale(1);
-  }
-  100% {
-    transform: scale(1.1);
-  }
+  animation: common_ani 0.8s linear 0s infinite alternate;
 }
 @keyframes common_ani {
   0% {
@@ -190,8 +181,7 @@ body {
   }
 }
 #container .intro .center .slide_wrap .view .slide_box .prd_box_wrap .prd_box > a .icon .laptop {
-  -webkit-animation-duration: 1s;
-          animation-duration: 1s;
+  animation-duration: 1s;
 }
 #container .intro .center .slide_wrap .view .slide_box .prd_box_wrap .prd_box > a .icon .whatsapp {
   width: 30px;
@@ -199,16 +189,7 @@ body {
   position: absolute;
   left: 82px;
   top: -13px;
-  -webkit-animation: b_ani 0.8s linear 0s infinite alternate;
-          animation: b_ani 0.8s linear 0s infinite alternate;
-}
-@-webkit-keyframes b_ani {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(25deg);
-  }
+  animation: b_ani 0.8s linear 0s infinite alternate;
 }
 @keyframes b_ani {
   0% {
@@ -224,22 +205,7 @@ body {
   top: -19px;
   width: 25px;
   height: 25px;
-  -webkit-animation: coin_ani1 0.8s linear 0s infinite;
-          animation: coin_ani1 0.8s linear 0s infinite;
-}
-@-webkit-keyframes coin_ani1 {
-  0% {
-    top: 0;
-  }
-  50% {
-    top: -5px;
-  }
-  70% {
-    top: -19px;
-  }
-  100% {
-    top: -5px;
-  }
+  animation: coin_ani1 0.8s linear 0s infinite;
 }
 @keyframes coin_ani1 {
   0% {
@@ -261,22 +227,7 @@ body {
   top: 10px;
   width: 25px;
   height: 25px;
-  -webkit-animation: coin_ani2 0.8s linear 1s infinite;
-          animation: coin_ani2 0.8s linear 1s infinite;
-}
-@-webkit-keyframes coin_ani2 {
-  0% {
-    top: 10px;
-  }
-  40% {
-    top: 0px;
-  }
-  70% {
-    top: -15px;
-  }
-  100% {
-    top: 10px;
-  }
+  animation: coin_ani2 0.8s linear 1s infinite;
 }
 @keyframes coin_ani2 {
   0% {
@@ -293,8 +244,7 @@ body {
   }
 }
 #container .intro .center .slide_wrap .view .slide_box .prd_box_wrap .prd_box > a .icon .mp {
-  -webkit-animation-duration: 0.7s;
-          animation-duration: 0.7s;
+  animation-duration: 0.7s;
 }
 #container .intro .center .slide_wrap .view .slide_box .prd_box_wrap .prd_box > a .icon .allow {
   width: 30px;
@@ -303,16 +253,7 @@ body {
   left: 68px;
   top: 50%;
   transform: translateY(-50%);
-  -webkit-animation: allow_ani 0.8s linear 0s infinite alternate;
-          animation: allow_ani 0.8s linear 0s infinite alternate;
-}
-@-webkit-keyframes allow_ani {
-  0% {
-    left: 68px;
-  }
-  100% {
-    left: 82px;
-  }
+  animation: allow_ani 0.8s linear 0s infinite alternate;
 }
 @keyframes allow_ani {
   0% {
@@ -330,18 +271,7 @@ body {
   position: absolute;
   left: 33px;
   top: -18px;
-  -webkit-animation: search_ani 1s linear 0s infinite alternate;
-          animation: search_ani 1s linear 0s infinite alternate;
-}
-@-webkit-keyframes search_ani {
-  0% {
-    transform: rotate(-3deg);
-    opacity: 1;
-  }
-  100% {
-    transform: rotate(20deg);
-    opacity: 0;
-  }
+  animation: search_ani 1s linear 0s infinite alternate;
 }
 @keyframes search_ani {
   0% {
@@ -788,7 +718,6 @@ body {
   text-indent: 11px;
 }
 #container .card_detail .center .right_box {
-  position: -webkit-sticky;
   position: sticky;
   top: 0;
   width: 16%;
@@ -876,6 +805,130 @@ body {
   padding: 12px 20px;
   background-color: red;
   border-radius: 5px;
+}
+#container .store_list .title {
+  text-align: center;
+  padding: 125px 0 48px;
+  font-size: 22px;
+}
+#container .store_list .store_banner {
+  width: 100%;
+  height: 410px;
+  background-image: url(/img/test.jpg);
+  position: relative;
+}
+#container .store_list .store_banner .bg {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(65, 21, 116, 0.2);
+}
+#container .store_list .store_banner .text_box_top {
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+}
+#container .store_list .store_banner .text_box_top p {
+  text-align: center;
+}
+#container .store_list .store_banner .text_box_top p:nth-child(1) {
+  font-size: 38px;
+  padding-bottom: 27px;
+  color: #fff;
+  font-weight: 600;
+  position: relative;
+}
+#container .store_list .store_banner .text_box_top p:nth-child(1)::before {
+  position: absolute;
+  left: 50%;
+  top: -40px;
+  transform: translateX(-50%);
+  content: "";
+  display: block;
+  width: 5%;
+  height: 2px;
+  background-color: #fff;
+}
+#container .store_list .store_banner .text_box_top p:nth-child(2) {
+  font-size: 18px;
+  color: #fff;
+  font-weight: 500;
+}
+#container .store_list .center {
+  width: 63%;
+  margin: 0 auto;
+  background-color: #d6d2ff;
+}
+#container .store_list .center .text_box_bot {
+  text-align: center;
+}
+#container .store_list .center .text_box_bot .list_title {
+  padding: 160px 0 30px;
+  font-size: 32px;
+  position: relative;
+}
+#container .store_list .center .text_box_bot .list_title::before {
+  position: absolute;
+  left: 50%;
+  top: 125px;
+  transform: translateX(-50%);
+  content: "";
+  display: block;
+  width: 4%;
+  height: 2px;
+  background-color: #000;
+}
+#container .store_list .center .text_box_bot .text {
+  font-size: 17px;
+  line-height: 23px;
+  padding-bottom: 70px;
+  color: #7f7f7f;
+}
+#container .store_list .center .store_list_wrap {
+  display: flex;
+  padding-bottom: 230px;
+  flex-wrap: wrap;
+}
+#container .store_list .center .store_list_wrap .list_box {
+  width: 29.333%;
+  margin: 0 2% 4%;
+  padding: 10px;
+  box-sizing: border-box;
+  background-color: #e6e6e6;
+  border-radius: 10px;
+}
+#container .store_list .center .store_list_wrap .list_box .store_file {
+  width: 100%;
+  height: 230px;
+}
+#container .store_list .center .store_list_wrap .list_box .store_name {
+  padding: 20px 0;
+  font-size: 18px;
+  font-weight: 500;
+}
+#container .store_list .center .store_list_wrap .list_box .store_info p {
+  font-size: 15px;
+  padding-bottom: 8px;
+  color: #6d6d6d;
+}
+#container .store_list .center .store_list_wrap .list_box .go_map {
+  display: inline-block;
+  color: #000;
+  padding: 8px 12px;
+  background-color: #d094ff;
+  border-radius: 5px;
+  margin: 22px 0 10px;
+  font-size: 15px;
+}
+#container .store_list .center .go_store {
+  display: block;
+  color: #000;
+  margin-bottom: 120px;
+  text-align: center;
+  padding: 20px;
+  background-color: #7369d1;
 }
 
 #join #join_form .input_wrap {

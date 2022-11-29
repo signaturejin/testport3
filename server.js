@@ -261,6 +261,13 @@ app.post("/update/prd",upload.single('card_file'),(req,res)=>{
     });
 });
 
+//공지사항 목록페이지 경로 요청
+app.get("/notice",(req,res)=>{
+    db.collection("notice").find().toArray((err,result)=>{
+        res.render("notice_list",{ntiData: result});
+    });
+});
+
 //관리자용 공지사항 등록 페이지 경로 요청
 app.get("/admin/notice",(req,res)=>{
     db.collection("notice").find().toArray((err,result)=>{
@@ -279,40 +286,52 @@ app.post("/add/notice",(req,res)=>{
             notice_context: req.body.notice_context,
             notice_date: moment().tz("Asia/Seoul").format("YYYY-MM-DD HH:mm")
         },(err,result)=>{
-            db.collection("count").updateOne({name:"공지사항수"},{$set:{noticeCount:1}},(err,result)=>{
+            db.collection("count").updateOne({name:"공지사항수"},{$inc:{noticeCount:1}},(err,result)=>{
                 res.redirect("/admin/notice");
             });
         });
     });
 });
 
-//공지사항 목록페이지 경로 요청
-app.get("/notice",(req,res)=>{
-    db.collection("notice").find().toArray((err,result)=>{
-        res.render("notice_list",{ntiData: result});
+//매장 목록 페이지 경로 요청
+app.get("/store",(req,res)=>{
+    db.collection("store").find().toArray((err,result)=>{
+        res.render("store_list",{stData:result, userData: req.user});
     });
 });
 
+//관리자용 매장 등록 페이지 경로 요청
+app.get("/admin/store",(req,res)=>{
+    db.collection("store").find().toArray((err,result)=>{
+        res.render("admin_store",{stData: result, userData: req.user});
+    });
+});
 
+//매장 관련 데이터값 데이터베이스에 보내기
+app.post("/add/store",upload.single('file'),(req,res)=>{
 
+    if(req.file){
+        store_file = req.file.originalname;
+    }
+    else {
+        store_file = null;
+    }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//11/28 해야 할 것(기능구현부터 / 꾸미는 건 나중에)
-//1. 정규표현식
-//2. 중복확인
-//3. 상품페이지 완성
+    db.collection("count").findOne({name:"매장수"},(err,result)=>{
+        db.collection("store").insertOne({
+            store_no: result.storeCount + 1,
+            store_name: req.body.name,
+            store_file: store_file,
+            store_tell: req.body.tell,
+            store_load: req.body.load,
+            store_sido: req.body.sido,
+            store_gugun: req.body.gugun,
+            store_address: req.body.address,
+            write_id: req.user.join_id
+        },(err,result)=>{
+            db.collection("count").updateOne({name:"매장수"},{$inc:{storeCount:1}},(err,result)=>{
+                res.redirect("/admin/store");
+            });
+        });
+    });
+});

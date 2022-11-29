@@ -1,0 +1,64 @@
+<!-- 로그인해야 들어올 수 있음 -->
+<% if(!userData){ %>
+    <script>
+        alert("회원만 이용할 수 있는 페이지입니다.");
+        location.href = "/login";
+    </script>
+<% } %>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>지점안내 페이지</title>
+    <!-- css -->
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- 웹폰트 및 아이콘 -->
+    <%- include("common/icon_font.ejs") %>
+</head>
+<body>
+    <!-- 상단영역 -->
+    <%- include("common/header.ejs") %>
+    <!-- 중간영역 -->
+    <div id="container">
+        <div class="store_list">
+            <h2 class="title">은행 매장안내</h2>
+            <div class="store_banner">
+                <div class="bg"></div>
+                <div class="text_box_top">
+                    <p>BANK OFFLINE STORE</p>
+                    <p>자세한 정보는 오프라인 매장에서 들으실 수 있습니다.</p>
+                </div>
+            </div>
+            <div class="center">
+                <div class="text_box_bot">
+                    <h3 class="list_title">은행 매장리스트</h3>
+                    <p class="text">다양한 소식을 접할 수 있는 오프라인 매장<br>
+                        여러가지 상품들에 대해서 상담 받을 수 있습니다.
+                    </p>
+                </div>
+                <div class="store_list_wrap">
+                    <% for(let i=0; i<stData.length; i++){ %>
+                        <div class="list_box">
+                            <!-- 매장 사진 -->
+                            <img class="store_file" src="/upload/<%- stData[i].store_file %>" alt="">
+                            <!-- 매장명 -->
+                            <h4 class="store_name"><%- stData[i].store_name %></h4>
+                            <div class="store_info">
+                                <p class="store_address"><span>매장주소: </span><%- stData[i].store_address %></p>
+                                <p class="store_tell"><span>전화번호: </span><%- stData[i].store_tell %></p>
+                                <p class="store_load"><span>오시는길: </span><%- stData[i].store_load %></p>
+                            </div>
+                            <a class="go_map" href="#">약도 자세히보기</a>
+                        </div>
+                    <% } %>
+                </div>
+                <% if(userData.join_id == "admin"){ %>
+                <a class="go_store" href="/admin/store">매장 등록하러 가기</a>
+                <% } %>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -22,16 +22,16 @@
         <button class="notice_btn" type="submit">공지사항 등록</button>
     </form>
     <div class="notice_list_wrap">
-        <%# for(let i=0; i<ntiData.length; i++){ %>
+        <% for(let i=0; i<ntiData.length; i++){ %>
             <div class="notice_list">
-                <p class="no"><%#- ntiData[index].notice_no %></p>
-                <p class="title"><%#- ntiData[index].notice_title %></p>
-                <p class="author_id"><%#- ntiData[index].notice_author_id %></p>
-                <p class="author"><%#- ntiData[index].notice_author %></p>
-                <p class="context"><%#- ntiData[index].notice_context %></p>
-                <p class="date"><%#- ntiData[index].notice_date %></p>
+                <p class="no"><%- ntiData[i].notice_no %></p>
+                <p class="title"><%- ntiData[i].notice_title %></p>
+                <p class="author_id"><%- ntiData[i].notice_author_id %></p>
+                <p class="author"><%- ntiData[i].notice_author %></p>
+                <p class="context"><%- ntiData[i].notice_context %></p>
+                <p class="date"><%- ntiData[i].notice_date %></p>
             </div>
-        <%# } %>
+        <% } %>
     </div>
 </body>
 </html>
