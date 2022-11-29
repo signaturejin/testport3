@@ -9,6 +9,16 @@
                 <li><a href="/notice">공지글게시판</a></li>
                 <li><a href="#">문의게시판</a></li>
             </ul>
+            <!-- 로그인 / 회원가입 / 로그아웃 영역 -->
+            <div class="user_wrap">
+                <% if(!userData){ %>
+                <div class="login"><a href="/login"><i class="fa-solid fa-unlock-keyhole"></i><span>로그인</span></a></div>
+                <div class="join"><a href="/join"><i class="fa-solid fa-user-plus"></i><span>회원가입</span></a></div>
+                <% } else { %>
+                <div class="user_data"><a href="#"><i class="fa-solid fa-user"></i><%- userData.join_nickname %></a> 님</div>
+                <div class="logout"><a href="/logout"><i class="fa-solid fa-arrow-right-from-bracket"></i>로그아웃</a></div>
+                <% } %>
+            </div>
             <!-- 모바일버튼 -->
             <div class="mobile_btn">
                 <div class="bar"></div>

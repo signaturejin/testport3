@@ -54,11 +54,15 @@
                         </div>
                     <% } %>
                 </div>
-                <% if(userData.join_id == "admin"){ %>
-                <a class="go_store" href="/admin/store">매장 등록하러 가기</a>
+                <% if(userData){ %>
+                    <% if(userData.join_id == "admin"){ %>
+                    <a class="go_store" href="/admin/store">매장 등록하러 가기</a>
+                    <% } %>
                 <% } %>
             </div>
         </div>
     </div>
+    <!-- 하단영역 -->
+    <%- include("common/footer.ejs") %>
 </body>
 </html>

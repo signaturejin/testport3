@@ -17,7 +17,7 @@
         <input type="text" class="notice_title" name="notice_title">
         <!-- 공지사항 내용 -->
         <label for="notice_context">공지사항 내용</label>
-        <input type="text" class="notice_context" name="notice_context">
+        <textarea name="notice_context" class="notice_context"></textarea>
 
         <button class="notice_btn" type="submit">공지사항 등록</button>
     </form>
@@ -29,6 +29,7 @@
                 <p class="author_id"><%- ntiData[i].notice_author_id %></p>
                 <p class="author"><%- ntiData[i].notice_author %></p>
                 <p class="context"><%- ntiData[i].notice_context %></p>
+                <p class="review"><%- ntiData[i].notice_review %></p>
                 <p class="date"><%- ntiData[i].notice_date %></p>
             </div>
         <% } %>

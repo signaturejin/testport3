@@ -264,14 +264,14 @@ app.post("/update/prd",upload.single('card_file'),(req,res)=>{
 //공지사항 목록페이지 경로 요청
 app.get("/notice",(req,res)=>{
     db.collection("notice").find().toArray((err,result)=>{
-        res.render("notice_list",{ntiData: result});
+        res.render("notice_list",{ntiData:result, userData:req.user});
     });
 });
 
 //관리자용 공지사항 등록 페이지 경로 요청
 app.get("/admin/notice",(req,res)=>{
     db.collection("notice").find().toArray((err,result)=>{
-        res.render("admin_notice_insert",{ntiData:result});
+        res.render("admin_notice_insert",{ntiData:result,  userData: req.user});
     });
 });
 
@@ -284,6 +284,7 @@ app.post("/add/notice",(req,res)=>{
             notice_author_id: req.user.join_id,
             notice_author: req.user.join_nickname,
             notice_context: req.body.notice_context,
+            notice_review: 0,
             notice_date: moment().tz("Asia/Seoul").format("YYYY-MM-DD HH:mm")
         },(err,result)=>{
             db.collection("count").updateOne({name:"공지사항수"},{$inc:{noticeCount:1}},(err,result)=>{
@@ -296,6 +297,7 @@ app.post("/add/notice",(req,res)=>{
 //매장 목록 페이지 경로 요청
 app.get("/store",(req,res)=>{
     db.collection("store").find().toArray((err,result)=>{
+        console.log(req.user);
         res.render("store_list",{stData:result, userData: req.user});
     });
 });
@@ -335,3 +337,33 @@ app.post("/add/store",upload.single('file'),(req,res)=>{
         });
     });
 });
+
+//매장 상세페이지 경로 요청
+app.get("/notice/detail/:no",(req,res)=>{
+    //조회수를 올리기 위함
+    db.collection("notice").updateOne({notice_no: Number(req.params.no)},{$inc:{notice_review:1}},(err,result)=>{
+        db.collection("notice").findOne({notice_no: Number(req.params.no)},(err,result)=>{
+            res.render("notice_detail",{ntiData:result, userData:req.user});
+        });
+    });
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+    집에서 할 거
+    - 아이콘 전부 색 있는걸로 바꾸기
+    - li:hover 높이값 낮추기
+    - 로고/기업이름 정하기
+    - 로그인/회원가입 페이지 디자인
+*/
