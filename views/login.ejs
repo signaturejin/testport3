@@ -11,14 +11,42 @@
     <%- include("common/icon_font.ejs") %>
 </head>
 <body>
+    <!-- 상단영역 -->
+    <%- include("common/header.ejs") %>
+    <!-- 중간영역 -->
     <div id="login">
-        <form id="login_form" action="/check/login" method="post">
-            <label for="user_id">아이디</label>
-            <input type="text" name="user_id" class="user_id">
-            <label for="user_pass">비밀번호</label>
-            <input type="password" name="user_pass" class="user_pass">
-            <button class="login_btn" type="submit">LOGIN</button>
-        </form>
+        <div class="center">
+            <h2 class="login_title">기업뱅킹 로그인</h2>
+            <div class="title_wrap">
+                <strong>안전한 인터넷 뱅킹을 위해 알아두세요!</strong>
+                <a class="info" href="#">기업뱅킹 이용방법<i class="fa-solid fa-angles-right"></i></a>
+            </div>
+            <p class="text">
+                새마을금고는 어떠한 경우에라도 OTP 비밀번호를 공유하지 않습니다.<br>
+                새마을금고 콜센터 번호를 도용하여 가짜 사이트의 접속을 유도하는 SMS에 유의하시기 바랍니다.<br>
+                개인정보 보호를 위해 서비스를 이용하신 후 자리를 비우시게 될 경우 반드시 로그아웃 하세요!
+            </p>
+            <div class="login_wrap">
+                <div class="left">
+                    <p class="b_text">인증서 로그인</p>
+                    <div class="auth_box"><a href="#"><span class="material-symbols-outlined">lock</span><span>금융인증서 로그인</span></a></div>
+                    <div class="auth_box"><a href="#"><span class="material-symbols-outlined">admin_panel_settings</span><span>공동인증서 로그인(구 공인인증서)</span></a></div>
+                </div>
+                <div class="right">
+                    <img src="/img/login_img.png" alt="">
+                    <p class="b_text">아이디 로그인</p>
+                    <form id="login_form" action="/check/login" method="post">
+                        <div class="wrap">
+                            <input type="text" name="user_id" class="user_id" placeholder="아이디 입력">
+                            <input type="password" name="user_pass" class="user_pass" placeholder="비밀번호 입력">
+                        </div>
+                        <button class="login_btn" type="submit">로그인</button>
+                    </form>
+                </div>
+            </div>
+        </div>
     </div>
+    <!-- 하단영역 -->
+    <%- include("common/footer.ejs") %>
 </body>
 </html>

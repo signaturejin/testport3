@@ -707,7 +707,6 @@ body {
   justify-content: center;
 }
 #container .card_area .center {
-  background-color: #ffeef9;
   width: 100%;
 }
 #container .card_area .center .title_box {
@@ -1451,6 +1450,126 @@ body {
 }
 #container .detail_page .notice_detail .center .admin_btn_set > a:nth-child(2) {
   background-color: #bbb;
+}
+
+#login {
+  display: flex;
+  justify-content: center;
+  background-color: #efefef;
+}
+#login .center {
+  width: 57%;
+}
+#login .center .login_title {
+  padding: 80px 0 90px;
+  font-size: 28px;
+  text-align: center;
+}
+#login .center .title_wrap {
+  display: flex;
+}
+#login .center .title_wrap strong {
+  font-size: 18px;
+  display: block;
+}
+#login .center .title_wrap .info {
+  margin-left: 23px;
+  font-size: 12px;
+  color: #000;
+  display: inline-block;
+  padding-bottom: 2px;
+  border-bottom: 1px solid #000;
+}
+#login .center .title_wrap .info i {
+  font-size: 10px;
+  position: relative;
+  bottom: 1px;
+  margin-left: 2px;
+}
+#login .center .text {
+  padding: 22px 0 30px;
+  font-size: 15px;
+  line-height: 25px;
+  color: #7e828b;
+}
+#login .center .login_wrap {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 45px 48px 40px;
+  background-color: #fff;
+  margin-bottom: 120px;
+}
+#login .center .login_wrap .left {
+  width: 35%;
+}
+#login .center .login_wrap .left .b_text {
+  font-size: 18px;
+  margin-bottom: 30px;
+  font-weight: 600;
+}
+#login .center .login_wrap .left .auth_box a {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  background-color: #d065eb;
+  padding: 20px 45px;
+  box-sizing: border-box;
+  color: #fff;
+  font-size: 15px;
+}
+#login .center .login_wrap .left .auth_box a:first-child {
+  margin-bottom: 5px;
+}
+#login .center .login_wrap .left .auth_box a .material-symbols-outlined {
+  margin-right: 5px;
+}
+#login .center .login_wrap .right {
+  position: relative;
+  width: 55%;
+}
+#login .center .login_wrap .right img {
+  position: absolute;
+  right: 0;
+  bottom: 178px;
+}
+#login .center .login_wrap .right .b_text {
+  font-size: 18px;
+  margin-bottom: 30px;
+  font-weight: 600;
+}
+#login .center .login_wrap .right #login_form .wrap {
+  display: flex;
+}
+#login .center .login_wrap .right #login_form .wrap input {
+  line-height: 50px;
+  box-sizing: border-box;
+  border: 1px solid #c2c2c2;
+  width: 50%;
+  height: 50px;
+  padding-left: 17px;
+  border-radius: 5px;
+  margin-bottom: 7px;
+}
+#login .center .login_wrap .right #login_form .wrap input:first-child {
+  margin-right: 10px;
+}
+#login .center .login_wrap .right #login_form .wrap input::-moz-placeholder {
+  font-size: 13px;
+}
+#login .center .login_wrap .right #login_form .wrap input:-ms-input-placeholder {
+  font-size: 13px;
+}
+#login .center .login_wrap .right #login_form .wrap input::placeholder {
+  font-size: 13px;
+}
+#login .center .login_wrap .right #login_form .login_btn {
+  width: 100%;
+  height: 50px;
+  border: none;
+  background-color: #000;
+  color: #fff;
+  font-size: 15px;
 }
 
 #footer .f_top {

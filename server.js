@@ -143,7 +143,7 @@ app.post("/add/join",(req,res)=>{
 
 //로그인 페이지 경로 요청
 app.get("/login",(req,res)=>{
-    res.render("login");
+    res.render("login",{userData:req.user});
 });
 
 //상품 페이지 경로 요청
