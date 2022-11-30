@@ -305,6 +305,21 @@ app.get("/notice/detail/:no",(req,res)=>{
 });
 
 //공지사항 수정페이지 경로 요청
+app.get("/notice/update/:no",(req,res)=>{
+    db.collection("notice").findOne({notice_no: Number(req.params.no)},(err,result)=>{
+        res.render("admin_notice_update",{ntiData:result});
+    });
+});
+
+//공지사항 수정데이터값 데이터베이스에 보내기
+app.post("/update/notice",(req,res)=>{
+    db.collection("notice").updateOne({notice_no: Number(req.body.notice_no)},{$set:{
+        notice_title: req.body.notice_title,
+        notice_context: req.body.notice_context
+    }},(err,result)=>{
+        res.redirect("/notice/detail/" + req.body.notice_no);
+    });
+});
 
 //공지사항 삭제
 app.get("/notice/delete/:no",(req,res)=>{
@@ -357,6 +372,95 @@ app.post("/add/store",upload.single('file'),(req,res)=>{
     });
 });
 
+//이벤트 목록 페이지 경로 요청
+app.get("/event",(req,res)=>{
+    db.collection("event").find().toArray((err,result)=>{
+        res.render("event_list",{evtData:result, userData:req.user});
+    });
+});
+
+//관리자용 이벤트 등록 페이지 경로 요청
+app.get("/admin/event",(req,res)=>{
+    db.collection("event").find().toArray((err,result)=>{
+        res.render("admin_event_insert",{evtData:result});
+    });
+});
+
+//이벤트 관련 데이터값 데이터베이스 보내기
+app.post("/add/event",upload.single('file'),(req,res)=>{
+
+    //파일이 있을 시
+    if(req.file){
+        event_file = req.file.originalname
+    }
+    else {
+        event_file = null
+    }
+
+    db.collection("count").findOne({name:"이벤트수"},(err,result)=>{
+        db.collection("event").insertOne({
+            //이벤트 번호
+            event_no: result.eventCount + 1,
+            //이벤트 제목
+            event_title: req.body.title,
+            //이벤트 파일
+            event_file: event_file,
+            //이벤트 내용
+            event_context: req.body.context,
+            //이벤트 조회수
+            event_review: 0,
+            //이벤트 작성자
+            write_id: req.user.join_id
+        },(err,result)=>{
+            db.collection("count").updateOne({name:"이벤트수"},{$inc:{eventCount:1}},(err,result)=>{
+                res.redirect("/admin/event");
+            });
+        });
+    });
+});
+
+//이벤트 상세페이지 경로 요청
+app.get("/event/detail/:no",(req,res)=>{
+    db.collection("event").findOne({event_no: Number(req.params.no)},(err,result)=>{
+        res.render("event_detail", {evtData: result, userData: req.user});
+    });
+});
+
+//이벤트 삭제페이지 경로 요청
+app.get("/event/delete/:no",(req,res)=>{
+    db.collection("event").deleteOne({event_no: Number(req.params.no)},(err,result)=>{
+        res.redirect("/event");
+    });
+});
+
+//이벤트 수정페이지 경로 요청
+app.get("/event/update/:no",(req,res)=>{
+    db.collection("event").findOne({event_no: Number(req.params.event_no)},(err,result)=>{
+        res.render("admin_event_update", {evtData:result});
+    });
+});
+
+//이벤트 수정데이터값 데이터베이스에 보내기
+app.post("/add/event",upload.single('file'),(req,res)=>{
+
+    if(req.file){
+        event_file = req.file.originalname
+    }
+    else {
+        event_file = origin_file
+    }
+
+    db.collection("event").updateOne({event_no: Number(req.body.event_no)},{$set:{
+        //이벤트 제목
+        event_title: req.body.title,
+        //이벤트 파일
+        event_file: event_file,
+        //이벤트 내용
+        event_context: req.body.context
+    }},(err,result)=>{
+        res.render("/event/detail/" + req.body.event_no);
+    });
+});
 
 
 
@@ -372,7 +476,7 @@ app.post("/add/store",upload.single('file'),(req,res)=>{
 /*
     집에서 할 거
     - 아이콘 전부 색 있는걸로 바꾸기
-    - li:hover 높이값 낮추기
     - 로고/기업이름 정하기
-    - 로그인/회원가입 페이지 디자인
+    - 회원가입 페이지 디자인
+    - 공지사항 작성/수정 페이지 디자인
 */

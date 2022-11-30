@@ -47,18 +47,6 @@
     <!-- 하단영역 -->
     <%- include("common/footer.ejs") %>
     <!-- js -->
-    <script>
-        //필요한 태그 생성
-        const del_btn = document.querySelector(".del_btn");
-
-        del_btn.addEventListener("click",(e)=>{
-
-            let check = confirm("정말로 삭제하겠습니까?");
-
-            if(!check){
-                e.preventDefault();
-            }
-        });
-    </script>
+    <script src="/js/del_btn.js"></script>
 </body>
 </html>

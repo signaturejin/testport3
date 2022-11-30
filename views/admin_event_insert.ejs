@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form id="admin_event_form" action="/add/event" method="post" enctype="multipart/form-data">
+        <!-- 이벤트 이름 -->
+        <label for="title">이벤트 제목</label>
+        <input type="text" name="title" class="title">
+        <!-- 이벤트 파일 -->
+        <label for="file">이벤트 파일</label>
+        <input type="file" name="file" class="file">
+        <!-- 이벤트 내용 -->
+        <label for="context">이벤트 내용</label>
+        <textarea name="context" class="context"></textarea>
+    
+        <button class="event_btn" type="submit">이벤트 등록</button>
+    </form>
+    <div class="admin_event_wrap">
+        <% for(let i=0; i<evtData.length; i++){ %>
+            <div class="admin_event_box">
+                <p class="no"><%- evtData[i].event_no %></p>
+                <h2 class="title"><%- evtData[i].event_title %></h2>
+                <!-- 나중에 스타일 지우기 -->
+                <img class="file" src="/upload/<%- evtData[i].event_file %>" style="width:100px; height:100px;" alt="">
+                <p class="context"><%- evtData[i].event_context %></p>
+                <p class="review"><%- evtData[i].event_riview %></p>
+            </div>
+        <% } %>
+    </div>
+</body>
+</html>

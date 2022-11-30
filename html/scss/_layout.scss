@@ -147,12 +147,10 @@
                                             position: absolute; left: -13px; top: -19px;
                                             width: 25px; height: 25px;
                                             // animation: name duration timing-function delay iteration-count direction fill-mode;
-                                            animation: coin_ani1 0.8s linear 0s infinite;
+                                            animation: coin_ani1 0.8s cubic-bezier(0.4, 0, 1, 1) 0s infinite;
                                             @keyframes coin_ani1 {
                                                 0% {top: -19px;}
                                                 50% {top: 0px;}
-                                                70% {top: -10px;}
-                                                80% {top: -0px;}
                                                 100% {top: -19px;}
                                             }
                                         }
@@ -759,7 +757,6 @@
         //매장 하단
         .center {
             width: 63%; margin: 0 auto;
-            background-color: #d6d2ff;
             .text_box_bot {
                 text-align: center;
                 .list_title {
@@ -780,7 +777,7 @@
             }
             //매장 목록
             .store_list_wrap {
-                display: flex; padding-bottom: 230px;
+                display: flex; padding-bottom: 80px;
                 flex-wrap: wrap;
                 .list_box {
                     width: 29.333%; margin: 0 2% 4%;
@@ -808,11 +805,11 @@
                     }
                 }
             }
-            .go_store {
-                display: block; color: #000;
-                margin-bottom: 120px; text-align: center;
-                padding: 20px; background-color: #7369d1;
-            }
+        }
+        .go_store {
+            display: block; color: #000;
+            margin-bottom: 120px; text-align: center;
+            padding: 20px; background-color: #7369d1;
         }
     }
     //공지사항 목록페이지(notice_wrap)
@@ -1058,7 +1055,7 @@
         }
         //로그인 영역
         .login_wrap {
-            display: flex; align-items: center;
+            display: flex;
             justify-content: space-between;
             padding: 45px 48px 40px;
             background-color: #fff;
@@ -1082,9 +1079,8 @@
                 }
             }
             .right {
-                position: relative;
-                width: 55%;
-                img {position: absolute; right: 0; bottom: 178px;}
+                position: relative; width: 55%;
+                img {position: absolute; right: 0; bottom: 194px;}
                 .b_text {
                     font-size: 18px; margin-bottom: 30px;
                     font-weight: 600;

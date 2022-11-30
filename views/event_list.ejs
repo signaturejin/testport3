@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>이벤트 안내게시판</title>
+    <!-- css -->
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- 웹폰트 및 아이콘 -->
+    <%- include("common/icon_font.ejs") %>
+</head>
+<body>
+    <!-- 상단 영역 -->
+    <%- include("common/header.ejs") %>
+    <!-- 중간 영역 -->
+    <div id="container">
+        <div class="center">
+            <!-- 나중에 꾸며주기 -->
+            <div class="event_data_wrap">
+                <% for(let i=0; i<evtData.length; i++){ %>
+                    <div class="admin_event_box">
+                        <a href="/event/detail/<%- evtData[i].event_no %>">
+                            <p class="no"><%- evtData[i].event_no %></p>
+                            <h2 class="title"><%- evtData[i].event_title %></h2>
+                            <!-- 나중에 스타일 지우기 -->
+                            <img class="file" src="/upload/<%- evtData[i].event_file %>" style="width:100px; height:100px;" alt="">
+                            <p class="context"><%- evtData[i].event_context %></p>
+                            <p class="review"><%- evtData[i].event_riview %></p>
+                        </a>
+                    </div>
+                <% } %>
+            </div>
+        </div>
+    </div>
+    <!-- 하단 영역 -->
+    <%- include("common/footer.ejs") %>
+</body>
+</html>
