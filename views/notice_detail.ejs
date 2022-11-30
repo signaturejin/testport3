@@ -34,11 +34,15 @@
                         <p class="title"><%- ntiData.notice_title %></p>
                         <div class="context"><%- ntiData.notice_context %></div>
                     </div>
-                    <a class="list_btn" href="/notice">목록</a>
-                    <!-- 관리자만 볼 수 있는 수정 / 삭제 버튼 -->
-                    <div class="admin_btn_set">
-                        <a class="upt_btn" href="/notice/update/<%- ntiData.notice_no %>">수정</a>
-                        <a class="del_btn" href="/notice/delete/<%- ntiData.notice_no %>">삭제</a>
+                    <div class="btn_wrap">
+                        <a class="list_btn" href="/notice">목록</a>
+                        <!-- 관리자만 볼 수 있는 수정 / 삭제 버튼 -->
+                        <% if(userData){ %>
+                            <% if(userData.join_id == "admin"){ %>
+                                <a class="upt_btn" href="/notice/update/<%- ntiData.notice_no %>">수정</a>
+                                <a class="del_btn" href="/notice/delete/<%- ntiData.notice_no %>">삭제</a>
+                            <% } %>
+                        <% } %>
                     </div>
                 </div>
             </div>
