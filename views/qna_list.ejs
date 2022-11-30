@@ -1,0 +1,89 @@
+<!-- 로그인해야 들어올 수 있음 -->
+<% if(!userData){ %>
+    <script>
+        alert("회원만 이용할 수 있는 페이지입니다.");
+        location.href = "/login";
+    </script>
+<% } %>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>문의게시판 목록페이지</title>
+    <!-- css -->
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- 웹폰트 및 아이콘 -->
+    <%- include("common/icon_font.ejs") %>
+</head>
+<body>
+    <!-- 상단 영역 -->
+    <%- include("common/header.ejs") %>
+    <!-- 중간 영역 -->
+    <div id="container">
+        <div class="qna_list_wrap">
+            <div class="center">
+                <!-- 대표 qna 박스 -->
+                
+                <!-- 이용자들이 작성한 qna 박스 -->
+                <h2 class="qna_title">궁금한 점을 남겨주세요</h2>
+                <div class="user_qna_wrap">
+                    <% for(let i=0; i<qnaData.length; i++){ %>
+                        <div class="user_qna_line">
+                            <!-- 상단 -->
+                            <div class="user_qna_top">
+                                <div class="wrap">
+                                    <!-- 알파벳 q -->
+                                    <div class="q">Q</div>
+                                    <!-- 제목 -->
+                                    <h3 class="user_qna_title"><%- qnaData[i].qna_title %></h3>
+                                </div>
+                                <!-- 아이콘 -->
+                                <div class="icon"><i class="fa-solid fa-angle-down"></i></div>
+                            </div>
+                            <div class="mb_wrap">
+                                <!-- 중간 -->
+                                <p class="user_qna_context"><%- qnaData[i].qna_context %></p>
+                                <!-- 하단 -->
+                                <div class="user_qna_bot">
+                                    <!-- 게시글번호 -->
+                                    <p class="user_qna_no"><span>글번호 : </span><%- qnaData[i].qna_no %></p>
+                                    <!-- 작성자 -->
+                                    <p class="user_qna_author"><span>작성자 : </span><%- qnaData[i].qna_author %></p>
+                                    <!-- 작성시간 -->
+                                    <p class="user_qna_date"><span>작성시간 : </span><%- qnaData[i].qna_date %></p>
+                                </div>
+                                <!-- 답변 -->
+                                <div class="answer_wrap">
+                                    <div class="wrap">
+                                        <div class="a">A</div>
+                                        <div class="answer_text"><%#- aData[i].a_context %></div>
+                                    </div>
+                                    <% if(userData){ %>
+                                        <% if(userData.join_id == "admin"){ %>
+                                            <form id="admin_answer_form" action="/answer/qna" method="post">
+                                                <!-- admin만 작성할 수 있는 답변창 -->
+                                                <textarea name="admin_answer" class="admin_answer"></textarea>
+                                                <!-- 답변 번호와 매칭하기 위한 질문번호 히든태그 -->
+                                                <input type="hidden" name="user_qna_no" value="<%- qnaData[i].qna_no %>">
+                                                
+                                                <button class="answer_btn" type="submit">답변등록</button>
+                                            </form>
+                                        <% } %>
+                                    <% } %>
+                                </div>
+                            </div>
+                        </div>
+                    <% } %>
+                    <a class="qna_link" href="/insert/qna">글쓰기</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 하단 영역 -->
+    <%- include("common/footer.ejs") %>
+    <!-- js -->
+    <script src="/js/qna_tab.js"></script>
+</body>
+</html>

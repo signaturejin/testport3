@@ -1,0 +1,135 @@
+@media screen and (max-width:1200px) {
+    //중간영역
+    #container {
+        //메인페이지 intro 영역
+        .intro {
+            .center {
+                width: 90%; flex-direction: column;
+                //intro의 첫번째 slide 영역
+                .slide_wrap {
+                    width: 100%; margin-right: 0;
+                    margin-bottom: 80px;
+                    .view {
+                        .slide_box {
+                            //슬라이드 뒷배경 일러스트
+                            .bg_img {
+                                right: 36px; top: 5px;
+                                img {width: 600px; height: 415px;}
+                            }
+                            //슬라이드 상단 텍스트박스
+                            .text_box {
+                                .hash {font-size: 20px;}
+                                .slide_title {line-height: 55px; font-size: 40px;}
+                                .text {line-height: 27px; font-size: 17px;}
+                            }
+                            //슬라이드 하단 상품박스
+                            .prd_box_wrap {
+                                .prd_box {
+                                    > a {
+                                        .prd_title {font-size: 24px; line-height: 30px;}
+                                        .text {line-height: 22px; font-size: 15px;}
+                                        .tag {right: 56px; padding: 15px 30px;}
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    //슬라이드 버튼
+                    .slide_btn_set {
+                        > div {
+                            a {
+                                i {font-size: 24px;}
+                            }
+                        }
+                    }
+                }
+                //intro의 두번째 영역
+                .intro2_wrap {
+                    width: 100%; margin-right: 0;
+                    display: flex;
+                    //intro영역의 탭메뉴 영역
+                    .tab_wrap {
+                        width: 50%; margin-right: 2%;
+                        .tab_list_wrap {
+                            .list {
+                                padding-bottom: 0;
+                                .tab_list {
+                                    width: 50%; padding: 40px 0;
+                                    a {
+                                        .tab_img {width: 70px; height: 70px;}
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    //intro영역의 이용안내 영역
+                    .info_wrap {
+                        width: 50%; margin-top: 0;
+                        .text {font-size: 17px; line-height: 25px;}
+                        .info_box_wrap {
+                            .line {
+                                .info_box {padding: 20px 10px;}
+                            }
+                        }
+                    }
+                }
+                //intro의 세번째 영역
+                .intro3_wrap {
+                    width: 100%; display: flex;
+                    margin-top: 100px;
+                    //intro영역의 로그인 / 로그아웃 영역
+                    .user_wrap {display: none;}
+                    //intro영역의 공지사항 영역
+                    .main_notice_wrap {
+                        margin: 0 100px 0 0;
+                        .notice_title {
+                            font-size: 28px; padding-top: 0;
+                            a {
+                                i {font-size: 17px; bottom: 5px;}
+                            }
+                        }
+                        .notice_list_wrap {
+                            .notice_list {
+                                .title {
+                                    margin-bottom: 20px; font-size: 18px;
+                                    font-weight: 500;
+                                }
+                                .date {font-size: 15px;}
+                            }
+                        }
+                    }
+                    //intro영역의 고객센터 영역
+                    .service_wrap {
+                        margin-top: 0;
+                        .service {
+                            margin-bottom: 30px;
+                            .title {
+                                margin-bottom: 18px; font-size: 28px;
+                            }
+                            .date {font-size: 15px;}
+                        }
+                        .tell {
+                            .number {font-size: 28px; margin-bottom: 18px;}
+                        }
+                    }
+                }
+            }
+        }
+        //카드상품 슬라이드 없애고 롤링으로 돌리기(버튼없애고 애니메이션)
+    }
+    //하단영역
+    #footer {
+        .f_top {
+            .center {width: 80%;}
+        }
+        .f_bot {
+            .center {width: 80%;}
+        }
+    }
+    //도움창 영역
+    .help {display: none;}
+    //로그인 영역
+    #login {
+        .center {width: 90%;}
+    }
+}

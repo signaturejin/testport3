@@ -155,7 +155,7 @@
                                             }
                                         }
                                         .coin2 {
-                                            position: absolute; right: 82px; top: 10px;
+                                            position: absolute; left: 70px; top: 10px;
                                             width: 25px; height: 25px;
                                             animation: coin_ani2 0.8s linear 1s infinite;
                                             @keyframes coin_ani2 {
@@ -491,7 +491,8 @@
                             }
                             .hover_box {
                                 position: absolute; left: -2px; bottom: -5px;
-                                background-color: #b4acfa; width: 100%;
+                                color: #fff;
+                                background-color: #3b3b3b; width: 100%;
                                 border-radius: 10px; padding: 20px;
                                 // overflow: hidden; text-overflow: ellipsis;
                                 // white-space: nowrap;
@@ -499,7 +500,7 @@
                                 transform: translateY(-20px);
                                 opacity: 0; transition: all 0.5s;
                                 .box_top {
-                                    border-bottom: 2px solid red;
+                                    border-bottom: 2px solid #fff;
                                     > p {
                                         padding-bottom: 10px;
                                         &:last-child {padding-bottom: 20px;}
@@ -510,7 +511,8 @@
                                     margin-top: 20px;
                                     > a {
                                         display: block; padding: 10px 15px;
-                                        margin: 0 8px; background-color: skyblue;
+                                        color: #000; font-weight: 500;
+                                        margin: 0 8px; background-color: #fff;
                                     }
                                 }
                             }
@@ -530,6 +532,11 @@
                         .next_btn {right: 0;}
                     }
                 }
+                .admin_btn {
+                    display: block; background-color: #786fcb;
+                    color: #fff; text-align: center;
+                    line-height: 50px;
+                }
             }
         }
     }
@@ -539,7 +546,6 @@
         .center {
             width: 63%;
             display: flex;
-            background-color: skyblue;
             .card_detail_wrap {
                 width: 80%;
                 .title_box {
@@ -555,21 +561,21 @@
                 }
                 .card_box {
                     width: 90%; margin: 0 auto;
-                    background-color: #dbdbdb;
+                    background-color: #f1f4f9;
                     border-radius: 10px;
                     .wrap {
                         display: flex; align-items: center;
                         justify-content: center;
                         padding: 150px 0 80px;
-                        border-bottom: 1px solid red;
+                        border-bottom: 1px solid #fcffff;
                         .left {
                             position: relative;
                             .circle {
-                                position: absolute; left: 0; top: 50%;
+                                position: absolute; left: 18px; top: 50%;
                                 transform: translateY(-50%);
                                 width: 330px; height: 330px;
                                 border-radius: 50%;
-                                background-color: #c4c4c4;
+                                background-color: #cacfd7;
                                 margin-left: -15px;
                             }
                             img {
@@ -591,7 +597,7 @@
                             margin-right: 15px;
                             display: block;
                             padding: 10px 20px;
-                            background-color: #7369d1;
+                            background-color: #adb5c2;
                             border-radius: 5px;
                             color: #fff;
                         }
@@ -625,9 +631,10 @@
                         font-size: 23px; padding-bottom: 21px;
                     }
                     .card_notice_box {
-                        border: 2px solid red;
+                        border: 2px solid #d6d6d6;
                         border-radius: 20px;
                         padding: 50px 45px;
+                        margin-bottom: 130px;
                         .sub_title {
                             font-size: 16px; font-weight: 500;
                             padding-bottom: 26px;
@@ -642,22 +649,22 @@
             .right_box {
                 position: sticky; top: 0;
                 width: 16%; margin: 148px 1% 0;
-                background-color: orange;
-                border: 1px solid red;
+                border: 1px solid #d6d6d6;
                 height: 310px;
                 border-radius: 10px;
                 //첫번째 박스
                 .box1 {
                     display: flex; align-items: center;
                     padding: 0 20px; justify-content: space-between;
-                    border-bottom: 1px solid red;
+                    border-bottom: 1px solid #d6d6d6;
                     p {
                         padding: 30px 0; font-size: 15px;
                     }
                     .icon {
                         width: 20px; height: 20px;
                         border-radius: 50%;
-                        background-color: #7369d1;
+                        background-color: #8a81df;
+                        color: #fff;
                         text-align: center;
                         i {font-size: 12px;}
                     }
@@ -665,7 +672,7 @@
                 //두번째 박스
                 .box2 {
                     padding: 0 20px;
-                    border-bottom: 1px solid red;
+                    border-bottom: 1px solid #d6d6d6;
                     > p {padding: 20px 0 15px; font-size: 15px;}
                     .wrap {
                         display: flex; justify-content: space-between;
@@ -675,7 +682,8 @@
                         .icon {
                             width: 20px; height: 20px;
                             border-radius: 50%;
-                            background-color: #7369d1;
+                            background-color: #8a81df;
+                            color: #fff;
                             text-align: center;
                             position: relative; bottom: 4px;
                             i {font-size: 12px;}
@@ -706,8 +714,8 @@
                         display: flex; justify-content: center;
                         > a {
                             display: inline-block; text-align: center;
-                            padding: 12px 20px; background-color: red;
-                            border-radius: 5px;
+                            padding: 12px 20px; background-color: #8a81df;
+                            border-radius: 5px; color: #fff;
                         }
                     }
                 }
@@ -782,7 +790,7 @@
                 .list_box {
                     width: 29.333%; margin: 0 2% 4%;
                     padding: 10px; box-sizing: border-box;
-                    background-color: #e6e6e6;
+                    background-color: #f9f9f9;
                     border-radius: 10px;
                     .store_file {
                         width: 100%; height: 230px;
@@ -798,8 +806,8 @@
                         }
                     }
                     .go_map {
-                        display: inline-block; color: #000;
-                        padding: 8px 12px; background-color: #d094ff;
+                        display: inline-block; color: #fff;
+                        padding: 8px 12px; background-color: #8a81df;
                         border-radius: 5px; margin: 22px 0 10px;
                         font-size: 15px;
                     }
@@ -807,7 +815,7 @@
             }
         }
         .go_store {
-            display: block; color: #000;
+            display: block; color: #fff;
             margin-bottom: 120px; text-align: center;
             padding: 20px; background-color: #7369d1;
         }
@@ -921,22 +929,12 @@
                         display: flex; font-weight: 500;
                         line-height: 55px; font-size: 14px;
                         text-align: center;
-                        .no {
-                            background-color: #b4acfa;
-                            width: 10%;
-                        }
-                        .title {
-                            background-color: rosybrown;
-                            width: 60%;
-                        }
-                        .date {
-                            background-color: wheat;
-                            width: 20%;
-                        }
-                        .review {
-                            background-color: salmon;
-                            width: 10%;
-                        }
+                        border-top: 1px solid #000;
+                        border-bottom: 1px solid #e7e7e7;
+                        .no {width: 10%;}
+                        .title {width: 60%;}
+                        .date {width: 20%;}
+                        .review { width: 10%;}
                     }
                     .notice_list {
                         display: flex; line-height: 55px;
@@ -951,6 +949,12 @@
                         .notice_date {width: 20%;}
                         .notice_review {width: 10%;}
                     }
+                }
+                .go_notice {
+                    display: block; width: 30%;
+                    background-color: #c689e1;
+                    color: #fff; text-align: center;
+                    line-height: 35px; margin: 20px 0;
                 }
                 .notice_info {
                     .title {
@@ -1017,6 +1021,77 @@
                         width: 50%;
                         &:nth-child(1) {background-color: #aaa;}
                         &:nth-child(2) {background-color: #bbb;}
+                    }
+                }
+            }
+        }
+    }
+    //문의게시판 목록페이지(qna_list_wrap)
+    .qna_list_wrap {
+        display: flex; justify-content: center;
+        .center {
+            width: 53%; background-color: #dedbff;
+            //이용자들이 작성한 qna 영역
+            .qna_title {
+                padding: 50px 0 40px; font-size: 28px;
+            }
+            .user_qna_wrap {
+                border-top: 2px solid red;
+                .user_qna_line {
+                    border-bottom: 1px solid red;
+                    //이용자 qna 상단
+                    .user_qna_top {
+                        display: flex; justify-content: space-between;
+                        line-height: 55px; align-items: center;
+                        cursor: pointer;
+                        background-color: coral;
+                        .wrap {
+                            display: flex; width: 100%;
+                            .q {width: 5%; text-align: center;}
+                            .user_qna_title {width: 95%}
+                        }
+                        .icon {padding-right: 20px;}
+                    }
+                    .mb_wrap {
+                        //js로 아코디언 구현
+                        height: 0; overflow: hidden;
+                        transition: all 0.5s;
+                        //이용자 qna 중간
+                        .user_qna_context {
+                            padding:35px;
+                            white-space: pre;
+                            background-color: skyblue;
+                        }
+                        //이용자 qna 하단
+                        .user_qna_bot {
+                            background-color: palegoldenrod;
+                            display: flex; justify-content: flex-end;
+                            line-height: 35px; font-size: 13px;
+                            > p {margin-left: 12px;}
+                        }
+                        //답변
+                        .answer_wrap {
+                            //이용자들이 볼 답변창
+                            .wrap {
+                                display: flex; padding: 20px 0;
+                                .a {width: 5%; text-align: center;}
+                                .answet_text {width: 95%;}
+                            }
+                            //관리자만 볼 수 있는 답변등록창
+                            #admin_answer_form {
+                                textarea {
+                                    width: 100%; height: 120px;
+                                    box-sizing: border-box;
+                                    border-radius: 5px;
+                                    padding: 15px; line-height: 24px; 
+                                }
+                                .answer_btn {
+                                    margin: 5px 0 10px; border: none;
+                                    padding: 8px; background-color: #7369d1;
+                                    border-radius: 5px; font-size: 12px;
+                                }
+                            }
+                        }
                     }
                 }
             }

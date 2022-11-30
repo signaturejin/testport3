@@ -175,9 +175,11 @@
                         </div>
                     </div>
                     <!-- 관리자용 상품등록 버튼 -->
-                    <%# if(usrData.join_id == "admin"){ %>
-                        <a href="/admin/prd">상품등록하러가기</a>
-                    <%# } %>
+                    <% if(userData){ %>
+                        <% if(userData.join_id == "admin"){ %>
+                            <a class="admin_btn" href="/admin/prd">상품등록하러가기</a>
+                        <% } %>
+                    <% } %>
                 </div>
             </div>
         </div>

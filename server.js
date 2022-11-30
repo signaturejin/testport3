@@ -439,7 +439,6 @@ app.get("/event/update/:no",(req,res)=>{
     });
 });
 
-
 //이벤트 수정데이터값 데이터베이스에 보내기
 app.post("/update/event",upload.single('file'),(req,res)=>{
 
@@ -462,8 +461,61 @@ app.post("/update/event",upload.single('file'),(req,res)=>{
     });
 });
 
+//문의게시판 목록페이지 경로요청
+app.get("/qna",(req,res)=>{
+    db.collection("qna").find().toArray((err,result)=>{
+        db.collection("answer").find().toArray((err,a_result)=>{
+            res.render("qna_list", {qnaData:result, aData:a_result, userData:req.user});
+        });
+    });
+});
 
+//문의게시판 작성페이지 경로요청
+app.get("/insert/qna",(req,res)=>{
+    res.render("qna_insert", {userData:req.user});
+});
 
+//문의게시판 데이터값 데이터베이스에 보내기
+app.post("/add/qna",(req,res)=>{
+    db.collection("count").findOne({name:"문의사항수"},(err,result)=>{
+        db.collection("qna").insertOne({
+            //질문 번호
+            qna_no: result.qnaCount + 1,
+            //질문 제목
+            qna_title: req.body.title,
+            //질문 내용
+            qna_context: req.body.context,
+            //작성자 아이디
+            qna_author_id: req.user.join_id,
+            //작성자 닉네임
+            qna_author: req.user.join_nickname,
+            //작성날짜
+            qna_date: moment().tz("Asia/Seoul").format("YYYY-MM-DD HH:mm")
+        },(err,result)=>{
+            db.collection("count").updateOne({name:"문의사항수"},{$inc:{qnaCount:1}},(err,result)=>{
+                res.redirect("/qna");
+            });
+        });
+    });
+});
+
+//문의게시판 답변 데이터값 데이터베이스에 보내기
+app.post("/answer/qna",(req,res)=>{
+    db.collection("count").findOne({name:"답변수"},(err,result)=>{
+        db.collection("answer").insertOne({
+            //답변 번호
+            a_no: result.aCount + 1,
+            //답변 내용
+            a_context: req.body.admin_answer,
+            //해당 질문 번호
+            q_no: req.body.user_qna_no
+        },(err,result)=>{
+            db.collection("count").updateOne({name:"답변수"},{$inc:{aCount:1}},(err,result)=>{
+                res.redirect("/qna");
+            });
+        });
+    });
+});
 
 
 
