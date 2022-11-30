@@ -115,7 +115,73 @@
                 }
             }
         }
-        //카드상품 슬라이드 없애고 롤링으로 돌리기(버튼없애고 애니메이션)
+        //카드상품페이지
+        //카드상품 슬라이드 없애고 롤링으로 돌리기->1000px부터(버튼없애고 애니메이션)
+        //상품페이지 영역(card_area)
+        .card_area {
+            .center {
+                .title_box {
+                    text-align: center;
+                    padding: 40px 0;
+                    .card_title {font-size: 15px; padding-bottom: 15px; color: #7369d1;}
+                    .card_sub_title {font-size: 25px;}
+                }
+                .card_banner {
+                    background-position: right -370px center;
+                    .banner_center {width: 80%;}
+                }
+                .prd_list_wrap {
+                    width: 80%;
+                    .cw {
+                        .view {
+                            .prd_list {
+                                //width: 17% 이상부터는 크기가 똑같
+                                width: 17%; margin: 0 0%;
+                            }
+                        }
+                        .card_btn_set {
+                            > div {
+                                position: absolute; top: 51%;
+                                transform: translateY(-50%);
+                                font-size: 30px;
+                                a {color: #bbb;}
+                            }
+                            .prev_btn {left: 0;}
+                            .next_btn {right: 0;}
+                        }
+                    }
+                    .admin_btn {
+                        display: block; background-color: #786fcb;
+                        color: #fff; text-align: center;
+                        line-height: 50px;
+                    }
+                }
+            }
+        }
+        //카드 상세페이지 영역(card_detail)
+        .card_detail {
+            .center {width: 90%;}
+        }
+        //매장 목록페이지 영역(store_list)
+        .store_list {
+            .title {font-size: 30px;}
+            //매장 하단
+            .center {width: 90%;}
+        }
+        //공지사항 목록페이지(notice_wrap)
+        .notice_wrap {
+            width: 90%;
+            .left {
+                .otp_box {
+                    p {padding: 30px 13px;}
+                    img {
+                        width: 70px; height: 70px;
+                        right: 10px; top: 71px;
+                    }
+                }
+            }
+            .right {width: 78%; margin-left: 2%;}
+        }
     }
     //하단영역
     #footer {
