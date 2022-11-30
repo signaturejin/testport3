@@ -233,7 +233,6 @@ app.get("/card/update/:no",(req,res)=>{
 });
 
 //카드 수정데이터값 데이터베이스에 보내기
-// 상세페이지로 이동되나 데이터수정은 안되는중
 app.post("/update/prd",upload.single('card_file'),(req,res)=>{
     //카드 파일값
     if(req.file){ //새로 파일을 골랐으면 그 파일의 이름으로 저장
@@ -435,19 +434,20 @@ app.get("/event/delete/:no",(req,res)=>{
 
 //이벤트 수정페이지 경로 요청
 app.get("/event/update/:no",(req,res)=>{
-    db.collection("event").findOne({event_no: Number(req.params.event_no)},(err,result)=>{
+    db.collection("event").findOne({event_no: Number(req.params.no)},(err,result)=>{
         res.render("admin_event_update", {evtData:result});
     });
 });
 
+
 //이벤트 수정데이터값 데이터베이스에 보내기
-app.post("/add/event",upload.single('file'),(req,res)=>{
+app.post("/update/event",upload.single('file'),(req,res)=>{
 
     if(req.file){
-        event_file = req.file.originalname
+        event_file = req.file.originalname;
     }
     else {
-        event_file = origin_file
+        event_file = req.body.origin_file;
     }
 
     db.collection("event").updateOne({event_no: Number(req.body.event_no)},{$set:{
@@ -458,9 +458,26 @@ app.post("/add/event",upload.single('file'),(req,res)=>{
         //이벤트 내용
         event_context: req.body.context
     }},(err,result)=>{
-        res.render("/event/detail/" + req.body.event_no);
+        res.redirect("/event/detail/" + req.body.event_no);
     });
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

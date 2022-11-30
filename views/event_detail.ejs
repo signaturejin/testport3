@@ -21,7 +21,6 @@
                 <div class="admin_event_box">
                     <p class="no"><%- evtData.event_no %></p>
                     <h2 class="title"><%- evtData.event_title %></h2>
-                    <!-- 나중에 스타일 지우기 -->
                     <img class="file" src="/upload/<%- evtData.event_file %>" style="width:100px; height:100px;" alt="">
                     <p class="context"><%- evtData.event_context %></p>
                     <p class="review"><%- evtData.event_riview %></p>
@@ -29,8 +28,8 @@
                 <% if(userData){ %>
                     <% if(userData.join_id == "admin"){ %>
                     <div class="admin_btn_set">
-                        <a class="upt_btn" href="/event/update/<%- evtData.event_no %>">수정</a>
                         <a class="del_btn" href="/event/delete/<%- evtData.event_no %>">삭제</a>
+                        <a class="upt_btn" href="/event/update/<%- evtData.event_no %>">수정</a>
                     </div>
                     <% } %>
                 <% } %>
