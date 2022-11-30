@@ -1,10 +1,3 @@
-<!-- 로그인해야 들어올 수 있음 -->
-<% if(!userData){ %>
-    <script>
-        alert("회원만 이용할 수 있는 페이지입니다.");
-        location.href = "/login";
-    </script>
-<% } %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,30 +5,51 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>이벤트 상세페이지</title>
+    <!-- css -->
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- 웹폰트 및 아이콘 -->
+    <%- include("common/icon_font.ejs") %>
 </head>
 <body>
+    <!-- 상단 영역 -->
+    <%- include("common/header.ejs") %>
     <!-- 중간 영역 -->
     <div id="container">
-        <div class="center">
-            <div class="event_detail_wrap">
-                <div class="admin_event_box">
-                    <p class="no"><%- evtData.event_no %></p>
-                    <h2 class="title"><%- evtData.event_title %></h2>
-                    <img class="file" src="/upload/<%- evtData.event_file %>" style="width:100px; height:100px;" alt="">
-                    <p class="context"><%- evtData.event_context %></p>
-                    <p class="review"><%- evtData.event_riview %></p>
-                </div>
-                <% if(userData){ %>
-                    <% if(userData.join_id == "admin"){ %>
-                    <div class="admin_btn_set">
-                        <a class="del_btn" href="/event/delete/<%- evtData.event_no %>">삭제</a>
-                        <a class="upt_btn" href="/event/update/<%- evtData.event_no %>">수정</a>
+        <div class="event_detail_area event_area">
+            <div class="center">
+                <%- include("common/event_left.ejs") %>
+                <div class="right">
+                    <h2 class="title">이벤트</h2>
+                    <div class="event_detail_wrap">
+                        <div class="admin_event_box">
+                            <div class="h_line">
+                                <h3 class="h_title"><%- evtData.event_title %></h3>
+                                <div class="h_right">
+                                    <p class="date"><%- evtData.event_date %></p>
+                                    <!-- <p class="review">조회수 : <%#- evtData.event_riview %></p> -->
+                                </div>
+                            </div>
+                            <div class="event_context">
+                                <img class="file" src="/upload/<%- evtData.event_file %>" alt="">
+                                <p class="context"><%- evtData.event_context %></p>
+                            </div>
+                        </div>
+                        <div class="btn_wrap">
+                            <a class="event_list_btn" href="/event">목록</a>
+                            <% if(userData){ %>
+                                <% if(userData.join_id == "admin"){ %>
+                                    <a class="del_btn" href="/event/delete/<%- evtData.event_no %>">삭제</a>
+                                    <a class="upt_btn" href="/event/update/<%- evtData.event_no %>">수정</a>
+                                <% } %>
+                            <% } %>
+                        </div>
                     </div>
-                    <% } %>
-                <% } %>
+                </div>
             </div>
         </div>
     </div>
+    <!-- 하단 영역 -->
+    <%- include("common/footer.ejs") %>
     <!-- js -->
     <script src="/js/del_btn.js"></script>
 </body>

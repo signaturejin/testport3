@@ -11,6 +11,9 @@
         <!-- 이벤트 이름 -->
         <label for="title">이벤트 제목</label>
         <input type="text" name="title" class="title">
+        <!-- 이벤트 날짜 -->
+        <label for="date">이벤트 날짜</label>
+        <input type="text" name="date" class="date">
         <!-- 이벤트 파일 -->
         <label for="file">이벤트 파일</label>
         <input type="file" name="file" class="file">
@@ -25,8 +28,7 @@
             <div class="admin_event_box">
                 <p class="no"><%- evtData[i].event_no %></p>
                 <h2 class="title"><%- evtData[i].event_title %></h2>
-                <!-- 나중에 스타일 지우기 -->
-                <img class="file" src="/upload/<%- evtData[i].event_file %>" style="width:100px; height:100px;" alt="">
+                <img class="file" src="/upload/<%- evtData[i].event_file %>" alt="">
                 <p class="context"><%- evtData[i].event_context %></p>
                 <p class="review"><%- evtData[i].event_riview %></p>
             </div>

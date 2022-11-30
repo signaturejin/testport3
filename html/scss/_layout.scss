@@ -820,6 +820,112 @@
             padding: 20px; background-color: #7369d1;
         }
     }
+    //이벤트 목록페이지 영역(event_area)
+    .event_area {
+        display: flex; justify-content: center;
+        .center {
+            width: 63%; display: flex; padding: 65px 0 100px;
+            .left {
+                width: 22%; margin-right: 3%;
+                .text {
+                    font-size: 24px; padding-bottom: 18px;
+                    border-bottom: 3px solid #c2c2c2;
+                    font-weight: 600;
+                }
+                .l_menu {
+                    li {
+                        line-height: 50px; box-sizing: border-box;
+                        border-bottom: 1px solid #ddd;
+                        font-size: 15px;
+                        &:last-child {border-bottom: none; margin-bottom: 30px;}
+                        a {color: #728086;}
+                    }
+                }
+                .service_tell {
+                    .top {
+                        display: flex; align-items: center;
+                        margin-bottom: 15px;
+                        img {width: 40px; height: 40px; margin-right: 8px;}
+                        span {font-size: 20px; font-weight: 600;}
+                    }
+                    .tell_num {
+                        padding: 22px; font-size: 18px;
+                        line-height: 26px; font-weight: 500;
+                        border: 1px solid #ddd; border-radius: 5px;
+                    }
+                }
+            }
+            .right {
+                width: 70%; margin-left: 5%;
+                .title {
+                    font-size: 35px; margin-bottom: 40px;
+                }
+                .ad {
+                    a {
+                        img {width: 100%;}
+                    }
+                }
+                .event_data_wrap {
+                    .admin_event_box {
+                        display: flex; justify-content: space-between;
+                        margin: 20px 0; padding: 25px;
+                        border-bottom: 1px solid #c2c2c2;
+                        &:first-child {margin-top: 40px; border-top: 2px solid #c2c2c2;}
+                        a {
+                            display: block; width: 100%;
+                            color: #000;
+                            .e_title {font-size: 19px; margin-bottom: 14px;}
+                            .date {font-size: 15px; color: #505050; margin-bottom: 7px;}
+                            .review {font-size: 13px; color: #5c5a5b;}
+                        }
+                    }
+                    .admin_btn {
+                        display: block; background-color: #dd8bf7;
+                        line-height: 50px; text-align: center;
+                        color: #fff;
+                    }
+                }
+            }
+        }
+    }
+    //이벤트 상세페이지 영역(event_detail_area)
+    .event_detail_area {
+        .center {
+            .right {
+                .event_detail_wrap {
+                    .admin_event_box {
+                        .h_line {
+                            display: flex; justify-content: space-between;
+                            align-items: center; line-height: 55px; padding: 0 20px;
+                            border-top: 2px solid #e1e1e1;
+                            border-bottom: 1px solid #e1e1e1;
+                            margin-bottom: 40px;
+                            .h_title {font-size: 17px; font-weight: 500;}
+                            .h_right {
+                                display: flex;
+                                .date {font-size: 13px; color: #505050;}
+                            }
+                        }
+                        .event_context {
+                            .file {width: 100%;}
+                            padding-bottom: 20px;
+                            border-bottom: 1px solid #e1e1e1;
+                        }
+                    }
+                    .btn_wrap {
+                        display: flex; justify-content: center;
+                        margin: 30px 0 150px;
+                        > a {
+                            display: block;
+                            width: 110px; line-height: 45px; text-align: center;
+                            background-color: #7369d1; color: #fff;
+                            &:nth-child(2) {margin: 0 10px;}
+                        }
+                    }
+                }
+            }
+        }
+    }
     //공지사항 목록페이지(notice_wrap)
     .notice_wrap {
         display: flex; justify-content: center;
@@ -968,6 +1074,7 @@
                         box-sizing: border-box;
                         font-size: 14px;
                         color: #8e999b;
+                        margin-bottom: 100px;
                         p {
                             &:nth-child(1) { margin-bottom: 14px;}
                         }

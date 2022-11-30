@@ -22,26 +22,29 @@
     <%- include("common/header.ejs") %>
     <!-- 중간 영역 -->
     <div id="container">
-        <div class="center">
-            <!-- 나중에 꾸며주기 -->
-            <div class="event_data_wrap">
-                <% for(let i=0; i<evtData.length; i++){ %>
-                    <div class="admin_event_box">
-                        <a href="/event/detail/<%- evtData[i].event_no %>">
-                            <p class="no"><%- evtData[i].event_no %></p>
-                            <h2 class="title"><%- evtData[i].event_title %></h2>
-                            <!-- 나중에 스타일 지우기 -->
-                            <img class="file" src="/upload/<%- evtData[i].event_file %>" style="width:100px; height:100px;" alt="">
-                            <p class="context"><%- evtData[i].event_context %></p>
-                            <p class="review"><%- evtData[i].event_riview %></p>
-                        </a>
+        <div class="event_area">
+            <div class="center">
+                <%- include("common/event_left.ejs") %>
+                <div class="right">
+                    <h2 class="title">이벤트</h2>
+                    <div class="ad"><a href="#"><img src="/img/event_ad.jpg" alt=""></a></div>
+                    <div class="event_data_wrap">
+                        <% for(let i=0; i<evtData.length; i++){ %>
+                            <div class="admin_event_box">
+                                <a href="/event/detail/<%- evtData[i].event_no %>">
+                                    <h3 class="e_title"><%- evtData[i].event_title %></h3>
+                                    <p class="date"><%- evtData[i].event_date %></p>
+                                    <p class="review">조회수 : <%- evtData[i].event_review %></p>
+                                </a>
+                            </div>
+                        <% } %>
+                        <% if(userData){ %>
+                            <% if(userData.join_id == "admin"){ %>
+                                <a class="admin_btn" href="/admin/event">이벤트 등록하러 가기</a>
+                            <% } %>
+                        <% } %>
                     </div>
-                <% } %>
-                <% if(userData){ %>
-                    <% if(userData.join_id == "admin"){ %>
-                        <a class="admin_btn" href="/admin/event">이벤트 등록하러 가기</a>
-                    <% } %>
-                <% } %>
+                </div>
             </div>
         </div>
     </div>

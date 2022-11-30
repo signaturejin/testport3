@@ -402,6 +402,8 @@ app.post("/add/event",upload.single('file'),(req,res)=>{
             event_no: result.eventCount + 1,
             //이벤트 제목
             event_title: req.body.title,
+            //이벤트 날짜
+            event_date: req.body.date,
             //이벤트 파일
             event_file: event_file,
             //이벤트 내용
@@ -420,8 +422,10 @@ app.post("/add/event",upload.single('file'),(req,res)=>{
 
 //이벤트 상세페이지 경로 요청
 app.get("/event/detail/:no",(req,res)=>{
-    db.collection("event").findOne({event_no: Number(req.params.no)},(err,result)=>{
-        res.render("event_detail", {evtData: result, userData: req.user});
+    db.collection("event").updateOne({event_no: Number(req.params.no)},{$inc:{event_review:1}},(err,result)=>{
+        db.collection("event").findOne({event_no: Number(req.params.no)},(err,result)=>{
+            res.render("event_detail",{evtData:result, userData:req.user});
+        });
     });
 });
 
@@ -452,6 +456,8 @@ app.post("/update/event",upload.single('file'),(req,res)=>{
     db.collection("event").updateOne({event_no: Number(req.body.event_no)},{$set:{
         //이벤트 제목
         event_title: req.body.title,
+        //이벤트 날짜
+        event_date: req.body.date,
         //이벤트 파일
         event_file: event_file,
         //이벤트 내용
