@@ -11,28 +11,45 @@
     <%- include("common/icon_font.ejs") %>
 </head>
 <body>
-    <form id="admin_notice_form" action="/add/notice" method="post">
-        <!-- 공지사항 제목 -->
-        <label for="notice_title">공지사항 제목</label>
-        <input type="text" class="notice_title" name="notice_title">
-        <!-- 공지사항 내용 -->
-        <label for="notice_context">공지사항 내용</label>
-        <textarea name="notice_context" class="notice_context"></textarea>
+    <div id="container">
+        <div class="notice_form_area">
+            <div class="center">
+                <form id="admin_notice_form" action="/add/notice" method="post">
+                    <!-- 공지사항 제목 -->
+                    <label for="notice_title">공지사항 제목</label>
+                    <input type="text" class="notice_title" name="notice_title">
+                    <!-- 공지사항 내용 -->
+                    <label for="notice_context">공지사항 내용</label>
+                    <textarea name="notice_context" class="notice_context"></textarea>
 
-        <button class="notice_btn" type="submit">공지사항 등록</button>
-    </form>
-    <div class="notice_list_wrap">
-        <% for(let i=0; i<ntiData.length; i++){ %>
-            <div class="notice_list">
-                <p class="no"><%- ntiData[i].notice_no %></p>
-                <p class="title"><%- ntiData[i].notice_title %></p>
-                <p class="author_id"><%- ntiData[i].notice_author_id %></p>
-                <p class="author"><%- ntiData[i].notice_author %></p>
-                <p class="context"><%- ntiData[i].notice_context %></p>
-                <p class="review"><%- ntiData[i].notice_review %></p>
-                <p class="date"><%- ntiData[i].notice_date %></p>
+                    <button class="notice_btn" type="submit">공지사항 등록</button>
+                </form>
+                <div class="notice_list_wrap">
+                    <% for(let i=0; i<ntiData.length; i++){ %>
+                        <div class="notice_list">
+                            <div class="left">
+                                <div>번호</div>
+                                <div>제목</div>
+                                <div>작성자 아이디</div>
+                                <div>작성자 닉네임</div>
+                                <div>조회수</div>
+                                <div>작성날짜</div>
+                                <div class="context">내용</div>
+                            </div>
+                            <div class="right">
+                                <p class="no"><%- ntiData[i].notice_no %></p>
+                                <p class="title"><%- ntiData[i].notice_title %></p>
+                                <p class="author_id"><%- ntiData[i].notice_author_id %></p>
+                                <p class="author"><%- ntiData[i].notice_author %></p>
+                                <p class="review"><%- ntiData[i].notice_review %></p>
+                                <p class="date"><%- ntiData[i].notice_date %></p>
+                                <p class="context"><%- ntiData[i].notice_context %></p>
+                            </div>
+                        </div>
+                    <% } %>
+                </div>
             </div>
-        <% } %>
+        </div>
     </div>
 </body>
 </html>

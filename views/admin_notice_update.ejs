@@ -11,17 +11,23 @@
     <%- include("common/icon_font.ejs") %>
 </head>
 <body>
-    <form id="admin_notice_form" action="/update/notice" method="post">
-        <!-- 공지사항 번호를 알기 위한 히든태그 -->
-        <input type="hidden" name="notice_no" value="<%- ntiData.notice_no %>">
-        <!-- 공지사항 제목 -->
-        <label for="notice_title">공지사항 제목</label>
-        <input type="text" class="notice_title" name="notice_title" value="<%- ntiData.notice_title %>">
-        <!-- 공지사항 내용 -->
-        <label for="notice_context">공지사항 내용</label>
-        <textarea name="notice_context" class="notice_context"><%- ntiData.notice_context %></textarea>
-
-        <button class="notice_btn" type="submit">공지사항 등록</button>
-    </form>
+    <div id="container">
+        <div class="notice_form_area">
+            <div class="center">
+                <form id="admin_notice_form" action="/update/notice" method="post">
+                    <!-- 공지사항 번호를 알기 위한 히든태그 -->
+                    <input type="hidden" name="notice_no" value="<%- ntiData.notice_no %>">
+                    <!-- 공지사항 제목 -->
+                    <label for="notice_title">공지사항 제목</label>
+                    <input type="text" class="notice_title" name="notice_title" value="<%- ntiData.notice_title %>">
+                    <!-- 공지사항 내용 -->
+                    <label for="notice_context">공지사항 내용</label>
+                    <textarea name="notice_context" class="notice_context"><%- ntiData.notice_context %></textarea>
+            
+                    <button class="notice_btn" type="submit">공지사항 등록</button>
+                </form>
+            </div>
+        </div>
+    </div>
 </body>
 </html>

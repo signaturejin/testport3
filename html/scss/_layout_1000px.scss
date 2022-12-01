@@ -1,0 +1,141 @@
+@media screen and (max-width:1000px) {
+    //상단영역
+    #header {
+        .h_top {
+            .center {
+                width: 90%; padding: 20px 0;
+                .gnb {display: none;}
+                .right_wrap {
+                    display: flex;
+                    .user_wrap {margin-right: 30px;}
+                    .mobile_btn {
+                        display: block;
+                        cursor: pointer;
+                        .line {
+                            display: flex;
+                            .bar {
+                                width: 5px; background-color: #000;
+                                height: 5px; margin: 1px;
+                                border-radius: 50%;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        .mobile_board {
+            display: block; background-color: #e7e7e7;
+            position: absolute; right: -100%; top: 0;
+            width: 400px; height: 100vh;
+            transition: all 0.5s;
+            z-index: 99;
+            .t_wrap {
+                padding: 40px 0 25px;
+                .close {
+                    position: relative;
+                    cursor: pointer;
+                    .bar {
+                        width: 25px; height: 3px;
+                        border-radius: 3px;
+                        background-color: #000;
+                        position: absolute; right: 47px; top: 0;
+                        &:nth-child(1){transform: rotate(45deg);}
+                        &:nth-child(2){transform: rotate(-45deg);}
+                    }
+                }
+            }
+            .user_wrap {
+                width: 250px; display: flex; justify-content: center;
+                padding: 30px 40px; margin: 0 auto;
+                font-size: 18px; margin-top: 30px;
+                border: 2px solid #c2c2c2;
+                border-radius: 10px;
+                .login,.user_data {
+                    a {
+                        color: #000;
+                        i {margin-right: 10px;}
+                    }
+                }
+                .join,.logout {
+                    margin-left: 20px;
+                    a {
+                        color: #000;
+                        i {margin-right: 6px;}
+                    }
+                }
+            }
+            .mobile_menu {
+                padding-left: 40px; margin-top: 50px;
+                li {
+                    line-height: 50px; font-size: 18px;
+                    font-weight: 500;
+                    a {color: #000;}
+                }
+            }
+        }
+    }
+    //중간영역
+    #container {
+        //메인페이지 intro 영역
+        .intro {
+            .center {
+                //intro의 첫번째 slide 영역
+                .slide_wrap {
+                    .view {
+                        .slide_box {
+                            //슬라이드 뒷배경 일러스트
+                            .bg_img {
+                                right: 30px; top: 95px;
+                                img {width: 500px; height: 350px;}
+                            }
+                            //슬라이드 하단 상품박스
+                            .prd_box_wrap {
+                                .prd_box {
+                                    > a {
+                                        .tag {right: 29px;}
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        //상품페이지 영역(card_area)
+        .card_area {
+            .center {
+                .prd_list_wrap {
+                    width: 98%;
+                    .cw {
+                        .view {
+                            .prd_list {
+                                width: 12%; margin: 0 2%;
+                                .hover_box {width: 131%;}
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        //매장 목록페이지 영역(store_list)
+        .store_list {
+            //매장 하단
+            .center {
+                width: 90%;
+                .store_list_wrap {
+                    .list_box {width: 46%;}
+                }
+
+            }
+        }
+    }
+    //하단영역
+    #footer {
+        .f_top {
+            .center {width: 90%;}
+        }
+        .f_bot {
+            .center {width: 90%;}
+        }
+    }
+}

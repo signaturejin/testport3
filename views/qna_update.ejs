@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>문의게시판 수정페이지</title>
+    <!-- css -->
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- 웹폰트 및 아이콘 -->
+    <%- include("common/icon_font.ejs") %>
+</head>
+<body>
+    <!-- 상단영역 -->
+    <%- include("common/header.ejs") %>
+    <!-- 중간 영역 -->
+    <div id="container">
+        <div class="qna_update_wrap qna_area">
+            <div class="center">
+                <form id="qna_update_form" class="qna_form" action="/user/update/qna" method="post">
+                    <!-- 질문 번호를 알기 위한 히든태그 -->
+                    <input type="hidden" name="qna_no" value="<%- qnaData.qna_no %>">
+                    <!-- qna 제목 -->
+                    <label for="title">qna제목</label>
+                    <input type="text" name="title" class="title" value="<%- qnaData.qna_title %>">
+                    <!-- qna 내용 -->
+                    <label for="context">qna내용</label>
+                    <textarea name="context" class="context"><%- qnaData.qna_context %></textarea>
+
+                    <div class="wrap"><button class="qna_btn" type="submit">질문 수정</button></div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- 하단 영역 -->
+    <%- include("common/footer.ejs") %>
+</body>
+</html>

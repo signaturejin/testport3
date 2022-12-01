@@ -469,11 +469,12 @@ app.post("/update/event",upload.single('file'),(req,res)=>{
 
 //문의게시판 목록페이지 경로요청
 app.get("/qna",(req,res)=>{
-    db.collection("qna").find().toArray((err,result)=>{
-        db.collection("answer").find().toArray((err,a_result)=>{
-            res.render("qna_list", {qnaData:result, aData:a_result, userData:req.user});
+    // db.collection("qna").find().toArray((err,result)=>{
+        db.collection("qna").find({qna_author_id:req.user.join_id}).toArray((err,u_result)=>{
+            console.log(u_result);
+            res.render("qna_list", {/*qnaData:result,*/ qnaData:u_result, userData:req.user});
         });
-    });
+    // });
 });
 
 //문의게시판 작성페이지 경로요청
@@ -505,53 +506,86 @@ app.post("/add/qna",(req,res)=>{
     });
 });
 
+//문의게시판 상세페이지 경로 요청
+app.get("/qna/detail/:no",(req,res)=>{
+    //매칭되는 데이터를 갖고오기 위함
+    db.collection("qna").findOne({qna_no:Number(req.params.no)},(err,qna_result)=>{
+        db.collection("answer").find({qna_no:qna_result.qna_no}).toArray((err,ans_result)=>{
+            res.render("qna_detail",{qnaData:qna_result, aData:ans_result, userData:req.user});
+        });
+    });
+});
+
+//문의게시판 유저 질문데이터 수정페이지 경로 요청
+app.get("/user/qna/update/:no",(req,res)=>{
+    db.collection("qna").findOne({qna_no: Number(req.params.no)},(err,result)=>{
+        res.render("qna_update", {qnaData:result,userData:req.user});
+    });
+});
+
+//문의게시판 유저 질문데이터 수정데이터값 데이터베이스에 보내기
+app.post("/user/update/qna",(req,res)=>{
+    db.collection("qna").updateOne({qna_no: Number(req.body.qna_no)},{$set:{
+        //질문 제목
+        qna_title: req.body.title,
+        //질문 내용
+        qna_context: req.body.context
+    }},(err,result)=>{
+        res.redirect("/qna");
+    });
+});
+
+//문의게시판 유저 질문데이터 삭제
+app.get("/user/qna/delete/:no",(req,res)=>{
+    db.collection("qna").deleteOne({qna_no: Number(req.params.no)},(err,result)=>{
+        res.redirect("/qna");
+    });
+});
+
 //문의게시판 답변 데이터값 데이터베이스에 보내기
 app.post("/answer/qna",(req,res)=>{
+    //답변 번호를 달기 위함
     db.collection("count").findOne({name:"답변수"},(err,result)=>{
-        db.collection("answer").insertOne({
-            //답변 번호
-            a_no: result.aCount + 1,
-            //답변 내용
-            a_context: req.body.admin_answer,
-            //해당 질문 번호
-            q_no: req.body.user_qna_no
-        },(err,result)=>{
-            db.collection("count").updateOne({name:"답변수"},{$inc:{aCount:1}},(err,result)=>{
-                res.redirect("/qna");
+        //부모 게시글을 알기위함
+        db.collection("qna").findOne({qna_no:Number(req.body.qna_no)},(err,q_result)=>{
+            db.collection("answer").insertOne({
+                //답변 번호
+                a_no: result.aCount + 1,
+                //게시글 번호
+                qna_no: q_result.qna_no,
+                //답변 내용
+                a_context: req.body.admin_answer
+            },(err,result)=>{
+                db.collection("count").updateOne({name:"답변수"},{$inc:{aCount:1}},(err,result)=>{
+                    res.redirect("/qna");
+                });
             });
         });
     });
 });
 
+//문의게시판 답변 수정페이지 경로 요청
+app.get("/admin/qna/update/:no",(req,res)=>{
+    db.collection("answer").findOne({a_no: Number(req.params.no)},(err,result)=>{
+        res.render("admin_qna_update", {aData:result,userData:req.user});
+    });
+});
+
+//문의게시판 답변 수정데이터값 데이터베이스에 보내기
+app.post("/admin/update/qna",(req,res)=>{
+    db.collection("answer").updateOne({a_no: Number(req.body.a_no)},{$set:{
+        a_context: req.body.admin_answer
+    }},(err,result)=>{
+        res.redirect("/qna/detail" + result.qna_no);
+    });
+});
+
+//문의게시판 답변 삭제
+app.get("/admin/qna/delete/:no",(req,res)=>{
+    db.collection("answer").deleteOne({a_no: Number(req.params.no)},(err,result)=>{
+        res.redirect("/qna/detail" + result.qna_no);
+    });
+});
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/*
-    집에서 할 거
-    - 아이콘 전부 색 있는걸로 바꾸기
-    - 로고/기업이름 정하기
-    - 회원가입 페이지 디자인
-    - 공지사항 작성/수정 페이지 디자인
-*/
+//--공지사항 작성페이지 레이아웃구성

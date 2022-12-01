@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>문의게시판 상세페이지</title>
+    <!-- css -->
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- 웹폰트 및 아이콘 -->
+    <%- include("common/icon_font.ejs") %>
+</head>
+<body>
+    <!-- 상단 영역 -->
+    <%- include("common/header.ejs") %>
+    <!-- 중간 영역 -->
+    <div id="container">
+        <div class="qna_detail_area">
+            <div class="center">
+                <div class="qna_detail_wrap">
+                    <!-- 상단 라인 -->
+                    <div class="t_line">
+                        <!-- 번호 -->
+                        <p class="no"><%- qnaData.qna_no %></p>
+                        <!-- 제목 -->
+                        <h3 class="title"><%- qnaData.qna_title %></h3>
+                        <!-- 작성자 -->
+                        <p class="author"><%- qnaData.qna_author %></p>
+                    </div>
+                    <!-- 본문 내용 -->
+                    <div class="t_box"><%- qnaData.qna_context %></div>
+                    <!-- 작성날짜 -->
+                    <div class="date"><%- qnaData.qna_date %></div>
+                </div>
+                <!-- 답변 창 -->
+                <div class="answer_wrap">
+                    <p>답변</p>
+                    <% if(aData){ %>
+                        <% for(let i=0; i<aData.length; i++){%>
+                            <div class="answer_text"><%- aData[i].a_context %></div>
+                        <%}%>
+                    <% }%>
+                    <% if(userData){ %>
+                        <% if(userData.join_id == "admin"){ %>
+                            <p class="text">답변창</p>
+                            <!-- admin만 작성할 수 있는 답변창 -->
+                            <form id="admin_answer_form" action="/answer/qna" method="post">
+                                <!-- 게시글 번호를 알기위한 히든태그 -->
+                                <input type="hidden" name="qna_no" value="<%- qnaData.qna_no %>">
+                                <textarea name="admin_answer" class="admin_answer"></textarea>
+                                <div class="btn_wrap">
+                                    <button class="answer_btn" type="submit">답변등록</button>
+                                    <a class="upt_btn" href="/admin/qna/update/<%- aData.a_no %>">수정</a>
+                                    <a class="del_btn" href="/admin/qna/delete/<%- aData.a_no %>">삭제</a>
+                                </div>
+                            </form>
+                        <% } %>
+                    <% } %>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 하단 영역 -->
+    <%- include("common/footer.ejs") %>
+    <!-- js -->
+    <script src="/js/del_btn.js"></script>
+</body>
+</html>

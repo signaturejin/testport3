@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>관리자 qna 답변 수정 페이지</title>
+</head>
+<body>
+    <form id="admin_answer_form" action="/admin/update/qna" method="post">
+        <!-- 답변 번호를 알기 위한 히든 태그 -->
+        <input type="hidden" name="a_no" value="<%- aData.a_no %>">
+        <!-- admin만 작성할 수 있는 답변창 -->
+        <textarea name="admin_answer" class="admin_answer"><%- aData.a_context %></textarea>
+        
+        <button class="answer_btn" type="submit">답변 수정</button>
+    </form>
+</body>
+</html>

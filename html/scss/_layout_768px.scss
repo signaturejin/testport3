@@ -1,0 +1,106 @@
+@media screen and (max-width:768px) {
+    //상단영역
+    #header {
+        .h_top {
+            .center {
+                .right_wrap {font-size: 17px;}
+            }
+        }
+    }
+    //중간영역
+    #container {
+        //메인페이지 intro 영역
+        .intro {
+            .center {
+                //intro의 첫번째 slide 영역
+                .slide_wrap {
+                    .view {
+                        .slide_box {
+                            //슬라이드 뒷배경 일러스트
+                            .bg_img {
+                                right: 20px; top: 183px;
+                                img {width: 340px; height: 250px;}
+                            }
+                            //슬라이드 하단 상품박스
+                            .prd_box_wrap {
+                                .prd_box {
+                                    > a {
+                                        .tag {
+                                            right: 20px;
+                                            padding: 10px 20px;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                //intro의 세번째 영역
+                .intro3_wrap {
+                    flex-direction: column;
+                    //intro영역의 공지사항 영역
+                    .main_notice_wrap {margin: 0 100px 30px 0;}
+                }
+            }
+        }
+        //상품페이지 영역(card_area)
+        .card_area {
+            .center {
+                //카드 배너
+                .card_banner {
+                    .banner_center {
+                        width: 90%;
+                        .text_box {
+                            .small_text {
+                                font-size: 15px; padding-bottom: 26px;
+                                font-weight: 500;
+                            }
+                            .big_text {
+                                font-size: 24px; padding-bottom: 45px;
+                                font-weight: 600;
+                            }
+                            .more {
+                                display: inline-block;
+                                padding: 12px 30px;
+                                border: 1px solid #fff;
+                                color: #fff;
+                            }
+                        }
+                    }
+                }
+                .prd_list_wrap {
+                    width: 98%;
+                    .cw {
+                        .view {
+                            .prd_list {
+                                width: 16%; margin: 0 5px;
+                                img {width: 100%;}
+                                .hover_box {width: 100%; font-size: 13px;}
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    //하단영역
+    #footer {
+        .f_top {
+            .center {
+                width: 90%;
+                flex-direction: column;
+                > div {margin: 0 auto; font-size: 15px;}
+                .right {margin-bottom: 30px;}
+            }
+        }
+        .f_bot {
+            .center {
+                width: 90%; flex-direction: column;
+                .left {
+                    .copy {text-align: center;}
+                }
+                .right {margin-bottom: 40px;}
+            }
+        }
+    }
+}

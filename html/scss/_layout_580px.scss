@@ -1,0 +1,105 @@
+@media screen and (max-width:580px) {
+    //중간영역
+    #container {
+        //메인페이지 intro 영역
+        .intro {
+            .center {
+                //intro의 첫번째 slide 영역
+                .slide_wrap {
+                    .view {
+                        .slide_box {
+                            //슬라이드 뒷배경 일러스트
+                            .bg_img {display: none;}
+                            //슬라이드 하단 상품박스
+                            .prd_box_wrap {
+                                flex-direction: column;
+                                .prd_box {
+                                    width: 80%; margin: 0 auto;
+                                    margin-bottom: 20px;
+                                    > a {
+                                        .tag {
+                                            right: 20px;
+                                            padding: 10px 20px;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                //intro의 두번째 영역
+                .intro2_wrap {
+                    flex-direction: column;
+                    //intro영역의 탭메뉴 영역
+                    .tab_wrap {
+                        width: 100%;
+                    }
+                    //intro영역의 이용안내 영역
+                    .info_wrap {
+                        width: 90%; margin: 0 auto; margin-top: 370px;
+                        .text {font-size: 17px; line-height: 25px;}
+                        .info_box_wrap {
+                            .line {
+                                .info_box {padding: 20px 10px;}
+                            }
+                        }
+                    }
+                }
+                //intro의 세번째 영역
+                .intro3_wrap {
+                    flex-direction: column;
+                    //intro영역의 공지사항 영역
+                    .main_notice_wrap {margin: 0 100px 30px 0;}
+                }
+            }
+        }
+        //상품페이지 영역(card_area)
+        .card_area {
+            .center {
+                .prd_list_wrap {
+                    .cw {
+                        .view {
+                            .prd_list {
+                                .hover_box {
+                                    .link_box {
+                                        flex-direction: column;
+                                        > a {
+                                            text-align: center;
+                                            &:nth-child(1) {margin-bottom: 10px;}
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        .store_list {
+            //매장 하단
+            .center {
+                width: 90%;
+                .store_list_wrap {
+                    .list_box {width: 96%;}
+                }
+
+            }
+        }
+    }
+    //하단영역
+    #footer {
+        .f_top {
+            .center {width: 95%;}
+        }
+        .f_bot {
+            .center {
+                width: 95%;
+                .left {
+                    .f_menu {
+                        li {font-size: 13px;}
+                    }
+                }
+            }
+        }
+    }
+}

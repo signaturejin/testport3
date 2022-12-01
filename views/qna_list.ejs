@@ -25,58 +25,65 @@
         <div class="qna_list_wrap">
             <div class="center">
                 <!-- 대표 qna 박스 -->
-                
+                <h2 class="t_title">자주하는 질문</h2>
+                <div class="box_wrap bw1">
+                    <div class="h_line">
+                        <div class="h_wrap">
+                            <div class="q">Q</div>
+                            <h3>승인결재의 결재선이란 무엇인가요?</h3>
+                        </div>
+                        <div class="allow"><i class="fa-solid fa-angle-down"></i></div>
+                    </div>
+                    <div class="a_box">
+                        <div class="a">A</div>
+                        <div class="a_text">
+                            승인결재(다단계결재)를 신청하는 경우 이체 등 주요 거래시 결재자 또는 승인자의 결재를 얻어 거래가 완료되도록 하는 기능을 말합니다.(전결, 단독결재권한 부여시 1인에 의한 결재도 가능)<br>
+                            1단계(단독결재), 2단계(등록자-승인자), 3단계(등록자-결재자-승인자)로 결재선을 구성할 수 있으며, 전결권한을 부여하면 전결금액 범위내에서 이체가 가능합니다.<br>
+                            단독결재자, 승인자, 전결권한이 있는 하위사용자는 OTP와 인증서를 보유하여야 합니다.
+                        </div>
+                    </div>
+                </div>
+                <div class="box_wrap bw2">
+                    <div class="h_line">
+                        <div class="h_wrap">
+                            <div class="q">Q</div>
+                            <h3>해외에서도 비대면으로 디지털OTP를 발급받을 수 있나요?</h3>
+                        </div>
+                        <div class="allow"><i class="fa-solid fa-angle-down"></i></div>
+                    </div>
+                    <div class="a_box">
+                        <div class="a">A</div>
+                        <div class="a_text">
+                            고객님이 해외에서 사용 중이신 휴대폰에 한국 유심이 장착되어 있고, 추가인증(ARS·휴대폰본인확인)이 수신 가능하도록 로밍이 되어있는 경우 해외에서도 비대면 실명확인을 거쳐 디지털OTP 발급이 가능합니다.<br>
+                            다만, 해외IP차단서비스 신청 고객의 경우 MG더뱅킹 실행시 접속이 차단될 수 있습니다. 출국 전 영업점을 내방하여 해외IP차단서비스 해제를 권장드리며, 미처 사전에 해제하지 못하신 경우 해외IP차단서비스 일시해제(MG더뱅킹·인터넷뱅킹에서 가능) 후 발급을 진행하여 주시기 바랍니다.
+                        </div>
+                    </div>
+                </div>
                 <!-- 이용자들이 작성한 qna 박스 -->
                 <h2 class="qna_title">궁금한 점을 남겨주세요</h2>
                 <div class="user_qna_wrap">
-                    <% for(let i=0; i<qnaData.length; i++){ %>
-                        <div class="user_qna_line">
-                            <!-- 상단 -->
-                            <div class="user_qna_top">
-                                <div class="wrap">
-                                    <!-- 알파벳 q -->
-                                    <div class="q">Q</div>
-                                    <!-- 제목 -->
-                                    <h3 class="user_qna_title"><%- qnaData[i].qna_title %></h3>
-                                </div>
-                                <!-- 아이콘 -->
-                                <div class="icon"><i class="fa-solid fa-angle-down"></i></div>
+                    <div class="h_line">
+                        <div>번호</div>
+                        <div>제목</div>
+                        <div>등록날짜</div>
+                    </div>
+                    <div class="qna_data_wrap">
+                        <!-- 사용자 유저에 따라서 보여줌 + 관리자 -->
+                        <% for(let i=0; i<qnaData.length; i++){ %>
+                            <%# if(qnaData[i].qna_author == req.user.join_id){ %>
+                            <div class="user_qna_line">
+                                <!-- 번호 -->
+                                <p class="no"><%- qnaData[i].qna_no %></p>
+                                <!-- 제목 -->
+                                <h3 class="list_title"><a href="/qna/detail/<%- qnaData[i].qna_no %>"><%- qnaData[i].qna_title %></a></h3>
+                                <!-- 등록날짜 -->
+                                <p class="qna_date"><%- qnaData[i].qna_date %></p>
                             </div>
-                            <div class="mb_wrap">
-                                <!-- 중간 -->
-                                <p class="user_qna_context"><%- qnaData[i].qna_context %></p>
-                                <!-- 하단 -->
-                                <div class="user_qna_bot">
-                                    <!-- 게시글번호 -->
-                                    <p class="user_qna_no"><span>글번호 : </span><%- qnaData[i].qna_no %></p>
-                                    <!-- 작성자 -->
-                                    <p class="user_qna_author"><span>작성자 : </span><%- qnaData[i].qna_author %></p>
-                                    <!-- 작성시간 -->
-                                    <p class="user_qna_date"><span>작성시간 : </span><%- qnaData[i].qna_date %></p>
-                                </div>
-                                <!-- 답변 -->
-                                <div class="answer_wrap">
-                                    <div class="wrap">
-                                        <div class="a">A</div>
-                                        <div class="answer_text"><%#- aData[i].a_context %></div>
-                                    </div>
-                                    <% if(userData){ %>
-                                        <% if(userData.join_id == "admin"){ %>
-                                            <form id="admin_answer_form" action="/answer/qna" method="post">
-                                                <!-- admin만 작성할 수 있는 답변창 -->
-                                                <textarea name="admin_answer" class="admin_answer"></textarea>
-                                                <!-- 답변 번호와 매칭하기 위한 질문번호 히든태그 -->
-                                                <input type="hidden" name="user_qna_no" value="<%- qnaData[i].qna_no %>">
-                                                
-                                                <button class="answer_btn" type="submit">답변등록</button>
-                                            </form>
-                                        <% } %>
-                                    <% } %>
-                                </div>
-                            </div>
-                        </div>
-                    <% } %>
+                            <%# } %>
+                        <% } %>
+                    </div>
                     <a class="qna_link" href="/insert/qna">글쓰기</a>
+                </div>
                 </div>
             </div>
         </div>
