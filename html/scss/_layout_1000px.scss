@@ -117,6 +117,13 @@
                 }
             }
         }
+        //카드 상세페이지 영역(card_detail)
+        .card_detail {
+            .center {
+                width: 90%;
+                .right_box {width: 20%;}
+            }
+        }
         //매장 목록페이지 영역(store_list)
         .store_list {
             //매장 하단
@@ -125,8 +132,11 @@
                 .store_list_wrap {
                     .list_box {width: 46%;}
                 }
-
             }
+        }
+        //문의게시판 목록페이지(qna_list_wrap)
+        .qna_list_wrap {
+            .center {width: 90%;}
         }
     }
     //하단영역
@@ -136,6 +146,26 @@
         }
         .f_bot {
             .center {width: 90%;}
+        }
+    }
+    //로그인 페이지
+    #login {
+        .center {
+            width: 90%;
+            //로그인 영역
+            .login_wrap {
+                .left {
+                    .auth_box {
+                        a {
+                            span {line-height: 17px;}
+                            .auth_text {margin-right: 29px;}
+                        }
+                    }
+                }
+                .right {
+                    img {bottom: 196px;}
+                }
+            }
         }
     }
 }

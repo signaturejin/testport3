@@ -30,7 +30,7 @@
                     <h2 class="title">공지사항</h2>
                     <div class="wrap">
                         <!-- <div class="total_num"></div> -->
-                        <div class="sear_wrap">
+                        <form id="search_form" class="sear_wrap" action="/notice/search" method="get">
                             <select name="n_category" id="n_category">
                                 <option value="전체">전체</option>
                                 <option value="제목">제목</option>
@@ -38,7 +38,7 @@
                             </select>
                             <input type="text" name="search" class="search" placeholder="검색어를 입력해 주세요.">
                             <button class="sear_btn" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
-                        </div>
+                        </form>
                     </div>
                     <div class="notice_list_wrap">
                         <div class="h_line">

@@ -120,7 +120,7 @@ app.get("/",(req,res)=>{
 
 //회원가입 페이지 경로 요청
 app.get("/join",(req,res)=>{
-    res.render("join");
+    res.render("join",{userData:req.user});
 }); 
 
 //회원가입 데이터값 데이터베이스에 보내기
@@ -327,6 +327,28 @@ app.get("/notice/delete/:no",(req,res)=>{
     });
 });
 
+//공지사항 검색 기능
+app.get("/notice/search",(req,res)=>{
+    let notice_search = [
+        {
+            $search: {
+                index: 'notice_search',
+                text: {
+                    //내가 입력한 값
+                    query: req.query.search,
+                    //해당 컬렉션에서 위에서 입력한 단어가 포함되어있는 것 찾아와줌
+                    path: "search"
+                }
+            }
+        }
+    ]
+
+    db.collection("noticle").aggregate(search).toArray((err,result)=>{
+        res.render("notice_liset", {ntiData: result});
+    });
+
+});
+
 //매장 목록 페이지 경로 요청
 app.get("/store",(req,res)=>{
     db.collection("store").find().toArray((err,result)=>{
@@ -381,7 +403,7 @@ app.get("/event",(req,res)=>{
 //관리자용 이벤트 등록 페이지 경로 요청
 app.get("/admin/event",(req,res)=>{
     db.collection("event").find().toArray((err,result)=>{
-        res.render("admin_event_insert",{evtData:result});
+        res.render("admin_event_insert",{evtData:result, userData:req.user});
     });
 });
 
@@ -439,7 +461,7 @@ app.get("/event/delete/:no",(req,res)=>{
 //이벤트 수정페이지 경로 요청
 app.get("/event/update/:no",(req,res)=>{
     db.collection("event").findOne({event_no: Number(req.params.no)},(err,result)=>{
-        res.render("admin_event_update", {evtData:result});
+        res.render("admin_event_update", {evtData:result, userData:req.user});
     });
 });
 
@@ -471,7 +493,7 @@ app.post("/update/event",upload.single('file'),(req,res)=>{
 app.get("/qna",(req,res)=>{
     // db.collection("qna").find().toArray((err,result)=>{
         db.collection("qna").find({qna_author_id:req.user.join_id}).toArray((err,u_result)=>{
-            console.log(u_result);
+            // console.log(u_result);
             res.render("qna_list", {/*qnaData:result,*/ qnaData:u_result, userData:req.user});
         });
     // });
@@ -564,7 +586,7 @@ app.post("/answer/qna",(req,res)=>{
     });
 });
 
-//문의게시판 답변 수정페이지 경로 요청
+//문의게시판 답변 수정페이지 경로 요청//??
 app.get("/admin/qna/update/:no",(req,res)=>{
     db.collection("answer").findOne({a_no: Number(req.params.no)},(err,result)=>{
         res.render("admin_qna_update", {aData:result,userData:req.user});
@@ -588,4 +610,6 @@ app.get("/admin/qna/delete/:no",(req,res)=>{
 });
 
 
-//--공지사항 작성페이지 레이아웃구성
+//안끝난것
+//문의게시판 답변 수정페이지 오류 수정
+//공지사항 검색창

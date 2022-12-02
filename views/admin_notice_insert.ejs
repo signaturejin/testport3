@@ -11,6 +11,8 @@
     <%- include("common/icon_font.ejs") %>
 </head>
 <body>
+    <!-- 상단영역 -->
+    <%- include("common/header.ejs") %>
     <div id="container">
         <div class="notice_form_area">
             <div class="center">
@@ -28,12 +30,12 @@
                     <% for(let i=0; i<ntiData.length; i++){ %>
                         <div class="notice_list">
                             <div class="left">
-                                <div>번호</div>
-                                <div>제목</div>
-                                <div>작성자 아이디</div>
-                                <div>작성자 닉네임</div>
-                                <div>조회수</div>
-                                <div>작성날짜</div>
+                                <div class="no">번호</div>
+                                <div class="title">제목</div>
+                                <div class="author_id">작성자 아이디</div>
+                                <div class="author">작성자 닉네임</div>
+                                <div class="review">조회수</div>
+                                <div class="date">작성날짜</div>
                                 <div class="context">내용</div>
                             </div>
                             <div class="right">
@@ -51,5 +53,7 @@
             </div>
         </div>
     </div>
+    <!-- 하단영역 -->
+    <%- include("common/footer.ejs") %>
 </body>
 </html>

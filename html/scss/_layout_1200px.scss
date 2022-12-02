@@ -115,8 +115,6 @@
                 }
             }
         }
-        //카드상품페이지
-        //카드상품 슬라이드 없애고 롤링으로 돌리기->1000px부터(버튼없애고 애니메이션)
         //상품페이지 영역(card_area)
         .card_area {
             .center {
@@ -168,19 +166,33 @@
             //매장 하단
             .center {width: 90%;}
         }
-        //공지사항 목록페이지(notice_wrap)
-        .notice_wrap {
-            width: 90%;
-            .left {
-                .otp_box {
-                    p {padding: 30px 13px;}
-                    img {
-                        width: 70px; height: 70px;
-                        right: 10px; top: 71px;
+        //이벤트 목록페이지 영역(event_area)
+        .event_area {
+            .center {
+                width: 80%;
+                .right {
+                    .event_data_wrap {
+                        .admin_event_box {padding: 50px 25px;}
                     }
                 }
             }
-            .right {width: 78%; margin-left: 2%;}
+        }
+        //공지사항 목록페이지(notice_wrap)
+        .notice_wrap {
+            width: 80%;
+            .right {width: 100%;}
+        }
+        //문의게시판 목록페이지(qna_list_wrap)
+        .qna_list_wrap {
+            .center {width: 70%;}
+        }
+        //문의게시판 상세페이지(qna_detail_area)
+        .qna_detail_area {
+            .center {width: 80%;}
+        }
+        //문의게시판 유저작성페이지(qna_area)
+        .qna_area {
+            .center {width: 80%;}
         }
     }
     //하단영역

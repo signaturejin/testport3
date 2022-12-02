@@ -82,6 +82,62 @@
                 }
             }
         }
+        //카드 상세페이지 영역(card_detail)
+        .card_detail {
+            .center {
+                width: 95%;
+                .card_detail_wrap {
+                    .title_box {
+                        .card_name {font-size: 25px;}
+                    }
+                    .card_box {
+                        .wrap {
+                            flex-direction: column;
+                            padding: 150px 0 30px;
+                            .right {
+                                padding-left: 0; margin-top: 110px;
+                                font-weight: 500;
+                                > p {font-size: 17px;}
+                            }
+                        }
+                        .box_bot {
+                            align-items: baseline; justify-content: center;
+                            line-height: 72px; padding: 0;
+                            .brand {
+                                margin-right: 50px;
+                                img {width: 80px; height: 40px;}
+                            }
+                            .price {
+                                display: flex;
+                                > p {
+                                    &:nth-child(1) {margin-right: 25px;}
+                                    &:nth-child(2) {margin-right: 15px;}
+                                }
+                            }
+                        }
+                    }
+                    .card_notice {
+                        width: 90%; margin: 60px auto 0;
+                        border-radius: 20px;
+                        .title {
+                            font-size: 23px; padding-bottom: 21px;
+                        }
+                    } 
+                }
+            }
+        }
+        //이벤트 목록페이지 영역(event_area)
+        .event_area {
+            .center {width: 90%;}
+        }
+        //문의게시판 상세페이지(qna_detail_area)
+        .qna_detail_area {
+            .center {width: 90%;}
+        }
+        //문의게시판 유저작성페이지(qna_area)
+        .qna_area {
+            .center {width: 90%;}
+        }
     }
     //하단영역
     #footer {
@@ -100,6 +156,28 @@
                     .copy {text-align: center;}
                 }
                 .right {margin-bottom: 40px;}
+            }
+        }
+    }
+    //로그인 페이지
+    #login {
+        .center {
+            width: 90%;
+            //로그인 영역
+            .login_wrap {
+                flex-direction: column-reverse;
+                .left {
+                    width: 100%;
+                    .auth_box {
+                        a {
+                            .auth_text {margin-right: 0;}
+                        }
+                    }
+                }
+                .right {
+                    width: 100%; margin-bottom: 30px;
+                    img {display: none;}
+                }
             }
         }
     }

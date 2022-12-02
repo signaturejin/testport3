@@ -4,35 +4,52 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>관리자용 이벤트 등록 페이지</title>
+    <!-- css -->
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- 웹폰트 및 아이콘 -->
+    <%- include("common/icon_font.ejs") %>
 </head>
 <body>
-    <form id="admin_event_form" action="/add/event" method="post" enctype="multipart/form-data">
-        <!-- 이벤트 이름 -->
-        <label for="title">이벤트 제목</label>
-        <input type="text" name="title" class="title">
-        <!-- 이벤트 날짜 -->
-        <label for="date">이벤트 날짜</label>
-        <input type="text" name="date" class="date">
-        <!-- 이벤트 파일 -->
-        <label for="file">이벤트 파일</label>
-        <input type="file" name="file" class="file">
-        <!-- 이벤트 내용 -->
-        <label for="context">이벤트 내용</label>
-        <textarea name="context" class="context"></textarea>
-    
-        <button class="event_btn" type="submit">이벤트 등록</button>
-    </form>
-    <div class="admin_event_wrap">
-        <% for(let i=0; i<evtData.length; i++){ %>
-            <div class="admin_event_box">
-                <p class="no"><%- evtData[i].event_no %></p>
-                <h2 class="title"><%- evtData[i].event_title %></h2>
-                <img class="file" src="/upload/<%- evtData[i].event_file %>" alt="">
-                <p class="context"><%- evtData[i].event_context %></p>
-                <p class="review"><%- evtData[i].event_riview %></p>
+    <!-- 상단 영역 -->
+    <%- include("common/header.ejs") %>
+    <!-- 중간 영역 -->
+    <div id="container">
+        <div class="event_insert_area event_form_area">
+            <div class="center">
+                <form id="admin_event_form" class="event_area_form" action="/add/event" method="post" enctype="multipart/form-data">
+                    <!-- 이벤트 이름 -->
+                    <label for="title">이벤트 제목</label>
+                    <input type="text" name="title" class="title">
+                    <!-- 이벤트 날짜 -->
+                    <label for="date">이벤트 날짜</label>
+                    <input type="text" name="date" class="date">
+                    <!-- 이벤트 파일 -->
+                    <label for="file">이벤트 파일</label>
+                    <input type="file" name="file" class="file">
+                    <!-- 이벤트 내용 -->
+                    <label for="context">이벤트 내용</label>
+                    <textarea name="context" class="context"></textarea>
+                
+                    <button class="event_btn" type="submit">이벤트 등록</button>
+                </form>
+                <div class="admin_event_wrap">
+                    <% for(let i=0; i<evtData.length; i++){ %>
+                        <div class="admin_event_box">
+                            <p class="no">게시글 번호 : <%- evtData[i].event_no %></p>
+                            <h2 class="title"><%- evtData[i].event_title %></h2>
+                            <div class="img_wrap">
+                                <img class="file" src="/upload/<%- evtData[i].event_file %>" alt="">
+                            </div>
+                            <p class="context"><%- evtData[i].event_context %></p>
+                            <p class="review"><%- evtData[i].event_riview %></p>
+                        </div>
+                    <% } %>
+                </div>
             </div>
-        <% } %>
+        </div>
     </div>
+    <!-- 하단 영역 -->
+    <%- include("common/footer.ejs") %>
 </body>
 </html>

@@ -75,6 +75,63 @@
                 }
             }
         }
+        //카드 상세페이지 영역(card_detail)
+        .card_detail {
+            .center {
+                flex-direction: column;
+                .card_detail_wrap {
+                    width: 100%;
+                    .card_box {
+                        .box_bot {
+                            flex-direction: column; line-height: 40px;
+                            margin: 30px 0; padding-left: 30px;
+                            .brand {margin-right: 50px;}
+                            .price {
+                                display: flex;
+                                > p {
+                                    &:nth-child(1) {margin: 0 20px 0 0;}
+                                }
+                            }
+                        }
+                    }
+                    .card_notice {
+                        .card_notice_box {margin-bottom: 60px;}
+                    }
+                }
+                .right_box {
+                    width: 90%; margin: 0 auto 50px;
+                    border: 2px solid #d6d6d6;
+                    height: 280px;
+                    //첫번째 박스
+                    .box1 {
+                        border-bottom: 2px solid #d6d6d6;
+                        p {font-size: 18px;}
+                    }
+                    //두번째 박스
+                    .box2 {
+                        border-bottom: 2px solid #d6d6d6;
+                        > p {font-size: 18px;}
+                        .wrap {
+                            p {padding-bottom: 22px; font-size: 15px;}
+                            .icon {bottom: 2px;}
+                        }
+                    }
+                    //세번째 박스
+                    .box3 {
+                        display: flex; justify-content: space-between;
+                        align-items: center; padding: 0 20px;
+                        .top {
+                            padding: 30px 0 25px;
+                            .icon_box {
+                                margin: 0 5px;
+                                i {margin-bottom: 10px; font-size: 23px;}
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        //매장 목록페이지 영역(store_list)
         .store_list {
             //매장 하단
             .center {
@@ -84,6 +141,32 @@
                 }
 
             }
+        }
+        //공지사항 목록페이지(notice_wrap)
+        .notice_wrap {
+            width: 90%;
+            .right {
+                .center {
+                    .notice_list_wrap {
+                        .notice_list {
+                            .notice_title {white-space: pre; overflow: hidden; text-overflow: ellipsis;}
+                        }
+                    }
+                    .go_notice {width: 100%; line-height: 43px;}
+                }
+            }
+        }
+        //문의게시판 목록페이지(qna_list_wrap)
+        .qna_list_wrap {
+            .center {
+                .user_qna_wrap {
+                    .qna_link {width: 30%;}
+                }
+            }
+        }
+        //문의게시판 유저작성페이지(qna_area)
+        .qna_area {
+            .center {width: 83%;}
         }
     }
     //하단영역
@@ -97,6 +180,22 @@
                 .left {
                     .f_menu {
                         li {font-size: 13px;}
+                    }
+                }
+            }
+        }
+    }
+    //로그인 페이지
+    #login {
+        .center {
+            //로그인 영역
+            .login_wrap {
+                .right {
+                    #login_form {
+                        .wrap {
+                            flex-direction: column;
+                            input {width: 100%;}
+                        }
                     }
                 }
             }
