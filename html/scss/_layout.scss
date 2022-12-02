@@ -9,6 +9,11 @@
             width: 73%; align-items: center;
             display: flex; justify-content: space-between;
             padding: 15px 0;
+            .logo {
+                a {
+                    img {width: 150px;}
+                }
+            }
             .gnb {
                 display: flex; justify-content: space-between;
                 li {

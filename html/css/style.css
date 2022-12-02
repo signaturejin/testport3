@@ -49,6 +49,9 @@ body {
   justify-content: space-between;
   padding: 15px 0;
 }
+#header .h_top .center .logo a img {
+  width: 150px;
+}
 #header .h_top .center .gnb {
   display: flex;
   justify-content: space-between;
