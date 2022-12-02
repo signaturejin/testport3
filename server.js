@@ -329,22 +329,23 @@ app.get("/notice/delete/:no",(req,res)=>{
 
 //공지사항 검색 기능
 app.get("/notice/search",(req,res)=>{
+
     let notice_search = [
         {
             $search: {
                 index: 'notice_search',
                 text: {
                     //내가 입력한 값
-                    query: req.query.search,
+                    query:req.query.search,
                     //해당 컬렉션에서 위에서 입력한 단어가 포함되어있는 것 찾아와줌
-                    path: "search"
+                    path:req.query.n_category
                 }
             }
         }
     ]
 
-    db.collection("noticle").aggregate(search).toArray((err,result)=>{
-        res.render("notice_liset", {ntiData: result});
+    db.collection("notice").aggregate(notice_search).toArray((err,result)=>{
+        res.render("notice_list", {ntiData: result,userData: req.user});
     });
 
 });
