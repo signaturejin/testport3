@@ -1974,13 +1974,29 @@ body {
   font-size: 14px;
   border-bottom: 2px solid #c2c2c2;
 }
+#container .qna_detail_area .center .user_btn {
+  margin: 20px 0 30px;
+  display: flex;
+  justify-content: flex-end;
+}
+#container .qna_detail_area .center .user_btn > a {
+  display: block;
+  font-size: 14px;
+  padding: 12px 20px;
+  background-color: #9b93f7;
+  color: #fff;
+  border-radius: 5px;
+  margin: 0 7px;
+  cursor: pointer;
+}
 #container .qna_detail_area .center .answer_wrap > p {
   padding: 20px 30px;
 }
 #container .qna_detail_area .center .answer_wrap .answer_text {
-  padding: 20px 30px 0 30px;
+  padding: 20px 30px;
   font-size: 15px;
   line-height: 30px;
+  border-bottom: 1px solid #c2c2c2;
 }
 #container .qna_detail_area .center .answer_wrap > .text {
   padding: 20px 30px;
@@ -2000,12 +2016,11 @@ body {
 #container .qna_detail_area .center .answer_wrap #admin_answer_form .btn_wrap {
   display: flex;
   justify-content: center;
-  align-items: center;
   margin-top: 15px;
 }
 #container .qna_detail_area .center .answer_wrap #admin_answer_form .btn_wrap button, #container .qna_detail_area .center .answer_wrap #admin_answer_form .btn_wrap a {
   border: none;
-  padding: 12px 20px;
+  padding: 12px 40px;
   background-color: #9b93f7;
   color: #fff;
   border-radius: 5px;

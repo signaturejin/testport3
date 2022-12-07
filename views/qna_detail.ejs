@@ -32,12 +32,26 @@
                     <!-- 작성날짜 -->
                     <div class="date"><%- qnaData.qna_date %></div>
                 </div>
+                <!-- 작성한 사람에게만 버튼이 보임 -->
+                <% if(userData){ %>
+                    <% if(userData.join_id == qnaData.qna_author_id){ %>
+                        <div class="user_btn">
+                            <a class="upt_btn" href="/user/qna/update/<%- qnaData.qna_no %>">수정</a>
+                            <a class="del_btn" href="/user/qna/delete/<%- qnaData.qna_no %>">삭제</a>
+                        </div>
+                    <% } %>
+                <% } %>
                 <!-- 답변 창 -->
                 <div class="answer_wrap">
                     <p>답변</p>
                     <% if(aData){ %>
                         <% for(let i=0; i<aData.length; i++){%>
                             <div class="answer_text"><%- aData[i].a_context %></div>
+                            <!-- 답변 수정 및 삭제 버튼 -->
+                            <div class="btn_wrap">
+                                <a class="upt_btn" href="/admin/answer/update/<%- aData[i].a_no %>">수정</a>
+                                <a class="del_btn" href="/admin/answer/delete/<%- aData[i].a_no %>">삭제</a>
+                            </div>
                         <%}%>
                     <% }%>
                     <% if(userData){ %>
@@ -48,10 +62,9 @@
                                 <!-- 게시글 번호를 알기위한 히든태그 -->
                                 <input type="hidden" name="qna_no" value="<%- qnaData.qna_no %>">
                                 <textarea name="admin_answer" class="admin_answer"></textarea>
+                                
                                 <div class="btn_wrap">
                                     <button class="answer_btn" type="submit">답변등록</button>
-                                    <a class="upt_btn" href="/admin/qna/update/<%- aData.a_no %>">수정</a>
-                                    <a class="del_btn" href="/admin/qna/delete/<%- aData.a_no %>">삭제</a>
                                 </div>
                             </form>
                         <% } %>

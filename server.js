@@ -554,7 +554,7 @@ app.post("/user/update/qna",(req,res)=>{
         //질문 내용
         qna_context: req.body.context
     }},(err,result)=>{
-        res.redirect("/qna");
+        res.redirect("/qna/detail/" + req.body.qna_no);
     });
 });
 
@@ -589,24 +589,27 @@ app.post("/answer/qna",(req,res)=>{
 
 //문의게시판 답변 수정페이지 경로 요청
 //답변글이 여러개라 무엇을 가져와야하는지 모르는 것 같음
-app.get("/admin/qna/update/:no",(req,res)=>{
+app.get("/admin/answer/update/:no",(req,res)=>{
     db.collection("answer").findOne({a_no: Number(req.params.no)},(err,result)=>{
         res.render("admin_qna_update", {aData:result,userData:req.user});
     });
 });
+
 
 //문의게시판 답변 수정데이터값 데이터베이스에 보내기
 app.post("/admin/update/qna",(req,res)=>{
     db.collection("answer").updateOne({a_no: Number(req.body.a_no)},{$set:{
         a_context: req.body.admin_answer
     }},(err,result)=>{
-        res.redirect("/qna/detail" + result.qna_no);
+        db.collection("answer").findOne({a_no: Number(req.body.a_no)},(err,result)=>{
+            res.redirect("/qna/detail/" + result.qna_no);
+        });
     });
 });
 
 //문의게시판 답변 삭제
-app.get("/admin/qna/delete/:no",(req,res)=>{
+app.get("/admin/answer/delete/:no",(req,res)=>{
     db.collection("answer").deleteOne({a_no: Number(req.params.no)},(err,result)=>{
-        res.redirect("/qna/detail" + result.qna_no);
+        res.redirect("/qna");
     });
 });

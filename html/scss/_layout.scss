@@ -1444,11 +1444,23 @@
                     border-bottom: 2px solid #c2c2c2;
                 }
             }
+            .user_btn {
+                margin: 20px 0 30px;
+                display: flex; justify-content: flex-end;
+                > a {
+                    display: block; font-size: 14px;
+                    padding: 12px 20px;
+                    background-color: #9b93f7;
+                    color: #fff; border-radius: 5px;
+                    margin: 0 7px; cursor: pointer;
+                }
+            }
             .answer_wrap {
                 > p {padding: 20px 30px;}
                 .answer_text {
-                    padding: 20px 30px 0 30px;
+                    padding: 20px 30px;
                     font-size: 15px; line-height: 30px;
+                    border-bottom: 1px solid #c2c2c2;
                     // white-space: pre;
                 }
                 > .text {padding: 20px 30px; font-weight: 500;}
@@ -1463,9 +1475,9 @@
                     }
                     .btn_wrap {
                         display: flex; justify-content: center;
-                        align-items: center; margin-top: 15px;
+                        margin-top: 15px;
                         button,a {
-                            border: none; padding: 12px 20px;
+                            border: none; padding: 12px 40px;
                             background-color: #9b93f7;
                             color: #fff; border-radius: 5px;
                             margin: 0 7px; cursor: pointer;
