@@ -1463,6 +1463,16 @@
                     border-bottom: 1px solid #c2c2c2;
                     // white-space: pre;
                 }
+                .btn_wrap {
+                    display: flex; justify-content: center;
+                    margin-top: 15px;
+                    button,a {
+                        border: none; padding: 12px 40px;
+                        background-color: #9b93f7;
+                        color: #fff; border-radius: 5px;
+                        margin: 0 7px; cursor: pointer;
+                    }
+                }
                 > .text {padding: 20px 30px; font-weight: 500;}
                 #admin_answer_form {
                     .admin_answer {
