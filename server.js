@@ -580,14 +580,15 @@ app.post("/answer/qna",(req,res)=>{
                 a_context: req.body.admin_answer
             },(err,result)=>{
                 db.collection("count").updateOne({name:"답변수"},{$inc:{aCount:1}},(err,result)=>{
-                    res.redirect("/qna");
+                    res.redirect("/qna/detail/" + req.body.qna_no);
                 });
             });
         });
     });
 });
 
-//문의게시판 답변 수정페이지 경로 요청//??
+//문의게시판 답변 수정페이지 경로 요청
+//답변글이 여러개라 무엇을 가져와야하는지 모르는 것 같음
 app.get("/admin/qna/update/:no",(req,res)=>{
     db.collection("answer").findOne({a_no: Number(req.params.no)},(err,result)=>{
         res.render("admin_qna_update", {aData:result,userData:req.user});
@@ -609,8 +610,3 @@ app.get("/admin/qna/delete/:no",(req,res)=>{
         res.redirect("/qna/detail" + result.qna_no);
     });
 });
-
-
-//안끝난것
-//문의게시판 답변 수정페이지 오류 수정
-//공지사항 검색창
